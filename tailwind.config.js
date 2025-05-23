@@ -9,8 +9,13 @@ module.exports = {
       colors: {
         primary: '#00838F',
       },
+      fontFamily: {
+        montserrat: ['Montserrat', 'Inter', 'sans-serif'],
+      },
+      fontSize: {
+        base: ['14px', { lineHeight: '100%', letterSpacing: '0%' }],
+      }
     },
-  },
-  plugins: [],
+    plugins: [],
+  }
 }
-
