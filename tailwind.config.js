@@ -10,12 +10,11 @@ module.exports = {
         primary: '#00838F',
       },
       fontFamily: {
-        montserrat: ['Montserrat', 'Inter', 'sans-serif'],
+        montserrat: ['Montserrat', 'sans-serif'],
       },
       fontSize: {
         base: ['14px', { lineHeight: '100%', letterSpacing: '0%' }],
-      }
+      },
     },
-    plugins: [],
-  }
-}
+  },
+};

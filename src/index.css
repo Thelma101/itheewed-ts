@@ -2,9 +2,32 @@
 @tailwind components;
 @tailwind utilities;
 
-/* body {
-  @apply font-montserrat font-bold text-base;
-} */
-a {
-  @apply no-underline;
+/* Base layer for global element resets */
+@layer base {
+  body {
+    @apply font-montserrat text-base;
+  }
+
+  a {
+    @apply no-underline;
+  }
+}
+
+/* Components layer for your custom classes */
+@layer components {
+  .navbar {
+    @apply bg-gray-800 text-white;
+  }
+
+  .navbar ul {
+    @apply flex justify-between;
+  }
+
+  .navbar li {
+    @apply px-4 py-2;
+  }
+
+  .navbar a {
+    @apply text-white hover:text-gray-200;
+  }
 }
