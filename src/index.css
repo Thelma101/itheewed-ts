@@ -4,17 +4,19 @@
 
 /* Base layer for global element resets */
 @layer base {
+  /* body {
+    @apply font-montserrat;
+  } */
   body {
-    @apply font-montserrat text-base;
+    @apply font-montserrat;
   }
-
   a {
     @apply no-underline;
   }
-}
+} 
 
 /* Components layer for your custom classes */
-@layer components {
+/* @layer components {
   .navbar {
     @apply bg-gray-800 text-white;
   }
@@ -30,4 +32,4 @@
   .navbar a {
     @apply text-white hover:text-gray-200;
   }
-}
+} */
