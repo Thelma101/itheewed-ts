@@ -58,6 +58,11 @@ a {
   background-image: url('./features/Banner/assets/banner.png');
 }
 
+.banner-img-1 {
+  @apply absolute top-0 left-0;
+  background-image: url('./features/Banner/assets/banner-img-1.png');
+}
+
 .banner {
   @apply flex flex-col justify-center items-center h-screen;
 }

@@ -54,8 +54,6 @@
 
 
 
-
-
 const Banner: React.FC = () => {
     return (
         <>
@@ -103,21 +101,20 @@ const Banner: React.FC = () => {
                 </div>
 
                 {/* Right content */}
-                <div className="w-full md:w-1/2 flex flex-col items-center justify-center gap-4 mt-6 md:mt-0 text-red-500">
-                    <div className="w-1/2 h-1/2 bg-white ">
-                        {/* width: 520;
-height: 414;
-top: 371px;
-left: 818px;
-border-width: 0.25px; */}
 
-                            
+
+                <div className="w-full md:w-1/2 flex flex-col items-center justify-center gap-4 mt-6 md:mt-0 text-red-600">
+                    <div className="w-full md:w-[520px] h-[414px] bg-white p-2 border border-primary ">
+                        <img className="w-full md:w-[493px] h-[366px] py-4 px-2" src="https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1170&q=80" alt="" />
                     </div>
-                    <div>2</div>
+                    <div className="w-full md:w-[327px] h-[292px] bg-white p-2 border border-primary ">
+                        {/* <img className="w-full md:w-[307px] h-[228px] py-4 px-2  banner-img-1"  src="" /> */}
+                         <div className="banner-img-1"></div>
+                    </div>
                     <div>3</div>
                     <div>4</div>
                 </div>
-            </section>
+            </section >
         </>
     );
 };
