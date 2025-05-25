@@ -104,7 +104,15 @@ const Banner: React.FC = () => {
 
                 {/* Right content */}
                 <div className="w-full md:w-1/2 flex flex-col items-center justify-center gap-4 mt-6 md:mt-0 text-red-500">
-                    <div>1</div>
+                    <div className="w-1/2 h-1/2 bg-white ">
+                        {/* width: 520;
+height: 414;
+top: 371px;
+left: 818px;
+border-width: 0.25px; */}
+
+                            
+                    </div>
                     <div>2</div>
                     <div>3</div>
                     <div>4</div>
