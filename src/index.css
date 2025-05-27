@@ -63,6 +63,21 @@ a {
   background-image: url('./features/Banner/assets/banner-img-1.png');
 }
 
+.banner-img-2 {
+  @apply absolute top-0 left-0;
+  background-image: url('./features/Banner/assets/banner-img-2.png');
+}
+
+.banner-img-3 {
+  @apply absolute top-0 left-0;
+  background-image: url('./features/Banner/assets/banner-img-3.png');
+}
+
+.banner-img-4 {
+  @apply absolute top-0 left-0;
+  background-image: url('./features/Banner/assets/banner-img-4.png');
+}
+
 .banner {
   @apply flex flex-col justify-center items-center h-screen;
 }
