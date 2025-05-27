@@ -1,7 +1,9 @@
+import messagePic from '@/features/ChatwithVendor/assets/MessagesPic.png'
+
 const Category: React.FC = () => {
     return (
         <>
-            <section className="container w-full mx-auto flex justify-center items-center text-center my-24 px-4 sm:px-6 lg:px-8 py-16 md:py-36">
+            <section className="container w-full mx-auto flex justify-center items-center text-center mt-24 px-4 sm:px-6 lg:px-8 py-16 md:py-36">
                 <div className="w-full">
                     <div className="w-full max-w-4xl flex flex-col justify-center items-center mx-auto">
                         <h1 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-black leading-tight">
@@ -39,10 +41,28 @@ const Category: React.FC = () => {
                         ))}
                     </div>
                     <div className="flex flex-col mx-auto my-12  gap-10 font-open-sans font-bold justify-center items-center  ">
-                        <button type="button" className="px-10 py-4 justify-center items-center  text-white font-bold leading-7 border border-primary bg-primary">Check More</button>
+                        <button type="button" className="px-14 py-4 justify-center items-center  text-white font-bold leading-7 border border-primary bg-primary">Check More</button>
                     </div>
                 </div>
             </section>
+
+            {/* chat with vendor - sign in */}
+            <section className="container w-full mx-auto flex flex-col md:flex-row justify-center items-center text-center px-4 sm:px-6 lg:px-8 py-6 md:py-3 font-open-sans gap-6">
+                {/* Image section */}
+                <div className="w-full md:w-1/2 flex flex-col justify-center items-center bg-primary px-4 pt-4 pb-8">
+                    <img src={messagePic} alt="Chat with Vendor" className="w-full max-w-sm md:max-w-full" />
+                </div>
+
+                {/* Text section */}
+                <div className="w-full md:w-1/2 flex flex-col justify-start items-start text-left mt-6 md:mt-0 md:ml-8">
+                    <p className="font-semibold text-2xl sm:text-lg md:text-2xl lg:text-3xl leading-tight">
+                        Chat with a Vendor
+                    </p>
+                    <p className="font-light leading-tight mt-1">You can chat with vendors for all your wedding plans.</p>
+                    <p className="font-thin leading-tight mt-1">It takes just a few clicks with the I Thee Wed App.</p>
+                </div>
+            </section>
+
         </>
 
         // <section className="container w-full mx-auto flex justify-center items-center text-center my-24 px-4 sm:px-6 lg:px-8 py-16 md:py-36 ">
