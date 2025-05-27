@@ -13,6 +13,7 @@
   --color-info: #0dcaf0;
   --color-light: #f8f9fa;
   --color-dark: #212529;
+  --color-black:#002528;
   --color-white: #fff;
   --color-text: var(--color-dark);
 }
