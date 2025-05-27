@@ -57,6 +57,7 @@ import bannerImg2 from "@/features/Banner/assets/banner-img-2.png";
 import bannerImg3 from "@/features/Banner/assets/banner-img-3.png";
 import bannerImg4 from '@/features/Banner/assets/banner-img-4.png';
 
+
 const Banner: React.FC = () => {
     return (
         <>
@@ -81,99 +82,70 @@ const Banner: React.FC = () => {
             {/* Form Section */}
             <section className="flex flex-col md:flex-row w-full max-w-full absolute z-10 top-[320px] md:top-80 text-white px-4 sm:px-6 lg:px-8 py-6 sm:py-10 left-1/2 transform -translate-x-1/2">
 
-                {/* Left form */}
-                <div className="w-full md:w-1/2 flex flex-col items-center md:items-center justify-start text-xl">
-                    <form className="flex flex-col gap-4 sm:gap-6 w-full max-w-lg py-11 md:pr-20">
-                        <input
-                            type="text"
-                            placeholder="Phone number or email"
-                            className="w-full h-[50px] border border-[#E0E0E0] px-4 text-black"
-                        />
-                        <input
-                            type="password"
-                            placeholder="Password"
-                            className="w-full h-[50px] border border-[#E0E0E0] px-4 text-black"
-                        />
-                        <button className="w-full h-[50px] bg-primary text-white font-bold">
-                            Sign Up
-                        </button>
-                        <p className="text-white text-center md:text-left">
-                            Already have an account?{' '}
-                            <span className="text-primary cursor-pointer hover:underline font-bold">Sign in</span>
-                        </p>
-                    </form>
-                </div>
-
-                {/* Right content */}
-
-                {/* <div className="w-full md:w-1/2 flex flex-col items-center justify-center gap-4 mt-6 md:mt-0 text-red-600">
-                    <div className="w-full md:w-[520px] h-[414px] bg-white p-2">
-                        <img className="w-full md:w-[493px] h-[366px] py-4 px-2" src="https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1170&q=80" alt="" />
-                    </div>
-                    <div className="absolute md:top-48 right-0 md:right-64 transform -translate-x-1/2 w-[327px] h-[292px] bg-white shadow-[0px_5px_5px_-1px_rgba(0,37,40,0.1)] box-border">
-                        <img
-                            src="https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1170&q=80"
-                            alt="Card visual"
-                            className="w-[307px] h-[228px] mx-auto mt-[10px] object-cover"
-                        />
+                <div className="w-full flex flex-col md:flex-row px-4 md:px-12 py-12 relative overflow-hidden">
+                    {/* Left Form */}
+                    <div className="w-full md:w-1/2 flex flex-col items-center justify-start text-xl z-10">
+                        <form className="flex flex-col gap-4 sm:gap-6 w-full max-w-lg py-11 md:pr-20">
+                            <input
+                                type="text"
+                                placeholder="Phone number or email"
+                                className="w-full h-[50px] border border-[#E0E0E0] px-4 text-black"
+                            />
+                            <input
+                                type="password"
+                                placeholder="Password"
+                                className="w-full h-[50px] border border-[#E0E0E0] px-4 text-black"
+                            />
+                            <button className="w-full h-[50px] bg-primary text-white font-bold">
+                                Sign Up
+                            </button>
+                            <p className="text-white text-center md:text-left">
+                                Already have an account?{' '}
+                                <span className="text-primary cursor-pointer hover:underline font-bold">Sign in</span>
+                            </p>
+                        </form>
                     </div>
 
-                    <div className="absolute md:top-80 md:right-10 transform -translate-x-1/2 w-[327px] h-[292px] bg-white shadow-[0px_5px_5px_-1px_rgba(0,37,40,0.1)] box-border">
-                        <img
-                            src="https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1170&q=80"
-                            alt="Card visual"
-                            className="w-[307px] h-[228px] mx-auto mt-[10px] object-cover"
-                        />
-                    </div>
-                    <div className="absolute md:top-72 md:right-72 transform -translate-x-1/2 w-[263px] h-[234px] bg-white shadow-[0px_5px_5px_-1px_rgba(0,37,40,0.1)] box-border">
-                        <img
-                            src="https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1170&q=80"
-                            alt="Card visual"
-                            className="w-[307px] h-[228px] mx-auto mt-[10px] object-cover"
-                        />
-                    </div>
-                </div> */}
-
-
-                <div className="w-full md:w-1/2 flex items-center justify-center mt-6 md:mt-0">
-                    <div className="relative w-[300px] h-[300px] sm:w-[400px] sm:h-[400px] md:w-[500px] md:h-[500px]">
+                    {/* Right Image Group */}
+                    <div className="w-full md:w-1/2 flex items-center justify-center relative min-h-[800px]">
                         {/* Top Image */}
-                        <div className="absolute top-0 left-1/2 -translate-x-1/2 z-10 w-[180px] h-[120px] sm:w-[220px] sm:h-[140px] md:w-[260px] md:h-[180px] bg-white border border-[#00838F] shadow-md p-1">
+                        <div className="absolute top-[-28px] left-[56%] -translate-x-1/2 w-[520px] h-[414px] bg-white border border-[#00838F] shadow-md z-10">
                             <img
                                 src={bannerImg1}
+                                className="w-[493px] h-[366px] object-cover mx-auto mt-[24px]"
                                 alt="Top"
-                                className="w-full h-full object-cover"
                             />
                         </div>
 
                         {/* Left Image */}
-                        <div className="absolute top-[50px] left-[10px] sm:top-[60px] sm:left-[20px] md:top-[70px] md:left-[30px] z-20 w-[160px] h-[100px] sm:w-[200px] sm:h-[120px] md:w-[240px] md:h-[160px] bg-white border border-[#00838F] shadow-md p-1">
+                        <div className="absolute top-[200px] left-[calc(35%-260px)] w-[327px] h-[292px] bg-white border border-[#00838F] shadow-md z-20">
                             <img
-                                src={bannerImg1}
+                                src={bannerImg2}
+                                className="w-[307px] h-[228px] object-cover mx-auto mt-[10px]"
                                 alt="Left"
-                                className="w-full h-full object-cover"
                             />
                         </div>
 
                         {/* Right Image */}
-                        <div className="absolute top-[60px] right-[10px] sm:top-[70px] sm:right-[20px] md:top-[80px] md:right-[30px] z-20 w-[160px] h-[100px] sm:w-[200px] sm:h-[120px] md:w-[240px] md:h-[160px] bg-white border border-[#00838F] shadow-md p-1">
+                        <div className="absolute top-[220px] left-[calc(50%+200px)] w-[263px] h-[234px] bg-white border border-[#00838F] shadow-md z-20">
                             <img
-                                src={bannerImg1}
+                                src={bannerImg4}
+                                className="w-[247px] h-[183px] object-cover mx-auto mt-[10px]"
                                 alt="Right"
-                                className="w-full h-full object-cover"
                             />
                         </div>
 
                         {/* Bottom Image */}
-                        <div className="absolute bottom-0 left-1/2 -translate-x-1/2 z-30 w-[180px] h-[120px] sm:w-[220px] sm:h-[140px] md:w-[260px] md:h-[180px] bg-white border border-[#00838F] shadow-md p-1">
+                        <div className="absolute top-[280px] left-[50%] -translate-x-1/2 w-[327px] h-[292px] bg-white border border-[#00838F] shadow-md z-30">
                             <img
-                                src={bannerImg1}
+                                src={bannerImg3}
+                                className="w-[308px] h-[228px] object-cover mx-auto mt-[10px]"
                                 alt="Bottom"
-                                className="w-full h-full object-cover"
                             />
                         </div>
                     </div>
                 </div>
+
 
 
             </section>
