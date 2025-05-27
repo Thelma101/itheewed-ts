@@ -52,11 +52,10 @@
 // export default Banner;
 
 
-
-// import card1 from '../features/assets/banner-img-2.png';
-
-
-import bannerImg1 from '../features/assets/banner-img-1.png';
+import bannerImg1 from "@/features/Banner/assets/banner-img-1.png";
+import bannerImg2 from "@/features/Banner/assets/banner-img-2.png";
+import bannerImg3 from "@/features/Banner/assets/banner-img-3.png";
+import bannerImg4 from '@/features/Banner/assets/banner-img-4.png';
 
 const Banner: React.FC = () => {
     return (
@@ -66,8 +65,8 @@ const Banner: React.FC = () => {
                 <div className="banner-bg"></div>
                 <div className="absolute inset-0 bg-[#0E292B] opacity-80"></div>
 
-                <div className="font-family-two relative z-10 flex items-start justify-center pt-8 md:pt-20 h-full text-white text-center">
-                    <h1 className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl leading-[1.2] md:leading-[130px]">
+                <div className="relative z-10 flex items-start justify-center pt-8 md:pt-20 h-full text-white text-center">
+                    <h1 className="text-4xl sm:text-5xl md:text-5xl lg:text-7xl leading-[1.2] md:leading-[130px] font-roboto">
                         Wedding planning at your fingertips.
                     </h1>
                 </div>
@@ -80,10 +79,11 @@ const Banner: React.FC = () => {
             </section>
 
             {/* Form Section */}
-            <section className="flex flex-col md:flex-row w-full absolute z-10 top-[320px] md:top-80 text-white px-4 sm:px-6 lg:px-8 py-6 sm:py-10 max-w-full left-1/2 transform -translate-x-1/2">
+            <section className="flex flex-col md:flex-row w-full max-w-full absolute z-10 top-[320px] md:top-80 text-white px-4 sm:px-6 lg:px-8 py-6 sm:py-10 left-1/2 transform -translate-x-1/2">
+               
                 {/* Left form */}
-                <div className="w-full md:w-1/2 flex flex-col items-center md:items-start justify-start">
-                    <form className="flex flex-col gap-4 sm:gap-6 w-full max-w-lg py-11">
+                <div className="w-full md:w-1/2 flex flex-col items-center md:items-center justify-start text-xl text-red-600">
+                    <form className="flex flex-col gap-4 sm:gap-6 w-full max-w-lg py-11 pr-20 text-red-600">
                         <input
                             type="text"
                             placeholder="Phone number or email"
@@ -99,7 +99,7 @@ const Banner: React.FC = () => {
                         </button>
                         <p className="text-white text-center md:text-left">
                             Already have an account?{' '}
-                            <span className="text-primary cursor-pointer underline">Sign in</span>
+                            <span className="text-primary cursor-pointer hover:underline font-bold">Sign in</span>
                         </p>
                     </form>
                 </div>
@@ -133,40 +133,41 @@ const Banner: React.FC = () => {
                         />
                     </div>
                 </div> */}
-
-                <div className="w-full md:w-1/2 flex flex-col items-center justify-center gap-4 mt-6 md:mt-0">
+                
+                
+                <div className="w-full md:w-1/2 flex flex-col items-center justify-center gap-4 mt-6 md:mt-3">
                     {/* Top Image (bg-2 + img-2) */}
-                    <div className="w-full max-w-[520px] h-[414px] border border[#00838F] bg-white shadow-[0px_5px_5px_-1px_rgba(0,37,40,0.1)] box-border px-3 pt-8">
+                    <div className="absolute hidden md:block top-[53px] left-[810px] w-full max-w-[520px] h-[414px] border border[#00838F] bg-white shadow-[0px_5px_5px_-1px_rgba(0,37,40,0.1)] box-border px-3 pt-8">
                         <img
                             className="w-full h-[366px] object-cover"
-                            src="https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?auto=format&fit=crop&w=1170&q=80"
+                            src={bannerImg1}
                             alt=""
                         />
                     </div>
 
                     {/* Bottom Left (bg-1 + img-1) */}
-                    <div className="absolute hidden md:block top-[190px] left-[670px] w-[327px] h-[292px] border border[#00838F] bg-white shadow-[0px_5px_5px_-1px_rgba(0,37,40,0.1)] box-border">
+                    <div className="absolute hidden md:block top-[190px] left-[676px] w-[327px] h-[292px] border border[#00838F] bg-white shadow-[0px_5px_5px_-1px_rgba(0,37,40,0.1)] box-border">
                         <img
                             // src="https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?auto=format&fit=crop&w=1170&q=80"
-                            src={bannerImg1}
+                            src={bannerImg2}
                             alt="Card visual"
                             className="w-[307px] h-[228px] mx-auto md:mt-[10px] object-cover"
                         />
                     </div>
 
                     {/* Right Image (bg-4 + img-4) */}
-                    <div className="absolute hidden md:block top-[260px] left-[1102px] w-[263px] h-[234px] border border[#00838F] bg-white shadow-[0px_5px_5px_-1px_rgba(0,37,40,0.1)] box-border">
+                    <div className="absolute hidden md:block top-[260px] left-[1112px] w-[263px] h-[234px] border border[#00838F] bg-white shadow-[0px_5px_5px_-1px_rgba(0,37,40,0.1)] box-border">
                         <img
-                            // src={card1}
+                            src={bannerImg4}
                             alt="Card visual"
                             className="w-[247px] h-[183px] mx-auto mt-[10px] object-cover"
                         />
                     </div>
 
                     {/* Bottom Center (bg-3 + img-3) */}
-                    <div className="absolute hidden md:block top-[330px] left-[839px] w-[327px] h-[292px] border border[#00838F] bg-white shadow-[0px_5px_5px_-1px_rgba(0,37,40,0.1)] box-border">
+                    <div className="absolute hidden md:block top-[330px] left-[849px] w-[327px] h-[292px] border border[#00838F] bg-white shadow-[0px_5px_5px_-1px_rgba(0,37,40,0.1)] box-border">
                         <img
-                            src="https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?auto=format&fit=crop&w=1170&q=80"
+                            src={bannerImg3}
                             alt="Card visual"
                             className="w-[308px] h-[228px] mx-auto mt-[10px] object-cover"
                         />
