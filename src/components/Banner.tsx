@@ -80,10 +80,10 @@ const Banner: React.FC = () => {
 
             {/* Form Section */}
             <section className="flex flex-col md:flex-row w-full max-w-full absolute z-10 top-[320px] md:top-80 text-white px-4 sm:px-6 lg:px-8 py-6 sm:py-10 left-1/2 transform -translate-x-1/2">
-               
+
                 {/* Left form */}
-                <div className="w-full md:w-1/2 flex flex-col items-center md:items-center justify-start text-xl text-red-600">
-                    <form className="flex flex-col gap-4 sm:gap-6 w-full max-w-lg py-11 pr-20 text-red-600">
+                <div className="w-full md:w-1/2 flex flex-col items-center md:items-center justify-start text-xl">
+                    <form className="flex flex-col gap-4 sm:gap-6 w-full max-w-lg py-11 md:pr-20">
                         <input
                             type="text"
                             placeholder="Phone number or email"
@@ -133,62 +133,48 @@ const Banner: React.FC = () => {
                         />
                     </div>
                 </div> */}
-                
-                
-                <div className="w-full md:w-1/2 flex flex-col items-center justify-center gap-4 mt-6 md:mt-3">
-                    {/* Top Image (bg-2 + img-2) */}
-                    <div className="absolute hidden md:block top-[53px] left-[810px] w-full max-w-[520px] h-[414px] border border[#00838F] bg-white shadow-[0px_5px_5px_-1px_rgba(0,37,40,0.1)] box-border px-3 pt-8">
-                        <img
-                            className="w-full h-[366px] object-cover"
-                            src={bannerImg1}
-                            alt=""
-                        />
-                    </div>
 
-                    {/* Bottom Left (bg-1 + img-1) */}
-                    <div className="absolute hidden md:block top-[190px] left-[676px] w-[327px] h-[292px] border border[#00838F] bg-white shadow-[0px_5px_5px_-1px_rgba(0,37,40,0.1)] box-border">
-                        <img
-                            // src="https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?auto=format&fit=crop&w=1170&q=80"
-                            src={bannerImg2}
-                            alt="Card visual"
-                            className="w-[307px] h-[228px] mx-auto md:mt-[10px] object-cover"
-                        />
-                    </div>
 
-                    {/* Right Image (bg-4 + img-4) */}
-                    <div className="absolute hidden md:block top-[260px] left-[1112px] w-[263px] h-[234px] border border[#00838F] bg-white shadow-[0px_5px_5px_-1px_rgba(0,37,40,0.1)] box-border">
-                        <img
-                            src={bannerImg4}
-                            alt="Card visual"
-                            className="w-[247px] h-[183px] mx-auto mt-[10px] object-cover"
-                        />
-                    </div>
+                <div className="w-full md:w-1/2 flex items-center justify-center mt-6 md:mt-0">
+                    <div className="relative w-[300px] h-[300px] sm:w-[400px] sm:h-[400px] md:w-[500px] md:h-[500px]">
+                        {/* Top Image */}
+                        <div className="absolute top-0 left-1/2 -translate-x-1/2 z-10 w-[180px] h-[120px] sm:w-[220px] sm:h-[140px] md:w-[260px] md:h-[180px] bg-white border border-[#00838F] shadow-md p-1">
+                            <img
+                                src={bannerImg1}
+                                alt="Top"
+                                className="w-full h-full object-cover"
+                            />
+                        </div>
 
-                    {/* Bottom Center (bg-3 + img-3) */}
-                    <div className="absolute hidden md:block top-[330px] left-[849px] w-[327px] h-[292px] border border[#00838F] bg-white shadow-[0px_5px_5px_-1px_rgba(0,37,40,0.1)] box-border">
-                        <img
-                            src={bannerImg3}
-                            alt="Card visual"
-                            className="w-[308px] h-[228px] mx-auto mt-[10px] object-cover"
-                        />
-                    </div>
+                        {/* Left Image */}
+                        <div className="absolute top-[50px] left-[10px] sm:top-[60px] sm:left-[20px] md:top-[70px] md:left-[30px] z-20 w-[160px] h-[100px] sm:w-[200px] sm:h-[120px] md:w-[240px] md:h-[160px] bg-white border border-[#00838F] shadow-md p-1">
+                            <img
+                                src={bannerImg1}
+                                alt="Left"
+                                className="w-full h-full object-cover"
+                            />
+                        </div>
 
-                    {/* Responsive Fallback Stack (visible on small screens) */}
-                    <div className="flex flex-col gap-4 mt-8 md:hidden">
-                        {[1, 2, 3, 4].map((_, index) => (
-                            <div
-                                key={index}
-                                className="w-full max-w-[327px] mx-auto h-[292px] bg-white border border-[#00838F] shadow-[0px_5px_5px_-1px_rgba(0,37,40,0.1)] box-border"
-                            >
-                                <img
-                                    src="https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?auto=format&fit=crop&w=1170&q=80"
-                                    alt={`Card visual ${index + 1}`}
-                                    className="w-full h-[228px] mx-auto mt-[10px] object-cover"
-                                />
-                            </div>
-                        ))}
+                        {/* Right Image */}
+                        <div className="absolute top-[60px] right-[10px] sm:top-[70px] sm:right-[20px] md:top-[80px] md:right-[30px] z-20 w-[160px] h-[100px] sm:w-[200px] sm:h-[120px] md:w-[240px] md:h-[160px] bg-white border border-[#00838F] shadow-md p-1">
+                            <img
+                                src={bannerImg1}
+                                alt="Right"
+                                className="w-full h-full object-cover"
+                            />
+                        </div>
+
+                        {/* Bottom Image */}
+                        <div className="absolute bottom-0 left-1/2 -translate-x-1/2 z-30 w-[180px] h-[120px] sm:w-[220px] sm:h-[140px] md:w-[260px] md:h-[180px] bg-white border border-[#00838F] shadow-md p-1">
+                            <img
+                                src={bannerImg1}
+                                alt="Bottom"
+                                className="w-full h-full object-cover"
+                            />
+                        </div>
                     </div>
                 </div>
+
 
             </section>
         </>
