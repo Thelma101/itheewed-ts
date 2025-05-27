@@ -1,38 +1,103 @@
 const Category: React.FC = () => {
     return (
-        <section className="container mx-auto flex justify-center items-center text-center my-24 px-4 sm:px-6 lg:px-8 py-16 md:py-36 ">
-            <div classname="flex justify-center items-center text-center">
-                <div className="w-full max-w-4xl flex flex-col justify-center items-center">
-                    <h1 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-extrabold font-primary leading-tight">
-                        Everything Marriage, in one App!
-                    </h1>
-                </div>
+        <>
+            <section className="container w-full mx-auto flex justify-center items-center text-center my-24 px-4 sm:px-6 lg:px-8 py-16 md:py-36">
+                <div className="w-full">
+                    <div className="w-full max-w-4xl flex flex-col justify-center items-center mx-auto">
+                        <h1 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-black leading-tight">
+                            Everything Marriage, in one App!
+                        </h1>
+                    </div>
+                    <div className="w-full max-w-7xl mx-auto flex flex-wrap justify-center items-center gap-4 mt-14">
+                        {[
+                            { name: 'Venue', icon: <i className="fa-solid fa-location-dot text-2xl"></i> },
+                            { name: 'Florist', icon: <i className="fa-solid fa-flower text-2xl"></i> },
+                            { name: 'Cake & Dessert', icon: <i className="fa-solid fa-cake-candles text-2xl"></i> },
+                            { name: 'Photography', icon: <i className="fa-solid fa-camera text-2xl"></i> },
+                            { name: 'Wedding Planners', icon: <i className="fa-solid fa-hand-holding-heart text-2xl"></i> },
+                            { name: 'Dress & Apparel', icon: <i className="fa-solid fa-shirt text-2xl"></i> },
+                            { name: 'Catering', icon: <i className="fa-solid fa-utensils text-2xl"></i> },
+                            { name: 'Decor', icon: <i className="fa-solid fa-tree text-2xl"></i> },
+                            { name: 'MC/DJ/Live Band', icon: <i className="fa-solid fa-guitar text-2xl"></i> },
+                            { name: 'Officiants', icon: <i className="fa-solid fa-scroll text-2xl"></i> },
+                            { name: 'Wedding Gifts', icon: <i className="fa-solid fa-gift text-2xl"></i> },
+                            { name: 'Jewelry', icon: <i className="fa-solid fa-ring text-2xl"></i> },
+                            { name: 'Makeup & Hair', icon: <i className="fa-solid fa-face-smile text-2xl"></i> },
+                            { name: 'Hotels', icon: <i className="fa-solid fa-hotel text-2xl"></i> },
+                            { name: 'Bar Services', icon: <i className="fa-solid fa-beer-mug-empty text-2xl"></i> },
+                            { name: 'Car Rentals', icon: <i className="fa-solid fa-car text-2xl"></i> },
+                            { name: 'Videography', icon: <i className="fa-solid fa-video text-2xl"></i> },
+                            { name: 'Interior Decor', icon: <i className="fa-solid fa-tree text-2xl"></i> },
 
-                <div className="w-full max-w-4xl mx-auto flex md:mt-14 sm:flex-row justify-center items-center gap-8 md:gap-7 text-black">
-                    <div className="flex flex-col justify-center items-center border border-primary px-8 py-3">
-                        <p className="text-wrap font-mono">
-                            Venue
-                        </p>
+                        ].map((category, index) => (
+                            <div key={index} className="flex flex-col justify-center items-center border border-primary px-8 py-3">
+                                {category.icon}
+                                <p className="text-wrap font-primary font-semibold">
+                                    {category.name}
+                                </p>
+                            </div>
+                        ))}
                     </div>
-                    <div className="flex flex-col justify-center items-center border border-primary px-8 py-3">
-                        <p className="text-wrap font-mono">
-                            Venue
-                        </p>
+                    <div className="flex flex-col mx-auto my-12  gap-10 font-open-sans font-bold justify-center items-center  ">
+                        <button type="button" className="px-10 py-4 justify-center items-center  text-white font-bold leading-7 border border-primary bg-primary">Check More</button>
                     </div>
-                    <div className="flex flex-col justify-center items-center border border-primary px-8 py-3">
-                        <p className="text-wrap font-mono">
-                            Venue
-                        </p>
-                    </div>
-                    <div className="flex flex-col justify-center items-center border border-primary px-8 py-3">
-                        <p className="text-wrap font-mono">
-                            Venue
-                        </p>
-                    </div>
-
                 </div>
-            </div>
-        </section>
+            </section>
+        </>
+
+        // <section className="container w-full mx-auto flex justify-center items-center text-center my-24 px-4 sm:px-6 lg:px-8 py-16 md:py-36 ">
+        //     <div className=" ">
+        //         <div className="w-full max-w-4xl flex flex-col justify-center items-center">
+        //             <h1 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-extrabold font-primary leading-tight">
+        //                 Everything Marriage, in one App!
+        //             </h1>
+        //         </div>
+
+        //         <div className="w-full max-w-4xl mx-auto flex md:mt-14 sm:flex-row justify-center items-center gap-6 md:gap-6 text-black">
+        //             <div className="flex flex-col justify-center items-center border border-primary px-8 py-3">
+        //                 <p className="text-wrap font-mono">
+        //                     Venues
+        //                 </p>
+        //             </div>
+        //             <div className="flex flex-col justify-center items-center border border-primary px-8 py-3">
+        //                 <p className="text-wrap font-mono">
+        //                     Florists
+        //                 </p>
+        //             </div>
+        //             <div className="flex flex-col justify-center items-center border border-primary px-8 py-3">
+        //                 <p className=" font-mono">
+        //                     Cakes & Desserts
+        //                 </p>
+        //             </div>
+        //             <div className="flex flex-col justify-center items-center border border-primary px-8 py-3">
+        //                 <p className="text-wrap font-mono">
+        //                     Photography
+        //                 </p>
+        //             </div>
+        //             <div className="flex flex-col justify-center items-center border border-primary px-8 py-3">
+        //                 <p className="text-wrap font-mono">
+        //                     Dresses & Apparels
+        //                 </p>
+        //             </div>
+        //             <div className="flex flex-col justify-center items-center border border-primary px-8 py-3">
+        //                 <p className="text-wrap font-mono">
+        //                     Catering
+        //                 </p>
+        //             </div>
+        //             <div className="flex flex-col justify-center items-center border border-primary px-8 py-3">
+        //                 <p className="text-wrap font-mono">
+        //                     Venue
+        //                 </p>
+        //             </div>
+        //             <div className="flex flex-col justify-center items-center border border-primary px-8 py-3">
+        //                 <p className="text-wrap font-mono">
+        //                     Jewelry
+        //                 </p>
+        //             </div>
+
+        //         </div>
+        //     </div>
+        // </section>
     );
 };
 
