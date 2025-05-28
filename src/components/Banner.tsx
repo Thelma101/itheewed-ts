@@ -66,91 +66,92 @@ const Banner: React.FC = () => {
                 <div className="banner-bg"></div>
                 <div className="absolute inset-0 bg-[#0E292B] opacity-80"></div>
 
-                <div className="relative z-10 flex items-start justify-center pt-8 md:pt-20 h-full text-white text-center">
-                    <h1 className="text-4xl sm:text-5xl md:text-5xl lg:text-7xl leading-[1.2] md:leading-[130px] font-roboto">
+                <div className="relative z-10 flex items-start justify-center pt-14 md:pt-20 h-full text-white text-center pb-40">
+                    <h1 className="sm:text-xl text-3xl md:text-4xl lg:text-7xl leading-[1.2] md:leading-[130px] font-roboto">
                         Wedding planning at your fingertips.
                     </h1>
                 </div>
 
-                <div className="absolute bottom-0 inset-x-0 flex items-start justify-center pt-8 md:pt-48 w-full h-full text-white text-center">
-                    <h3 className="text-xl sm:text-2xl md:text-3xl lg:text-4xl font-normal leading-[1.3] md:leading-[50px] max-w-[90%] md:max-w-[80%]">
-                        itheewed is the number 1 market place for couples and vendors.
+                <div className="absolute bottom-0 inset-x-0 flex items-start justify-center pt-40 md:pt-48 w-full h-full text-white text-center">
+                    <h3 className=" sm:text-xl md:text-2xl lg:text-4xl font-normal leading-[1.3] md:leading-[50px] max-w-[90%] md:max-w-[80%]">
+                        {/* i thee wed is the number 1 market place for couples and vendors.  */}
+                        Discover vendors. Book effortlessly. Cherish forever.
                     </h3>
                 </div>
-            </section>
+            </section> 
 
             {/* Form Section */}
-            <section className="flex flex-col md:flex-row w-full max-w-full absolute z-10 top-[320px] md:top-80 text-white px-4 sm:px-6 lg:px-8 py-6 sm:py-10 left-1/2 transform -translate-x-1/2">
+                        <section className="flex flex-col md:flex-row w-full max-w-full absolute z-10 top-[320px] md:top-80 text-white px-4 sm:px-6 lg:px-8 py-6 sm:py-10 left-1/2 transform -translate-x-1/2">
 
-                <div className="w-full flex flex-col md:flex-row px-4 md:px-12 py-12 relative overflow-hidden">
-                    {/* Left Form */}
-                    <div className="w-full md:w-1/2 flex flex-col items-center justify-start text-xl z-10">
-                        <form className="flex flex-col gap-4 sm:gap-6 w-full max-w-lg py-11 md:pr-20">
-                            <input
-                                type="text"
-                                placeholder="Phone number or email"
-                                className="w-full h-[50px] border border-[#E0E0E0] px-4 text-black"
-                            />
-                            <input
-                                type="password"
-                                placeholder="Password"
-                                className="w-full h-[50px] border border-[#E0E0E0] px-4 text-black"
-                            />
-                            <button className="w-full h-[50px] bg-primary text-white font-bold">
-                                Sign Up
-                            </button>
-                            <p className="text-white text-center md:text-left">
-                                Already have an account?{' '}
-                                <span className="text-primary cursor-pointer hover:underline font-bold">Sign in</span>
-                            </p>
-                        </form>
-                    </div>
+                            <div className="w-full flex flex-col md:flex-row px-4 md:px-12 py-12 relative overflow-hidden">
+                                {/* Left Form */}
+                                <div className="w-full md:w-1/2 flex flex-col items-center justify-start text-xl z-10">
+                                    <form className="flex flex-col gap-4 sm:gap-6 w-full max-w-lg py-11 md:pr-20">
+                                        <input
+                                            type="text"
+                                            placeholder="Phone number or email"
+                                            className="w-full h-[50px] border border-[#E0E0E0] px-4 text-black"
+                                        />
+                                        <input
+                                            type="password"
+                                            placeholder="Password"
+                                            className="w-full h-[50px] border border-[#E0E0E0] px-4 text-black"
+                                        />
+                                        <button className="w-full h-[50px] bg-primary text-white font-bold">
+                                            Sign Up
+                                        </button>
+                                        <p className="text-white text-center md:text-left">
+                                            Already have an account?{' '}
+                                            <span className="text-primary cursor-pointer hover:underline font-bold">Sign in</span>
+                                        </p>
+                                    </form>
+                                </div>
 
-                    {/* Right Image Group */}
-                    <div className="w-full md:w-1/2 flex items-center justify-center relative min-h-[800px]">
-                        {/* Top Image */}
-                        <div className="absolute top-[-28px] left-[56%] -translate-x-1/2 w-[520px] h-[414px] bg-white border border-[#00838F] shadow-md z-10">
-                            <img
-                                src={bannerImg1}
-                                className="w-[493px] h-[366px] object-cover mx-auto mt-[24px]"
-                                alt="Top"
-                            />
-                        </div>
+                                {/* Right Image Group */}
+                                <div className="w-full md:w-1/2 flex items-center justify-center relative min-h-[800px]">
+                                    {/* Top Image */}
+                                    <div className="absolute top-[-28px] left-[56%] -translate-x-1/2 w-[520px] h-[414px] bg-white border border-[#00838F] shadow-md z-10">
+                                        <img
+                                            src={bannerImg1}
+                                            className="w-[493px] h-[366px] object-cover mx-auto mt-[24px]"
+                                            alt="Top"
+                                        />
+                                    </div>
 
-                        {/* Left Image */}
-                        <div className="absolute top-[200px] left-[calc(35%-260px)] w-[327px] h-[292px] bg-white border border-[#00838F] shadow-md z-20">
-                            <img
-                                src={bannerImg2}
-                                className="w-[307px] h-[228px] object-cover mx-auto mt-[10px]"
-                                alt="Left"
-                            />
-                        </div>
+                                    {/* Left Image */}
+                                    <div className="absolute top-[200px] left-[calc(35%-260px)] w-[327px] h-[292px] bg-white border border-[#00838F] shadow-md z-20">
+                                        <img
+                                            src={bannerImg2}
+                                            className="w-[307px] h-[228px] object-cover mx-auto mt-[10px]"
+                                            alt="Left"
+                                        />
+                                    </div>
 
-                        {/* Right Image */}
-                        <div className="absolute top-[220px] left-[calc(50%+200px)] w-[263px] h-[234px] bg-white border border-[#00838F] shadow-md z-20">
-                            <img
-                                src={bannerImg4}
-                                className="w-[247px] h-[183px] object-cover mx-auto mt-[10px]"
-                                alt="Right"
-                            />
-                        </div>
+                                    {/* Right Image */}
+                                    <div className="absolute top-[220px] left-[calc(50%+200px)] w-[263px] h-[234px] bg-white border border-[#00838F] shadow-md z-20">
+                                        <img
+                                            src={bannerImg4}
+                                            className="w-[247px] h-[183px] object-cover mx-auto mt-[10px]"
+                                            alt="Right"
+                                        />
+                                    </div>
 
-                        {/* Bottom Image */}
-                        <div className="absolute top-[280px] left-[50%] -translate-x-1/2 w-[327px] h-[292px] bg-white border border-[#00838F] shadow-md z-30">
-                            <img
-                                src={bannerImg3}
-                                className="w-[308px] h-[228px] object-cover mx-auto mt-[10px]"
-                                alt="Bottom"
-                            />
-                        </div>
-                    </div>
-                </div>
+                                    {/* Bottom Image */}
+                                    <div className="absolute top-[280px] left-[50%] -translate-x-1/2 w-[327px] h-[292px] bg-white border border-[#00838F] shadow-md z-30">
+                                        <img
+                                            src={bannerImg3}
+                                            className="w-[308px] h-[228px] object-cover mx-auto mt-[10px]"
+                                            alt="Bottom"
+                                        />
+                                    </div>
+                                </div>
+                            </div>
 
 
 
-            </section>
-        </>
-    );
+                        </section>
+                    </>
+                    );
 };
 
-export default Banner;
+                    export default Banner;

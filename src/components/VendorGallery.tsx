@@ -82,11 +82,18 @@ const VendorGallery: React.FC = () => {
                                             alt={vendor.name}
                                             className="w-full h-full object-cover shadow-lg group-hover:shadow-2xl group-hover:shadow-primary"
                                         />
-
+                                        <div className=" flex items-center justify-center bg-primary/40">
+                                            <p className="text-white font-open-sans text-[20px] font-bold leading-[100%] text-center">
+                                                {vendor.name}
+                                            </p>
+                                        </div>
+                                        {/* <div className='flex flex-col justify-center items-center w-16  '>
+                                        <p className=' font-open-sans text-2xl font-semibold text-center '>
+                                            {vendor.name}
+                                        </p>
+                                    </div> */}
                                     </div>
-                                    <p className="text-center text-red-600 font-semibold group-hover:text-primary relative top-10 ">
-                                        {vendor.name}
-                                    </p>
+                                    {/* <p className="text-center text-red-600 font-semibold group-hover:text-primary "> */}
                                 </div>
                             ))
                         }

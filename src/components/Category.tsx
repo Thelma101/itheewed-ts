@@ -8,7 +8,44 @@ const Category: React.FC = () => {
                 <div className="w-full">
                     <div className="w-full max-w-4xl flex flex-col justify-center items-center mx-auto">
                         <h1 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-black leading-tight">
-                            Everything Marriage, in one App!
+                            {/* Everything Marriage, in one App! */}
+                            All your vendors, ideas, and inspiration — in one 
+
+                        {/* </h1>
+
+                        <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold text-center mb-10 tracking-tight"> */}
+                            {/* First Row */}
+                            {/* <span className="text-[#EB1948] inline-block animate-[bounce_1s_infinite]">i</span>
+                            <span className="text-[#EB1948] inline-block animate-[bounce_1s_infinite_0.1s]">n</span>
+                            <span className="text-[#EB1948] inline-block"> </span>
+                            <span className="text-[#EB1948] inline-block animate-[bounce_1s_infinite_0.2s]">o</span>
+                            <span className="text-[#EB1948] inline-block animate-[bounce_1s_infinite_0.3s]">n</span>
+                            <span className="text-[#EB1948] inline-block animate-[bounce_1s_infinite_0.4s]">e</span>
+                            <span className="text-[#EB1948] inline-block"> </span> */}
+
+                            <br className="md:hidden" />
+
+                            {/* Second Row */}
+                            <span className="text-[#EB1948] inline-block animate-[bounce_1s_infinite_0.1s]">m</span>
+                            <span className="text-[#EB1948] inline-block animate-[bounce_1s_infinite_0.2s]">a</span>
+                            <span className="text-[#EB1948] inline-block animate-[bounce_1s_infinite_0.3s]">g</span>
+                            <span className="text-[#EB1948] inline-block animate-[bounce_1s_infinite_0.4s]">i</span>
+                            <span className="text-[#EB1948] inline-block animate-[bounce_1s_infinite_0.5s]">c</span>
+                            <span className="text-[#EB1948] inline-block animate-[bounce_1s_infinite_0.6s]">a</span>
+                            <span className="text-[#EB1948] inline-block animate-[bounce_1s_infinite_0.7s]">l</span>
+
+                            <br className="md:hidden" />
+
+                            {/* Third Row */}
+                            <span className="text-[#EB1948] inline-block animate-[bounce_1s_infinite_0.8s]">p</span>
+                            <span className="text-[#EB1948] inline-block animate-[bounce_1s_infinite_0.9s]">l</span>
+                            <span className="text-[#EB1948] inline-block animate-[bounce_1s_infinite_1s]">a</span>
+                            <span className="text-[#EB1948] inline-block animate-[bounce_1s_infinite_1.1s]">c</span>
+                            <span className="text-[#EB1948] inline-block animate-[bounce_1s_infinite_1.2s]">e</span>
+                            {/* <span className="relative inline-block animate-[pulse_1.5s_infinite] ml-2"> */}
+                                <span className="absolute text-[#EB1948] animate-beat">❤</span>
+                                {/* <span className="absolute text-red-700 animate-beat-delay">❤</span> */}
+                            {/* </span> */}
                         </h1>
                     </div>
                     <div className="w-full max-w-7xl mx-auto flex flex-wrap justify-center items-center gap-4 mt-14">
@@ -55,7 +92,8 @@ const Category: React.FC = () => {
                 </div>
 
                 {/* Text section */}
-                <div className="w-full md:w-1/2 flex flex-col gap-3 md:justify-start md:items-start text-center md:text-left mt-6 md:mt-0 md:ml-8">
+                <div className="w-full md:w-1/2 flex flex-col gap-4 md:justify-start md:items-start text-center md:text-left mt-6 md:mt-0 md:ml-8">
+                    <p className='font-extralight leading-tight'>Plan Your Wedding <span className="text-red-700 ">Like a Pro.</span></p>
                     <p className="font-semibold text-2xl sm:text-lg md:text-2xl lg:text-3xl leading-tight">
                         Chat with a Vendor
                     </p>
