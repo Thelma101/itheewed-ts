@@ -1,4 +1,5 @@
 import messagePic from '@/features/ChatwithVendor/assets/MessagesPic.png'
+import React from 'react';
 
 const Category: React.FC = () => {
     return (

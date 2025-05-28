@@ -7,10 +7,13 @@
 // }
 {
   "compilerOptions": {
+    "esModuleInterop": true,
     "jsx": "react",
     "baseUrl": ".",
     "paths": {
-      "@/*": ["src/*"]
+      "@/*": [
+        "src/*"
+      ]
     }
   }
 }
