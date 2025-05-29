@@ -66,9 +66,11 @@ const VendorGallery: React.FC = () => {
     return (
         <section className="container w-full mx-auto flex justify-center items-center text-center md:mt-20 py-2 md:py-20">
             <div className="flex-col w-full md:px-4 mx-auto justify-center align-middle text-center items-center" >
-                <div className="w-full max-w-4xl flex flex-col justify-center items-center mx-auto py-8 md:py-16">
-                    <p className="font-open-sans xs:text-2xl px-2 text-xl sm:text-4xl md:text-5xl lg:text-5xl font-black ">Fast, Affordable, and
-                        Reliable Vendors</p>
+                <div className="font-primary w-full max-w-4xl flex flex-col justify-center items-center mx-auto py-8 md:py-0">
+                    {/* <h1 className="sm:text-2xl text-3xl sm md:text-4xl lg:text-7xl leading-[1.2] md:leading-[130px] font-bold "> */}
+                    <h1 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-black leading-tight">
+                        Fast, Affordable, and
+                        Reliable Vendors</h1>
                 </div>
                 <div className=' bg-white' >
                     <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
@@ -82,17 +84,13 @@ const VendorGallery: React.FC = () => {
                                             alt={vendor.name}
                                             className="w-full h-full object-cover shadow-lg group-hover:shadow-2xl group-hover:shadow-primary"
                                         />
-                                        <div className=" flex items-center justify-center bg-primary/40">
-                                            <p className="text-white font-open-sans text-[20px] font-bold leading-[100%] text-center">
-                                                {vendor.name}
-                                            </p>
-                                        </div>
-                                        {/* <div className='flex flex-col justify-center items-center w-16  '>
-                                        <p className=' font-open-sans text-2xl font-semibold text-center '>
+                                    </div>
+                                    <div className=" flex items-center justify-center bg-primary/40 relative bottom-20">
+                                        <p className="text-white font-open-sans text-[20px] font-bold leading-[100%] text-center">
                                             {vendor.name}
                                         </p>
-                                    </div> */}
                                     </div>
+
                                     {/* <p className="text-center text-red-600 font-semibold group-hover:text-primary "> */}
                                 </div>
                             ))
@@ -110,20 +108,16 @@ const VendorGallery: React.FC = () => {
                                             alt={vendor.description}
                                             className='w-full h-full object-cover shadow'
                                         />
-                                        <p className="mt-2 text-center font-semibold group-hover:text-primary">
+                                    </div>
+                                    <div className=" flex items-center justify-center bg-primary/40 relative bottom-20">
+                                        <p className="text-white font-open-sans text-[20px] font-bold leading-[100%] text-center">
                                             {vendor.name}
                                         </p>
-
                                     </div>
+
                                 </div>
                             ))
                         }
-                        {/* <div className="w-full md:w-1/2 lg:w-1/3 p-4">
-                        <img src={makeup} alt="Vendor 1" className="w-full h-auto" />
-                    </div>
-                    <div className="w-full md:w-1/2 lg:w-1/3 p-4">
-                        <img src={cakes} alt="Vendor 2" className="w-full h-auto" />
-                    </div> */}
 
                     </div>
                 </div>
