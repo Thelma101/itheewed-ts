@@ -5,6 +5,7 @@ import Banner from "../components/Banner";
 import Category from "@/components/Category";
 import VendorGallery from "@/components/VendorGallery";
 import Test from "@/components/Test";
+import FeaturesCard from "@/components/FeaturesCard";
 
 const Homepage: React.FC = () => {
     return (
@@ -14,7 +15,8 @@ const Homepage: React.FC = () => {
                 <Banner />
                 <Category />
                 <VendorGallery />
-                <Test />
+                <FeaturesCard />
+                {/* <Test /> */}
             </div>
         </>
     )
