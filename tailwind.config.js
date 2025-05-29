@@ -12,21 +12,21 @@ module.exports = {
         roboto: ['Roboto', 'sans-serif'],
       },
 
-       animation: {
-        'type': 'type 0.1s steps(1) forwards',
-        'blink': 'blink 1s infinite'
+      animation: {
+        'reveal': 'reveal 0.5s ease-out forwards',
       },
       keyframes: {
-        type: {
-          '0%': { opacity: 0 },
-          '100%': { opacity: 1 }
+        reveal: {
+          '0%': { 
+            opacity: 0,
+            clipPath: 'polygon(0 0, 0 0, 0 100%, 0% 100%)'
+          },
+          '100%': { 
+            opacity: 1,
+            clipPath: 'polygon(0 0, 100% 0, 100% 100%, 0% 100%)'
+          }
         },
-        blink: {
-          '0%, 100%': { opacity: 1 },
-          '50%': { opacity: 0 }
-        }
-      }
-
+      },
 
     },
     plugins: [],

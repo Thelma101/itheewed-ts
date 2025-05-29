@@ -4,49 +4,14 @@ import React from 'react';
 const Category: React.FC = () => {
     return (
         <>
-            <section className="container w-full mx-auto flex justify-center items-center text-center mt-24 px-4 sm:px-6 lg:px-8 py-16 md:py-36">
-                <div className="w-full">
-                    <div className="w-full max-w-4xl flex flex-col justify-center items-center mx-auto">
+            <section className="container w-full mx-auto flex justify-center items-center text-center mt-[350px] md:mt-56 px-4 md:py-20">
+                <div className="w-full flex flex-col justify-center items-center mx-auto">
+                    <div className="flex ax-w-4xl ">
                         <h1 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-black leading-tight">
                             {/* Everything Marriage, in one App! */}
-                            All your vendors, ideas, and inspiration — in one 
-
-                        {/* </h1>
-
-                        <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold text-center mb-10 tracking-tight"> */}
-                            {/* First Row */}
-                            {/* <span className="text-[#EB1948] inline-block animate-[bounce_1s_infinite]">i</span>
-                            <span className="text-[#EB1948] inline-block animate-[bounce_1s_infinite_0.1s]">n</span>
-                            <span className="text-[#EB1948] inline-block"> </span>
-                            <span className="text-[#EB1948] inline-block animate-[bounce_1s_infinite_0.2s]">o</span>
-                            <span className="text-[#EB1948] inline-block animate-[bounce_1s_infinite_0.3s]">n</span>
-                            <span className="text-[#EB1948] inline-block animate-[bounce_1s_infinite_0.4s]">e</span>
-                            <span className="text-[#EB1948] inline-block"> </span> */}
-
-                            <br className="md:hidden" />
-
-                            {/* Second Row */}
-                            <span className="text-[#EB1948] inline-block animate-[bounce_1s_infinite_0.1s]">m</span>
-                            <span className="text-[#EB1948] inline-block animate-[bounce_1s_infinite_0.2s]">a</span>
-                            <span className="text-[#EB1948] inline-block animate-[bounce_1s_infinite_0.3s]">g</span>
-                            <span className="text-[#EB1948] inline-block animate-[bounce_1s_infinite_0.4s]">i</span>
-                            <span className="text-[#EB1948] inline-block animate-[bounce_1s_infinite_0.5s]">c</span>
-                            <span className="text-[#EB1948] inline-block animate-[bounce_1s_infinite_0.6s]">a</span>
-                            <span className="text-[#EB1948] inline-block animate-[bounce_1s_infinite_0.7s]">l</span>
-
-                            <br className="md:hidden" />
-
-                            {/* Third Row */}
-                            <span className="text-[#EB1948] inline-block animate-[bounce_1s_infinite_0.8s]">p</span>
-                            <span className="text-[#EB1948] inline-block animate-[bounce_1s_infinite_0.9s]">l</span>
-                            <span className="text-[#EB1948] inline-block animate-[bounce_1s_infinite_1s]">a</span>
-                            <span className="text-[#EB1948] inline-block animate-[bounce_1s_infinite_1.1s]">c</span>
-                            <span className="text-[#EB1948] inline-block animate-[bounce_1s_infinite_1.2s]">e</span>
-                            {/* <span className="relative inline-block animate-[pulse_1.5s_infinite] ml-2"> */}
-                                <span className="absolute text-[#EB1948] animate-beat">❤</span>
-                                {/* <span className="absolute text-red-700 animate-beat-delay">❤</span> */}
-                            {/* </span> */}
+                            All your vendors, ideas, and inspiration — in one <span className='text-red-600'>magical place ❤</span>
                         </h1>
+
                     </div>
                     <div className="w-full max-w-7xl mx-auto flex flex-wrap justify-center items-center gap-4 mt-14">
                         {[
@@ -70,9 +35,9 @@ const Category: React.FC = () => {
                             { name: 'Interior Decor', icon: <i className="fa-solid fa-tree text-2xl"></i> },
 
                         ].map((category, index) => (
-                            <div key={index} className="flex flex-col justify-center items-center border border-primary px-8 py-3">
+                            <div key={index} className="flex flex-col justify-center items-center border-[0.5px] border-primary px-3 py-3 md:px-8 md:py:3">
                                 {category.icon}
-                                <p className="text-wrap font-primary font-semibold">
+                                <p className="text-wrap font-primary font-medium">
                                     {category.name}
                                 </p>
                             </div>
@@ -85,7 +50,7 @@ const Category: React.FC = () => {
             </section>
 
             {/* chat with vendor - sign in */}
-            <section className="container w-full mx-auto flex flex-col md:flex-row justify-center items-center gap-10 text-center px-4 sm:px-6 lg:px-8 py-6 md:py-3 font-open-sans">
+            <section className="container w-full mx-auto flex flex-col md:flex-row justify-center items-center gap-10 text-center px-4 sm:px-6 lg:px-8 py-6 md:py-1 font-open-sans">
                 {/* Image section */}
                 <div className="w-full md:w-1/2 flex flex-col justify-center items-center bg-primary px-4 pt-4 pb-8">
                     <img src={messagePic} alt="Chat with Vendor" className="w-full max-w-sm md:max-w-full" />
