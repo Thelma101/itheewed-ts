@@ -6,6 +6,7 @@ import Category from "@/components/Category";
 import VendorGallery from "@/components/VendorGallery";
 import Test from "@/components/Test";
 import FeaturesCard from "@/components/FeaturesCard";
+import WeddingWebsite from "@/components/WeddingWebsite";
 
 const Homepage: React.FC = () => {
     return (
@@ -16,6 +17,7 @@ const Homepage: React.FC = () => {
                 <Category />
                 <VendorGallery />
                 <FeaturesCard />
+                <WeddingWebsite />
                 {/* <Test /> */}
             </div>
         </>
