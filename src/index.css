@@ -8,7 +8,7 @@
   --color-primary: #00838F;
   --color-secondary: #6c757d;
   --color-success: #198754;
-  --color-danger: #dc3545;
+  --color-danger: #EB1948;
   --color-warning: #ffc107;
   --color-info: #0dcaf0;
   --color-light: #f8f9fa;
@@ -24,7 +24,7 @@ body {
   /* font-family: 'Montserrat', sans-serif; */
   }
 
-h1, h2, h3, h4, h5, h6 {
+h1, h2, h3, h4, h5, h6, p {
   font-family: 'Open Sans', sans-serif;
 }
 
@@ -40,6 +40,9 @@ a {
 }
 .border-primary {
   border-color: var(--color-primary);
+}
+.text-red {
+  color: var(--color-red);
 }
 
 /* Buttons */

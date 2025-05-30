@@ -8,7 +8,7 @@ const WeddingWebsite: React.FC = () => {
           Create a free Website for your Wedding
         </h1>
                             <p className="font-semibold text-7xl sm:text-lg md:text-2xl lg:text-3xl leading-tight">
-                        Chat with a Vendor
+                        Chat with a Vendor Create a free Website for your Wedding
                     </p>
         <a href="https://www.weddingwire.com/wedding-website/alex-and-ashley-wedding-website" target="_blank" rel="noopener noreferrer" className="mt-4 text-xl font-bold text-center  underline"></a>
       </div>
