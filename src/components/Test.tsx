@@ -66,10 +66,6 @@ export function Test() {
                     className="absolute w-48 h-64 object-cover rounded-xl shadow-lg z-10"
                 />
             </div>
-            {/* <div className="absolute bottom-4 flex gap-4">
-                <button onClick={prevIndex} className="bg-pink-600 text-white px-4 py-1 rounded">Prev</button>
-                <button onClick={nextIndex} className="bg-pink-600 text-white px-4 py-1 rounded">Next</button>
-            </div> */}
         </>
     )
 
