@@ -43,14 +43,14 @@ const Category: React.FC = () => {
                             </div>
                         ))}
                     </div>
-                    <div className="flex flex-col mx-auto my-12  gap-10 font-open-sans font-bold justify-center items-center  ">
+                    <div className="flex flex-col mx-auto my-12  gap-10 font-primary font-bold justify-center items-center  ">
                         <button type="button" className="px-14 py-4 justify-center items-center  text-white font-bold leading-7 border border-primary bg-primary">Check More</button>
                     </div>
                 </div>
             </section>
 
             {/* chat with vendor - sign in */}
-            <section className="container w-full mx-auto flex flex-col md:flex-row justify-center items-center gap-10 text-center px-4 sm:px-6 lg:px-8 py-6 md:py-1 font-open-sans">
+            <section className="container w-full mx-auto flex flex-col md:flex-row justify-center items-center gap-10 text-center px-4 sm:px-6 lg:px-8 py-6 md:py-1 font-primary">
                 {/* Image section */}
                 <div className="w-full md:w-1/2 flex flex-col justify-center items-center bg-primary px-4 pt-4 pb-8">
                     <img src={messagePic} alt="Chat with Vendor" className="w-full max-w-sm md:max-w-full" />

@@ -68,7 +68,7 @@ const VendorGallery: React.FC = () => {
             <div className="flex-col w-full md:px-4 mx-auto justify-center align-middle text-center items-center" >
                 <div className="font-primary w-full max-w-4xl flex flex-col justify-center items-center mx-auto py-8 md:py-0">
                     {/* <h1 className="sm:text-2xl text-3xl sm md:text-4xl lg:text-7xl leading-[1.2] md:leading-[130px] font-bold "> */}
-                    <h1 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-black leading-tight">
+                    <h1 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold leading-tight">
                         Fast, Affordable, and
                         Reliable Vendors</h1>
                 </div>
@@ -86,7 +86,7 @@ const VendorGallery: React.FC = () => {
                                         />
                                     </div>
                                     <div className=" flex items-center justify-center bg-primary/40 relative bottom-20">
-                                        <p className="text-white font-open-sans text-[20px] font-bold leading-[100%] text-center">
+                                        <p className="text-white font-primary text-[20px] font-bold leading-[100%] text-center">
                                             {vendor.name}
                                         </p>
                                     </div>
@@ -110,7 +110,7 @@ const VendorGallery: React.FC = () => {
                                         />
                                     </div>
                                     <div className=" flex items-center justify-center bg-primary/40 relative bottom-20">
-                                        <p className="text-white font-open-sans text-[20px] font-bold leading-[100%] text-center">
+                                        <p className="text-white text-[20px] font-bold leading-[100%] text-center">
                                             {vendor.name}
                                         </p>
                                     </div>

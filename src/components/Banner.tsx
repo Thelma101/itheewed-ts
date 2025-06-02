@@ -72,7 +72,7 @@ const Banner: React.FC = () => {
                 <div className="absolute inset-0 bg-[#0E292B] opacity-80"></div>
 
                 <div className="relative z-10 flex items-start justify-center pt-24 md:pt-20 h-full text-white text-center px-2 pb-40">
-                    <h1 className="sm:text-2xl text-3xl sm md:text-4xl lg:text-7xl leading-[1.2] md:leading-[130px] font-roboto">
+                    <h1 className="sm:text-2xl text-3xl sm md:text-4xl lg:text-7xl leading-[1.2] md:leading-[130px] font-primary3">
                         Wedding planning at your fingertips.
                     </h1>
                 </div>

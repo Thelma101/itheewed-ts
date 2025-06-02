@@ -18,7 +18,7 @@ const Homepage: React.FC = () => {
                 <VendorGallery />
                 <FeaturesCard />
                 <WeddingWebsite />
-                {/* <Test /> */}
+                <Test />
             </div>
         </>
     )

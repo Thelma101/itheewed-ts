@@ -3,8 +3,8 @@ import React from 'react';
 
 const FeaturesCard: React.FC = () => {
     return (
-        <section className="w-full h-full">
-            <div className="mx-auto px-4 py-20 md:py-40 bg-[#FFFFE4]">
+        <section className="w-full h-full bg-[#FFFFE4]">
+            <div className="mx-auto px-4 py-20 md:py-48">
                 <div className="flex flex-col lg:flex-row gap-10 justify-center items-stretch text-center">
 
                     <div className="flex-1 p-5  rounded-xl shadow">
@@ -12,7 +12,7 @@ const FeaturesCard: React.FC = () => {
                         <p className="mb-4">
                             Access your favourite wedding accessories from vetted vendors near you, all in one place — no stress, just style.
                         </p>
-                        <button className="bg-[#EB1948] text-white px-20 font-bold text-sm py-2 rounded-3xl font-open-open-sans">Try Now</button>
+                        <button className="bg-[#EB1948] text-white px-20 font-bold text-sm py-2 rounded-3xl font-primary">Try Now</button>
                     </div>
 
                     <div className="flex-1 p-5 rounded-xl shadow">

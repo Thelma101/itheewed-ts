@@ -7,9 +7,9 @@ module.exports = {
   theme: {
     extend: {
       fontFamily: {
-        primary: ['Montserrat', 'sans-serif'],
-        'open-sans': ['Open Sans', 'sans-serif'],
-        roboto: ['Roboto', 'sans-serif'],
+        primary2: ['Montserrat', 'sans-serif'],
+        primary:['Open Sans', 'sans-serif'],
+        primary3: ['Roboto', 'sans-serif'],
       },
 
       animation: {
