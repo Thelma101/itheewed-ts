@@ -19,6 +19,7 @@ const Homepage: React.FC = () => {
                 <FeaturesCard />
                 <WeddingWebsite />
                 <Test />
+                <Footer />
             </div>
         </>
     )
