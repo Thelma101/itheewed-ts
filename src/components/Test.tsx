@@ -1,19 +1,46 @@
 import React, { useEffect } from 'react';
 import { useState } from 'react';
-import wedWebImg1 from "@/features/WeddingWebsite/assets/websiteSlide1.svg";
-import wedWebImg2 from "@/features/WeddingWebsite/assets/websiteSlide2.svg";
-import wedWebImg3 from "@/features/WeddingWebsite/assets/websiteSlide3.svg";
 import { motion, AnimatePresence } from "framer-motion";
+
+// Import images with explicit paths
+import wedWebImg1 from "../features/WeddingWebsite/assets/websiteSlide1.svg";
+import wedWebImg2 from "../features/WeddingWebsite/assets/websiteSlide2.svg";
+import wedWebImg3 from "../features/WeddingWebsite/assets/websiteSlide3.svg";
 
 const images = [wedWebImg1, wedWebImg2, wedWebImg3];
 
-// Sample navigation items
+// Sample navigation items for each couple
 const navItems = [
-  { name: "Home", href: "#" },
-  { name: "Our Story", href: "#" },
-  { name: "Gallery", href: "#" },
-  { name: "RSVP", href: "#" },
-  { name: "Registry", href: "#" }
+  {
+    couple: "Rebecca & Mike",
+    items: [
+      { name: "Home", href: "#" },
+      { name: "Our Story", href: "#" },
+      { name: "Gallery", href: "#" },
+      { name: "RSVP", href: "#" },
+      { name: "Registry", href: "#" }
+    ]
+  },
+  {
+    couple: "Jenn & John",
+    items: [
+      { name: "Home", href: "#" },
+      { name: "Timeline", href: "#" },
+      { name: "Photos", href: "#" },
+      { name: "RSVP", href: "#" },
+      { name: "Gifts", href: "#" }
+    ]
+  },
+  {
+    couple: "Kate & David",
+    items: [
+      { name: "Home", href: "#" },
+      { name: "About Us", href: "#" },
+      { name: "Events", href: "#" },
+      { name: "RSVP", href: "#" },
+      { name: "Wishlist", href: "#" }
+    ]
+  }
 ];
 
 export function Test() {
@@ -37,11 +64,11 @@ export function Test() {
         </h2>
 
         {/* Carousel Container */}
-        <div className="relative w-[513px] h-[403px] mx-auto flex items-center justify-center overflow-hidden">
+        <div className="relative w-[513px] h-[403px] mx-auto flex items-center justify-center overflow-hidden lg:w-[513px] lg:h-[403px] md:w-full md:max-w-[513px] md:h-auto md:min-h-[403px]">
           {/* Navigation Bar */}
           <div className="absolute top-0 left-0 right-0 z-30 bg-white/80 backdrop-blur-sm py-4">
-            <nav className="flex justify-center items-center space-x-8">
-              {navItems.map((item) => (
+            <nav className="flex justify-center items-center space-x-8 md:space-x-4">
+              {navItems[index].items.map((item) => (
                 <a
                   key={item.name}
                   href={item.href}
@@ -56,7 +83,12 @@ export function Test() {
           {/* Left Image */}
           <motion.div
             key={`left-${images[prevIndex]}`}
-            className="absolute w-[200px] h-[300px] rounded-xl shadow-lg z-10 overflow-hidden"
+            className="absolute w-[429.9px] h-[350.15px] rounded-xl z-10 overflow-hidden lg:w-[429.9px] lg:h-[350.15px] md:w-full md:max-w-[429.9px] md:h-auto md:min-h-[350.15px]"
+            style={{
+              top: '4266.92px',
+              left: '281px',
+              boxShadow: '0px 5px 5px -1px rgba(0, 37, 40, 0.1)'
+            }}
             initial={{ scale: 0.9, x: "-120%", opacity: 0.4 }}
             animate={{ scale: 0.9, x: "-70%", opacity: 1 }}
             transition={{ duration: 0.8 }}
@@ -65,10 +97,10 @@ export function Test() {
             <img
               src={images[prevIndex]}
               className="w-full h-full object-cover"
-              alt="Previous slide"
+              alt={`${navItems[prevIndex].couple}'s wedding`}
             />
             <div className="absolute bottom-4 left-0 right-0 text-center z-20 text-white">
-              <h3 className="text-lg font-light tracking-widest">Rebecca & Mike</h3>
+              <h3 className="text-lg font-light tracking-widest">{navItems[prevIndex].couple}</h3>
               <p className="text-sm mt-1">June 15, 2024</p>
             </div>
           </motion.div>
@@ -77,7 +109,12 @@ export function Test() {
           <AnimatePresence initial={false}>
             <motion.div
               key={`center-${images[index]}`}
-              className="absolute w-[300px] h-[350px] rounded-xl shadow-2xl z-20 overflow-hidden"
+              className="absolute w-[429.9px] h-[350.15px] rounded-xl z-20 overflow-hidden lg:w-[429.9px] lg:h-[350.15px] md:w-full md:max-w-[429.9px] md:h-auto md:min-h-[350.15px]"
+              style={{
+                top: '4267.21px',
+                left: '716.1px',
+                boxShadow: '0px 5px 5px -1px rgba(0, 37, 40, 0.1)'
+              }}
               initial={{ scale: 0.8, opacity: 0, x: 300 }}
               animate={{ scale: 1, opacity: 1, x: 0 }}
               exit={{ scale: 0.8, opacity: 0, x: -300 }}
@@ -87,10 +124,10 @@ export function Test() {
               <img
                 src={images[index]}
                 className="w-full h-full object-cover"
-                alt="Current slide"
+                alt={`${navItems[index].couple}'s wedding`}
               />
               <div className="absolute bottom-6 left-0 right-0 text-center z-20 text-white">
-                <h2 className="text-2xl font-light tracking-widest">Jenn & John</h2>
+                <h2 className="text-2xl font-light tracking-widest">{navItems[index].couple}</h2>
                 <p className="text-sm mt-2">August 20, 2024</p>
                 <p className="text-xs mt-1 opacity-80">The Grand Ballroom</p>
               </div>
@@ -100,7 +137,12 @@ export function Test() {
           {/* Right Image */}
           <motion.div
             key={`right-${images[nextIndex]}`}
-            className="absolute w-[200px] h-[300px] rounded-xl shadow-lg z-10 overflow-hidden"
+            className="absolute w-[429.9px] h-[350.15px] rounded-xl z-10 overflow-hidden lg:w-[429.9px] lg:h-[350.15px] md:w-full md:max-w-[429.9px] md:h-auto md:min-h-[350.15px]"
+            style={{
+              top: '4267.21px',
+              left: '716.1px',
+              boxShadow: '0px 5px 5px -1px rgba(0, 37, 40, 0.1)'
+            }}
             initial={{ scale: 0.9, x: "120%", opacity: 0.4 }}
             animate={{ scale: 0.9, x: "70%", opacity: 1 }}
             transition={{ duration: 0.8 }}
@@ -109,10 +151,10 @@ export function Test() {
             <img
               src={images[nextIndex]}
               className="w-full h-full object-cover"
-              alt="Next slide"
+              alt={`${navItems[nextIndex].couple}'s wedding`}
             />
             <div className="absolute bottom-4 left-0 right-0 text-center z-20 text-white">
-              <h3 className="text-lg font-light tracking-widest">Kate & David</h3>
+              <h3 className="text-lg font-light tracking-widest">{navItems[nextIndex].couple}</h3>
               <p className="text-sm mt-1">September 5, 2024</p>
             </div>
           </motion.div>
@@ -130,6 +172,35 @@ export function Test() {
             ))}
           </div>
         </div>
+
+        {/* Responsive Styles */}
+        <style jsx>{`
+          @media (max-width: 1024px) {
+            .carousel-container {
+              width: 100%;
+              max-width: 513px;
+              height: auto;
+              min-height: 403px;
+            }
+            
+            .carousel-image {
+              width: 100%;
+              max-width: 429.9px;
+              height: auto;
+              min-height: 350.15px;
+            }
+          }
+
+          @media (max-width: 768px) {
+            .carousel-container {
+              padding: 0 1rem;
+            }
+            
+            .nav-items {
+              gap: 1rem;
+            }
+          }
+        `}</style>
       </div>
     );
 }
