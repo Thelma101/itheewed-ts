@@ -7,6 +7,8 @@ import VendorGallery from "@/components/VendorGallery";
 import Test from "@/components/Test";
 import FeaturesCard from "@/components/FeaturesCard";
 import WeddingWebsite from "@/components/WeddingWebsite";
+import Footer from "@/components/Footer";
+import CalendarSection from "@/components/CalendarSection";
 
 const Homepage: React.FC = () => {
     return (
@@ -18,8 +20,9 @@ const Homepage: React.FC = () => {
                 <VendorGallery />
                 <FeaturesCard />
                 <WeddingWebsite />
-                <Test />
-                <Footer />
+                {/* <Test /> */}
+                <CalendarSection />
+                {/* <Footer /> */}
             </div>
         </>
     )
