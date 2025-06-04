@@ -59,7 +59,7 @@ export function Test() {
     return (
       <div className="relative w-full min-h-[403px] bg-white">
         {/* Section Header */}
-        <h2 className="text-3xl font-bold text-center mb-8 text-gray-800">
+        <h2 className="text-3xl font-bold text-center mb-8 text-[var(--color-primary-red)]">
           Create a free Website for your Wedding
         </h2>
 
@@ -72,7 +72,7 @@ export function Test() {
                 <a
                   key={item.name}
                   href={item.href}
-                  className="text-gray-700 hover:text-pink-600 transition-colors text-sm font-medium"
+                  className="text-gray-700 hover:text-[var(--color-primary-red)] transition-colors text-sm font-medium"
                 >
                   {item.name}
                 </a>
@@ -166,41 +166,12 @@ export function Test() {
                 key={i}
                 onClick={() => setIndex(i)}
                 className={`w-2 h-2 rounded-full transition-all ${
-                  i === index ? 'bg-white scale-125' : 'bg-white/50'
+                  i === index ? 'bg-[var(--color-primary-red)] scale-125' : 'bg-white/50'
                 }`}
               />
             ))}
           </div>
         </div>
-
-        {/* Responsive Styles */}
-        <style jsx>{`
-          @media (max-width: 1024px) {
-            .carousel-container {
-              width: 100%;
-              max-width: 513px;
-              height: auto;
-              min-height: 403px;
-            }
-            
-            .carousel-image {
-              width: 100%;
-              max-width: 429.9px;
-              height: auto;
-              min-height: 350.15px;
-            }
-          }
-
-          @media (max-width: 768px) {
-            .carousel-container {
-              padding: 0 1rem;
-            }
-            
-            .nav-items {
-              gap: 1rem;
-            }
-          }
-        `}</style>
       </div>
     );
 }
