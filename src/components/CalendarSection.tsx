@@ -5,8 +5,8 @@ const CalendarSection = () => {
     <section className="calendar-section bg-[#DBFCFF]">
         <div className="flex items-center justify-center py-20 gap-9">
             <div className="flex flex-col items-center justify-center mx-auto px-9 ">
-                <div className="flex flex-col gap-5">
-                    <p className=" text-primary-red font-bold text-3xl">Enjoy the flexibility </p>
+                <div className="flex flex-col gap-5 text-primary-dark">
+                    <p className="  font-bold text-3xl">Enjoy the flexibility </p>
                     <p>of planning a wedding from the comfort of your home within a single App. </p>
                 </div>
                 <div>2</div>
