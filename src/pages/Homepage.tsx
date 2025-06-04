@@ -22,7 +22,7 @@ const Homepage: React.FC = () => {
                 <WeddingWebsite />
                 {/* <Test /> */}
                 <CalendarSection />
-                {/* <Footer /> */}
+                <Footer />
             </div>
         </>
     )

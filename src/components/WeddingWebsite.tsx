@@ -10,6 +10,9 @@ const WeddingWebsite: React.FC = () => {
                     </h1>
                     <a href="https://www.weddingwire.com/wedding-website/alex-and-ashley-wedding-website" target="_blank" rel="noopener noreferrer" className="mt-4 text-xl font-bold text-center  underline"></a>
                 </div>
+                <div className="flex flex-col mx-auto my-12  gap-10 font-primary font-bold justify-center items-center  ">
+                    <button type="button" className="px-14 py-4 justify-center items-center  text-white font-bold leading-7 border border-primary bg-primary">Check More</button>
+                </div>
             </div >
         </section>
 
