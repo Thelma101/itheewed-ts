@@ -1,115 +1,133 @@
 import React, { useEffect, useState } from 'react';
 import DatePicker from 'react-datepicker';
 import 'react-datepicker/dist/react-datepicker.css';
+import logo from '@/features/Nav/assets/Itheewed_Logo.png'
 
-type ScheduleEntry = {
-  time: string;
-  title: string;
-};
+// type ScheduleEntry = {
+//   time: string;
+//   title: string;
+// };
 
-const STORAGE_KEY = 'draftSchedule';
-const EXPIRY_DURATION = 20 * 60 * 1000; // 20 minutes
+// const STORAGE_KEY = 'draftSchedule';
+// const EXPIRY_DURATION = 20 * 60 * 1000; // 20 minutes
 
-const defaultEntries: ScheduleEntry[] = [
-  { time: '08:00', title: 'Sermon' },
-  { time: '09:00', title: 'Blessing of Marriage' },
-  { time: '10:30', title: 'Ceremony' },
-];
+// const defaultEntries: ScheduleEntry[] = [
+//   { time: '08:00', title: 'Sermon' },
+//   { time: '09:00', title: 'Blessing of Marriage' },
+//   { time: '10:30', title: 'Ceremony' },
+// ];
 
-export const Footer: React.FC = () => {
-  const [date, setDate] = useState<Date | null>(new Date());
-  const [entries, setEntries] = useState<ScheduleEntry[]>(defaultEntries);
+// export const Footer: React.FC = () => {
+//   const [date, setDate] = useState<Date | null>(new Date());
+//   const [entries, setEntries] = useState<ScheduleEntry[]>(defaultEntries);
 
-  // Save to localStorage with timestamp
-  const saveToLocalStorage = (data: ScheduleEntry[]) => {
-    localStorage.setItem(
-      STORAGE_KEY,
-      JSON.stringify({
-        data,
-        timestamp: Date.now(),
-      })
-    );
-  };
+//   // Save to localStorage with timestamp
+//   const saveToLocalStorage = (data: ScheduleEntry[]) => {
+//     localStorage.setItem(
+//       STORAGE_KEY,
+//       JSON.stringify({
+//         data,
+//         timestamp: Date.now(),
+//       })
+//     );
+//   };
 
-  // Load from localStorage and check expiry
-  const loadFromLocalStorage = () => {
-    const item = localStorage.getItem(STORAGE_KEY);
-    if (!item) return;
+//   // Load from localStorage and check expiry
+//   const loadFromLocalStorage = () => {
+//     const item = localStorage.getItem(STORAGE_KEY);
+//     if (!item) return;
 
-    try {
-      const parsed = JSON.parse(item);
-      const isExpired = Date.now() - parsed.timestamp > EXPIRY_DURATION;
+//     try {
+//       const parsed = JSON.parse(item);
+//       const isExpired = Date.now() - parsed.timestamp > EXPIRY_DURATION;
 
-      if (isExpired) {
-        localStorage.removeItem(STORAGE_KEY);
-        setEntries(defaultEntries); // reset to default
-      } else {
-        setEntries(parsed.data);
-      }
-    } catch (error) {
-      console.error('Error parsing saved data', error);
-    }
-  };
+//       if (isExpired) {
+//         localStorage.removeItem(STORAGE_KEY);
+//         setEntries(defaultEntries); // reset to default
+//       } else {
+//         setEntries(parsed.data);
+//       }
+//     } catch (error) {
+//       console.error('Error parsing saved data', error);
+//     }
+//   };
 
-  // Auto-clear expired data every 30s (optional)
-  useEffect(() => {
-    const interval = setInterval(() => {
-      loadFromLocalStorage();
-    }, 30 * 1000);
-    return () => clearInterval(interval);
-  }, []);
+//   // Auto-clear expired data every 30s (optional)
+//   useEffect(() => {
+//     const interval = setInterval(() => {
+//       loadFromLocalStorage();
+//     }, 30 * 1000);
+//     return () => clearInterval(interval);
+//   }, []);
 
-  // Load once on component mount
-  useEffect(() => {
-    loadFromLocalStorage();
-  }, []);
+//   // Load once on component mount
+//   useEffect(() => {
+//     loadFromLocalStorage();
+//   }, []);
 
-  // Save on entries change
-  useEffect(() => {
-    saveToLocalStorage(entries);
-  }, [entries]);
+//   // Save on entries change
+//   useEffect(() => {
+//     saveToLocalStorage(entries);
+//   }, [entries]);
 
-  const updateEntry = (index: number, updated: Partial<ScheduleEntry>) => {
-    const newEntries = [...entries];
-    newEntries[index] = { ...newEntries[index], ...updated };
-    setEntries(newEntries);
-  };
+//   const updateEntry = (index: number, updated: Partial<ScheduleEntry>) => {
+//     const newEntries = [...entries];
+//     newEntries[index] = { ...newEntries[index], ...updated };
+//     setEntries(newEntries);
+//   };
 
+//   return (
+//     <div className="flex flex-col space-y-6 p-4 max-w-md mx-auto">
+//       <h2 className="text-xl font-semibold">Select a Date</h2>
+//       <DatePicker
+//         selected={date}
+//         onChange={(d) => setDate(d)}
+//         inline
+//       />
+
+//       <h3 className="text-lg font-medium mt-4">Schedule for the Day</h3>
+//       {entries.map((entry, index) => (
+//         <div key={index} className="flex flex-col space-y-2">
+//           <input
+//             type="time"
+//             value={entry.time}
+//             onChange={(e) => updateEntry(index, { time: e.target.value })}
+//             className="border p-2 rounded"
+//           />
+//           <input
+//             type="text"
+//             value={entry.title}
+//             onChange={(e) => updateEntry(index, { title: e.target.value })}
+//             placeholder="Event title"
+//             className="border p-2 rounded"
+//           />
+//         </div>
+//       ))}
+
+//       <p className="text-sm text-gray-500 mt-4">
+//         This schedule will auto-reset after 20 minutes unless you sign up.
+//       </p>
+//     </div>
+//   );
+// };
+
+
+
+const Footer: React.FC = () => {
   return (
-    <div className="flex flex-col space-y-6 p-4 max-w-md mx-auto">
-      <h2 className="text-xl font-semibold">Select a Date</h2>
-      <DatePicker
-        selected={date}
-        onChange={(d) => setDate(d)}
-        inline
-      />
-
-      <h3 className="text-lg font-medium mt-4">Schedule for the Day</h3>
-      {entries.map((entry, index) => (
-        <div key={index} className="flex flex-col space-y-2">
-          <input
-            type="time"
-            value={entry.time}
-            onChange={(e) => updateEntry(index, { time: e.target.value })}
-            className="border p-2 rounded"
-          />
-          <input
-            type="text"
-            value={entry.title}
-            onChange={(e) => updateEntry(index, { title: e.target.value })}
-            placeholder="Event title"
-            className="border p-2 rounded"
-          />
+    <section className='flex bg-primary'>
+      <div className='flex flex-col items-center justify-center w-full h-40'>
+        <div className=''>
+          <img src={logo} alt='logo' className='w-20 h-20'/>
         </div>
-      ))}
-
-      <p className="text-sm text-gray-500 mt-4">
-        This schedule will auto-reset after 20 minutes unless you sign up.
-      </p>
-    </div>
-  );
-};
-
+        <div className='flex flex-col items-center justify-center'>
+          <p className='text-white text-sm'>© 2025 All Rights Reserved</p>
+          <p className='text-white text-sm'>Powered by <a href='https://www.google.com/' className='text-blue-500'>Google</a></p>
+      </div>
+      </div>
+    </section>
+  )
+}
 
 
 export default Footer;
