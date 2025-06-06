@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import DatePicker from 'react-datepicker';
 import 'react-datepicker/dist/react-datepicker.css';
-import logo from '@/features/Nav/assets/Itheewed_Logo.png'
+import logo from '@/features/Footer/assets/logo.svg'
 
 // type ScheduleEntry = {
 //   time: string;
@@ -115,12 +115,12 @@ import logo from '@/features/Nav/assets/Itheewed_Logo.png'
 
 const Footer: React.FC = () => {
   return (
-    <section className='flex bg-primary'>
-      <div className='flex flex-col items-center justify-center w-full h-40'>
-        <div className=''>
+    <section className='flex bg-primary mx-auto'>
+      <div className='flex flex-col w-full px-20 py-20'>
+        <div className='flex flex-col items-start justify-start'>
           <img src={logo} alt='logo' className='w-20 h-20'/>
         </div>
-        <div className='flex flex-col items-center justify-center'>
+        <div className='flex flex-col '>
           <p className='text-white text-sm'>© 2025 All Rights Reserved</p>
           <p className='text-white text-sm'>Powered by <a href='https://www.google.com/' className='text-blue-500'>Google</a></p>
       </div>

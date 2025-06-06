@@ -9,6 +9,8 @@ import FeaturesCard from "@/components/FeaturesCard";
 import WeddingWebsite from "@/components/WeddingWebsite";
 import Footer from "@/components/Footer";
 import CalendarSection from "@/components/CalendarSection";
+import TimelineFooter from "@/components/footers/TimelineFooter";
+import Test2 from "@/components/test2";
 
 const Homepage: React.FC = () => {
     return (
@@ -22,7 +24,9 @@ const Homepage: React.FC = () => {
                 <WeddingWebsite />
                 {/* <Test /> */}
                 <CalendarSection />
+                <TimelineFooter />
                 <Footer />
+                <Test2 />
             </div>
         </>
     )
