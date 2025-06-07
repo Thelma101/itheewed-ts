@@ -121,8 +121,11 @@ const Footer: React.FC = () => {
           <img src={logo} alt='logo' className='w-20 h-20'/>
         </div>
         <div className='flex flex-col '>
-          <p className='text-white text-sm'>© 2025 All Rights Reserved</p>
-          <p className='text-white text-sm'>Powered by <a href='https://www.google.com/' className='text-blue-500'>Google</a></p>
+          <div className='flex flex-col items-start justify-start mt-10'>
+            <h2 className='text-white text-2xl font-bold'>Contact Us</h2>
+            <p className='text-white text-sm mt-5'>Email: info@weddingplanner.com</p>
+            <p className='text-white text-sm mt-2'>Phone: +1 (123) 456-7890</p>
+      </div>
       </div>
       </div>
     </section>
