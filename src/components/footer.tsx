@@ -159,14 +159,30 @@ const Footer: React.FC = () => {
             <Link to="/" className='text-white text-xl font-semibold'>FAQ</Link>
           </div>
         </div>
-        <div className=''>
+        {/* <div className=''>
           <input type='text' placeholder='Email Address' className='w-80 h-10 mt-10 rounded-md border border-gray-300' />
-        </div>
+        </div> */}
       </div>
+
       <div className='space-y-8'>
         <div className='flex flex-col items-start justify-start'>
-          <input onChange={handleSubmit} type='text' placeholder='Enter your email' name='email' value={email} required className='w-full p-2' />
-          <button onClick={handleSubscribe} className='bg-white text-black px-4 py-2 rounded-md'>Subscribe</button>
+          <form onSubmit={handleSubscribe} className='space-y-4'>
+            <input
+              type="email"
+              value={email}
+              onChange={(e) => setEmail(e.target.value)}
+              placeholder="Enter your email"
+              className="w-full px-4 py-2 border rounded-lg focus:ring-2 focus:ring-[var(--color-primary-red)] focus:border-transparent"
+              required
+            />
+            {/* </div> */}
+            <button
+              type="submit"
+              className="w-full bg-[var(--color-primary-red)] text-white py-2 rounded-lg hover:bg-opacity-90 transition-colors"
+            >
+              Subscribe
+            </button>
+          </form>
         </div>
       </div>
     </section>
