@@ -126,7 +126,19 @@ const Footer: React.FC = () => {
     }
   }
 
-  const handleSubmit = 
+  const handleSubmit = (e: React.ChangeEvent<HTMLInputElement>) => {
+    e.preventDefault();
+    setEmail(e.target.value);
+    if (e.target.value.trim() === '') {
+      setIsSubscribed(false);
+    }
+    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    if (!emailRegex.test(e.target.value)) {
+      setIsSubscribed(false);
+    } else {
+      setIsSubscribed(true);
+    }
+  }
   return (
     <section className='grid grid-cols-4 bg-primary mx-auto'>
       <div className='flex w-full px-20 py-20'>
@@ -140,7 +152,7 @@ const Footer: React.FC = () => {
             <Link to="/" className='text-white text-xl font-semibold'>Contact</Link>
             <Link to="/" className='text-white text-xl font-semibold'>FAQ</Link>
           </div>
-                    <div className='flex flex-col items-start justify-start mt-10'>
+          <div className='flex flex-col items-start justify-start mt-10'>
             <Link to="/" className='text-white text-xl font-semibold'>Home</Link>
             <Link to="/" className='text-white text-xl font-semibold'>About</Link>
             <Link to="/" className='text-white text-xl font-semibold'>Contact</Link>
@@ -152,12 +164,9 @@ const Footer: React.FC = () => {
         </div>
       </div>
       <div className='space-y-8'>
-        <div className='flex items-start justify-start'>
-          <form onSubmit={handleSubscribe} className='space-y-4'>
-            <input onChange={handleSubmit} type='text' placeholder='Enter your email' name='email' value={email} required className='w-full p-12' />
-          </form>
-        </div>
-        <div className='flex mx-auto gap-14'>
+        <div className='flex flex-col items-start justify-start'>
+          <input onChange={handleSubmit} type='text' placeholder='Enter your email' name='email' value={email} required className='w-full p-2' />
+          <button onClick={handleSubscribe} className='bg-white text-black px-4 py-2 rounded-md'>Subscribe</button>
         </div>
       </div>
     </section>

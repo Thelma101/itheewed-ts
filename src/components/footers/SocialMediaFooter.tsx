@@ -41,12 +41,40 @@ const SocialMediaFooter = () => {
     }
   ];
 
-  const handleSubscribe = (e: React.FormEvent) => {
+  const handleSubscribe = async (e: React.FormEvent) => {
     e.preventDefault();
-    if (email) {
+    
+    if (!email) {
+      return;
+    }
+
+    try {
+      // Here you would typically make an API call to your backend
+      // Example:
+      // const response = await fetch('/api/subscribe', {
+      //   method: 'POST',
+      //   headers: {
+      //     'Content-Type': 'application/json',
+      //   },
+      //   body: JSON.stringify({ email }),
+      // });
+      
+      // if (!response.ok) {
+      //   throw new Error('Subscription failed');
+      // }
+
+      // For now, we'll just simulate a successful subscription
       setIsSubscribed(true);
       setEmail('');
-      // Here you would typically make an API call to subscribe the user
+      
+      // Optional: Show success message for a limited time
+      setTimeout(() => {
+        setIsSubscribed(false);
+      }, 3000);
+    } catch (error) {
+      console.error('Subscription error:', error);
+      // You could add error state handling here
+      // setError('Failed to subscribe. Please try again.');
     }
   };
 
