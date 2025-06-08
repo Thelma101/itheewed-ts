@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react';
 import DatePicker from 'react-datepicker';
 import 'react-datepicker/dist/react-datepicker.css';
 import logo from '@/features/Footer/assets/logo.svg'
+import { Link } from 'react-router-dom';
 
 // type ScheduleEntry = {
 //   time: string;
@@ -116,15 +117,16 @@ import logo from '@/features/Footer/assets/logo.svg'
 const Footer: React.FC = () => {
   return (
     <section className='flex bg-primary mx-auto'>
-      <div className='flex flex-col w-full px-20 py-20'>
+      <div className='flex w-full px-20 py-20'>
         <div className='flex flex-col items-start justify-start'>
           <img src={logo} alt='logo' className='w-20 h-20'/>
         </div>
         <div className='flex flex-col '>
           <div className='flex flex-col items-start justify-start mt-10'>
-            <h2 className='text-white text-2xl font-bold'>Contact Us</h2>
-            <p className='text-white text-sm mt-5'>Email: info@weddingplanner.com</p>
-            <p className='text-white text-sm mt-2'>Phone: +1 (123) 456-7890</p>
+            <Link to="/" className='text-white text-xl font-semibold'>Home</Link>
+            <Link to="/" className='text-white text-xl font-semibold'>About</Link>
+            <Link to="/" className='text-white text-xl font-semibold'>Contact</Link>
+            <Link to="/" className='text-white text-xl font-semibold'>FAQ</Link>
       </div>
       </div>
       </div>
