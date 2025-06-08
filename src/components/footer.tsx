@@ -115,24 +115,54 @@ import { Link } from 'react-router-dom';
 
 
 const Footer: React.FC = () => {
+  const [email, setEmail] = useState('')
+  const [isSubscribed, setIsSubscribed] = useState(false)
+
+  const handleSubscribe = (e: React.FormEvent) => {
+    e.preventDefault();
+    if (email) {
+      setEmail('');
+      setIsSubscribed(true);
+    }
+  }
+
+  const handleSubmit = 
   return (
-    <section className='flex bg-primary mx-auto'>
+    <section className='grid grid-cols-4 bg-primary mx-auto'>
       <div className='flex w-full px-20 py-20'>
-        <div className='flex flex-col items-start justify-start'>
-          <img src={logo} alt='logo' className='w-20 h-20'/>
+        <div className='flex items-start justify-start'>
+          <img src={logo} alt='logo' className='w-20 h-20' />
         </div>
-        <div className='flex flex-col '>
+        <div className='flex mx-auto gap-14'>
           <div className='flex flex-col items-start justify-start mt-10'>
             <Link to="/" className='text-white text-xl font-semibold'>Home</Link>
             <Link to="/" className='text-white text-xl font-semibold'>About</Link>
             <Link to="/" className='text-white text-xl font-semibold'>Contact</Link>
             <Link to="/" className='text-white text-xl font-semibold'>FAQ</Link>
+          </div>
+                    <div className='flex flex-col items-start justify-start mt-10'>
+            <Link to="/" className='text-white text-xl font-semibold'>Home</Link>
+            <Link to="/" className='text-white text-xl font-semibold'>About</Link>
+            <Link to="/" className='text-white text-xl font-semibold'>Contact</Link>
+            <Link to="/" className='text-white text-xl font-semibold'>FAQ</Link>
+          </div>
+        </div>
+        <div className=''>
+          <input type='text' placeholder='Email Address' className='w-80 h-10 mt-10 rounded-md border border-gray-300' />
+        </div>
       </div>
-      </div>
+      <div className='space-y-8'>
+        <div className='flex items-start justify-start'>
+          <form onSubmit={handleSubscribe} className='space-y-4'>
+            <input onChange={handleSubmit} type='text' placeholder='Enter your email' name='email' value={email} required className='w-full p-12' />
+          </form>
+        </div>
+        <div className='flex mx-auto gap-14'>
+        </div>
       </div>
     </section>
-  )
-}
+  );
+};
 
 
 export default Footer;
