@@ -46,7 +46,7 @@ const TimelineFooter = () => {
     if (email) {
       setIsSubscribed(true);
       setEmail('');
-      // Here you would typically make an API call to subscribe the user
+      
     }
   };
 
