@@ -139,7 +139,7 @@ const Footer: React.FC = () => {
     }
 
     try {
-      // Here you would typically make an API call to your backend
+  
       // Example:
       // const response = await fetch('/api/subscribe', {
       //   method: 'POST',
