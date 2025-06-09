@@ -139,7 +139,6 @@ const Footer: React.FC = () => {
     }
 
     try {
-  
       // Example:
       // const response = await fetch('/api/subscribe', {
       //   method: 'POST',
