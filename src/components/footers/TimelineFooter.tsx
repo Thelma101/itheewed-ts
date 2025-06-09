@@ -101,7 +101,7 @@ const TimelineFooter = () => {
           </div>
 
           {/* Newsletter and Social Links */}
-          <div className="space-y-8">
+          <div className="">
             <div>
               <h2 className="text-2xl font-bold mb-4 text-[var(--color-primary-red)]">
                 Stay Updated

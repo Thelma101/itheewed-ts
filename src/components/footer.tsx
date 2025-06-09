@@ -3,6 +3,7 @@ import DatePicker from 'react-datepicker';
 import 'react-datepicker/dist/react-datepicker.css';
 import logo from '@/features/Footer/assets/logo.svg'
 import { Link } from 'react-router-dom';
+import { motion } from 'framer-motion';
 
 // type ScheduleEntry = {
 //   time: string;
@@ -115,74 +116,172 @@ import { Link } from 'react-router-dom';
 
 
 const Footer: React.FC = () => {
-  const [email, setEmail] = useState('')
-  const [isSubscribed, setIsSubscribed] = useState(false)
+  const [email, setEmail] = useState('');
+  const [isSubscribed, setIsSubscribed] = useState(false);
+  const [isValidEmail, setIsValidEmail] = useState(false);
 
-  const handleSubscribe = (e: React.FormEvent) => {
-    e.preventDefault();
-    if (email) {
-      setEmail('');
-      setIsSubscribed(true);
-    }
-  }
-
-  const handleSubmit = (e: React.ChangeEvent<HTMLInputElement>) => {
-    e.preventDefault();
-    setEmail(e.target.value);
-    if (e.target.value.trim() === '') {
-      setIsSubscribed(false);
-    }
+  const validateEmail = (email: string): boolean => {
     const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-    if (!emailRegex.test(e.target.value)) {
-      setIsSubscribed(false);
-    } else {
-      setIsSubscribed(true);
-    }
-  }
-  return (
-    <section className='grid grid-cols-4 bg-primary mx-auto'>
-      <div className='flex w-full px-20 py-20'>
-        <div className='flex items-start justify-start'>
-          <img src={logo} alt='logo' className='w-20 h-20' />
-        </div>
-        <div className='flex mx-auto gap-14'>
-          <div className='flex flex-col items-start justify-start mt-10'>
-            <Link to="/" className='text-white text-xl font-semibold'>Home</Link>
-            <Link to="/" className='text-white text-xl font-semibold'>About</Link>
-            <Link to="/" className='text-white text-xl font-semibold'>Contact</Link>
-            <Link to="/" className='text-white text-xl font-semibold'>FAQ</Link>
-          </div>
-          <div className='flex flex-col items-start justify-start mt-10'>
-            <Link to="/" className='text-white text-xl font-semibold'>Home</Link>
-            <Link to="/" className='text-white text-xl font-semibold'>About</Link>
-            <Link to="/" className='text-white text-xl font-semibold'>Contact</Link>
-            <Link to="/" className='text-white text-xl font-semibold'>FAQ</Link>
-          </div>
-        </div>
-        {/* <div className=''>
-          <input type='text' placeholder='Email Address' className='w-80 h-10 mt-10 rounded-md border border-gray-300' />
-        </div> */}
-      </div>
+    return emailRegex.test(email);
+  };
 
-      <div className='space-y-8'>
-        <div className='flex flex-col items-start justify-start'>
-          <form onSubmit={handleSubscribe} className='space-y-4'>
-            <input
-              type="email"
-              value={email}
-              onChange={(e) => setEmail(e.target.value)}
-              placeholder="Enter your email"
-              className="w-full px-4 py-2 border rounded-lg focus:ring-2 focus:ring-[var(--color-primary-red)] focus:border-transparent"
-              required
-            />
-            {/* </div> */}
-            <button
-              type="submit"
-              className="w-full bg-[var(--color-primary-red)] text-white py-2 rounded-lg hover:bg-opacity-90 transition-colors"
-            >
-              Subscribe
-            </button>
-          </form>
+  const handleEmailChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    const newEmail = e.target.value;
+    setEmail(newEmail);
+    setIsValidEmail(validateEmail(newEmail));
+  };
+
+  const handleSubscribe = async (e: React.FormEvent) => {
+    e.preventDefault();
+    
+    if (!isValidEmail) {
+      return;
+    }
+
+    try {
+      // Here you would typically make an API call to your backend
+      // Example:
+      // const response = await fetch('/api/subscribe', {
+      //   method: 'POST',
+      //   headers: {
+      //     'Content-Type': 'application/json',
+      //   },
+      //   body: JSON.stringify({ email }),
+      // });
+      
+      setIsSubscribed(true);
+      setEmail('');
+      
+      // Clear success message after 3 seconds
+      setTimeout(() => {
+        setIsSubscribed(false);
+      }, 3000);
+    } catch (error) {
+      console.error('Subscription error:', error);
+    }
+  };
+
+  return (
+    <section className='grid grid-cols-1 bg-primary mx-auto w-full'>
+      <div className='flex flex-col md:flex-row px-4 md:px-30 py-10 md:py-20 w-full text-white gap-8 md:gap-0'>
+        {/* Logo Section */}
+        <div className='flex items-center justify-center md:items-start md:justify-start'>
+          <img src={logo} alt='logo' className='w-16 h-16 md:w-20 md:h-20' />
+        </div>
+
+        {/* Navigation Links */}
+        <div className='flex flex-col md:flex-row mx-auto gap-4 md:gap-8'>
+          <div className='flex flex-col items-center md:items-start justify-start mt-4 md:mt-10'>
+            <Link to="/" className='text-white text-lg md:text-xl font-semibold hover:text-gray-300 transition-colors'>Home</Link>
+            <Link to="/" className='text-white text-lg md:text-xl font-semibold hover:text-gray-300 transition-colors'>About</Link>
+            <Link to="/" className='text-white text-lg md:text-xl font-semibold hover:text-gray-300 transition-colors'>Contact</Link>
+            <Link to="/" className='text-white text-lg md:text-xl font-semibold hover:text-gray-300 transition-colors'>FAQ</Link>
+          </div>
+          <div className='flex flex-col items-center md:items-start justify-start mt-4 md:mt-10'>
+            <Link to="/" className='text-white text-lg md:text-xl font-semibold hover:text-gray-300 transition-colors'>Home</Link>
+            <Link to="/" className='text-white text-lg md:text-xl font-semibold hover:text-gray-300 transition-colors'>About</Link>
+            <Link to="/" className='text-white text-lg md:text-xl font-semibold hover:text-gray-300 transition-colors'>Contact</Link>
+            <Link to="/" className='text-white text-lg md:text-xl font-semibold hover:text-gray-300 transition-colors'>FAQ</Link>
+          </div>
+        </div>
+
+        {/* Newsletter and Social Section */}
+        <div className="space-y-6 md:space-y-8 w-full md:w-auto">
+          <div>
+            <h2 className="text-xl md:text-2xl font-bold mb-4 text-center md:text-left">
+              Stay Updated
+            </h2>
+            <form onSubmit={handleSubscribe} className="space-y-4 max-w-md mx-auto md:mx-0">
+              <div>
+                <input
+                  type="email"
+                  value={email}
+                  onChange={handleEmailChange}
+                  placeholder="Enter your email"
+                  className={`w-full px-4 py-2 border rounded-lg focus:ring-2 focus:ring-[var(--color-primary-red)] focus:border-transparent ${
+                    email && !isValidEmail ? 'border-red-500' : ''
+                  }`}
+                  required
+                />
+                {email && !isValidEmail && (
+                  <p className="text-red-500 text-sm mt-1">
+                    Please enter a valid email address
+                  </p>
+                )}
+              </div>
+              <button
+                type="submit"
+                disabled={!isValidEmail}
+                className={`w-full py-2 rounded-lg transition-colors ${
+                  isValidEmail 
+                    ? 'bg-[var(--color-primary-red)] text-white hover:bg-opacity-90' 
+                    : 'bg-gray-400 text-gray-200 cursor-not-allowed'
+                }`}
+              >
+                Subscribe
+              </button>
+              {isSubscribed && (
+                <motion.p
+                  initial={{ opacity: 0 }}
+                  animate={{ opacity: 1 }}
+                  exit={{ opacity: 0 }}
+                  className="text-green-600 text-sm text-center md:text-left"
+                >
+                  Thanks for subscribing! 🎉
+                </motion.p>
+              )}
+            </form>
+          </div>
+
+          {/* Social Media Links */}
+          <div className="text-center md:text-left">
+            <h3 className="text-lg font-semibold mb-4">Connect With Us</h3>
+            <div className="flex gap-4 justify-center md:justify-start">
+              <a
+                href="#"
+                className="w-10 h-10 rounded-full bg-pink-600 text-white flex items-center justify-center hover:bg-opacity-90 transition-colors"
+                aria-label="Instagram"
+              >
+                📸
+              </a>
+              <a
+                href="#"
+                className="w-10 h-10 rounded-full bg-blue-400 text-white flex items-center justify-center hover:bg-opacity-90 transition-colors"
+                aria-label="Twitter"
+              >
+                🐦
+              </a>
+              <a
+                href="#"
+                className="w-10 h-10 rounded-full bg-red-600 text-white flex items-center justify-center hover:bg-opacity-90 transition-colors"
+                aria-label="Pinterest"
+              >
+                📌
+              </a>
+            </div>
+          </div>
+
+          {/* Quick Links */}
+          <div className="text-center md:text-left">
+            <h3 className="text-lg font-semibold mb-4">Quick Links</h3>
+            <ul className="space-y-2">
+              <li>
+                <a href="#" className="text-gray-300 hover:text-white transition-colors">
+                  RSVP
+                </a>
+              </li>
+              <li>
+                <a href="#" className="text-gray-300 hover:text-white transition-colors">
+                  Registry
+                </a>
+              </li>
+              <li>
+                <a href="#" className="text-gray-300 hover:text-white transition-colors">
+                  Gallery
+                </a>
+              </li>
+            </ul>
+          </div>
         </div>
       </div>
     </section>
