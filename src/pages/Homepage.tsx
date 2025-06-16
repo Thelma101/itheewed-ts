@@ -24,9 +24,10 @@ const Homepage: React.FC = () => {
                 <WeddingWebsite />
                 {/* <Test /> */}
                 <CalendarSection />
-                <TimelineFooter />
-                <Footer />
+                {/* <TimelineFooter /> */}
+                
                 <Test2 />
+                <Footer />
             </div>
         </>
     )
