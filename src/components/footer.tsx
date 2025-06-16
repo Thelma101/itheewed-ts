@@ -65,14 +65,30 @@ const polls = {
   }
 };
 
-// Simplified wedding facts
+
 const weddingFacts = [
   "The tradition of wearing a white wedding dress started with Queen Victoria in 1840.",
   "The average engagement ring costs about 2 months' salary.",
-  "The word 'honeymoon' comes from the ancient tradition of drinking mead for a month after marriage.",
-  "The first diamond engagement ring was given in 1477.",
-  "The tradition of carrying the bride over the threshold comes from ancient Rome."
+  "The word 'honeymoon' comes from the ancient tradition of drinking mead for a month after the wedding.",
+  "The tradition of carrying the bride over the threshold originated in medieval Europe.",
+  "The first diamond engagement ring was given by Archduke Maximilian of Austria in 1477.",
+  "The tradition of throwing rice at weddings symbolizes fertility and prosperity.",
+  "The longest wedding veil was longer than 63 football fields!",
+  "The tradition of the best man originated from the need for a strong warrior to help kidnap the bride.",
+  "The first wedding cake was actually made of wheat and barley.",
+  "The tradition of wearing rings on the fourth finger comes from the ancient belief that a vein runs directly to the heart.",
+  "Did you know in Nigeria, guests often 'spray' money on the bride and groom during the celebration to wish them prosperity?",
+  "In the Igbo culture of Nigeria, the bride offers palm wine to the groom in a ceremony called 'Igba Nkwu,' symbolizing acceptance.",
+  "Many Nigerian weddings feature 'Aso-Ebi,' where family and friends wear coordinated outfits to show solidarity and support.",
+  "In some African cultures, brides wear vibrant, colorful traditional attire instead of white to represent fertility and happiness.",
+  "The Yoruba wedding tradition includes the groom prostrating before the bride's family as a sign of respect and commitment.",
+  "Did you know in some parts of Nigeria, the bride price negotiation is a detailed tradition that reflects respect between families?",
+  "In South Africa, the Zulu wedding dance is a vibrant ceremony featuring traditional attire and rhythmic dancing celebrating the union.",
+  "Some African weddings include the breaking or sharing of kola nuts as a symbol of hospitality and unity within communities.",
+  "In Nigeria, it's common for the bride’s friends to playfully ‘kidnap’ her before the wedding, and the groom must find and ‘rescue’ her.",
+  "Did you know some Nigerian weddings last for several days, combining both traditional rites and modern celebrations?"
 ];
+
 
 const Footer: React.FC = () => {
   // State management
@@ -141,7 +157,7 @@ const Footer: React.FC = () => {
   useEffect(() => {
     const factInterval = setInterval(() => {
       setCurrentFactIndex((prev) => (prev + 1) % weddingFacts.length);
-    }, 5000);
+    }, 6000);
     return () => clearInterval(factInterval);
   }, []);
 
@@ -153,18 +169,20 @@ const Footer: React.FC = () => {
       <div className="grid grid-cols-1 md:grid-cols-4 gap-8 px-4 md:px-20 py-10  md:pt-20 md:pb-0 text-white">
         {/* Col 1: Logo & About Us */}
         <div className="flex flex-col items-center md:items-start">
-          <img src={logo} alt="logo" className="w-16 h-16 md:w-20 md:h-20 mb-4" />
-          <h2 className="text-lg font-bold mb-2">About Us</h2>
-<p className="text-sm text-gray-200 max-w-md text-center md:text-left">
-  I Thee Wed is your modern wedding companion — here to help you plan, celebrate, and cherish every moment of your love story.
-</p>
-<p className="text-sm text-gray-200 max-w-md mt-2 text-center md:text-left">
-  We blend smart planning tools, heartfelt inspiration, and a supportive community so your journey from “Yes” to “I do” is as magical as your wedding day itself.
-</p>
-<p className="text-sm text-gray-200 max-w-md mt-2 text-center md:text-left">
-  As a multivendor hub for all things weddings, we connect you with trusted vendors, curated ideas, and a community that celebrates every moment with you.
-</p>
+          <img src={logo} alt="logo" className="w-16 h-16 md:w-40 md:h-30 mb-4" />
 
+          <div className="w-full  rounded-lg p-3 backdrop-blur-sm h-auto flex flex-col">
+            <h2 className="text-lg font-bold mb-2">About Us</h2>
+            <p className="text-sm text-gray-200 max-w-md text-center md:text-left">
+              I Thee Wed is your modern wedding companion — here to help you plan, celebrate, and cherish every moment of your love story.
+            </p>
+            <p className="text-sm text-gray-200 max-w-md mt-2 text-center md:text-left">
+              We blend smart planning tools, heartfelt inspiration, and a supportive community so your journey from “Yes” to “I do” is as magical as your wedding day itself.
+            </p>
+            <p className="text-sm text-gray-200 max-w-md mt-2 text-center md:text-left">
+              As a multivendor hub for all things weddings, we connect you with trusted vendors, curated ideas, and a community that celebrates every moment with you.
+            </p>
+          </div>
         </div>
 
         {/* Col 2: Did You Know & Navigation */}
@@ -264,7 +282,7 @@ const Footer: React.FC = () => {
         <div className="flex flex-col items-center md:items-start mt-8 md:mt-0 space-y-6">
           {/* QR Code */}
           <div className="w-full bg-white/10 rounded-lg p-4 backdrop-blur-sm">
-            <h2 className="text-lg font-bold mb-4">Get Our App</h2>
+            <h2 className="text-lg font-bold mb-4 text-center">Get Our Mobile App</h2>
             <div className="flex justify-center">
               <div className="text-center">
                 <img src={iosQRCode} alt="iOS App QR Code" className="w-24 h-24 mb-2" />
@@ -274,9 +292,9 @@ const Footer: React.FC = () => {
           </div>
 
           {/* Newsletter */}
-          <div className="w-full">
+          <div className="w-full ">
             <h2 className="text-lg font-bold mb-4">Stay Updated</h2>
-            <form onSubmit={handleSubscribe} className="space-y-4">
+            <form onSubmit={handleSubscribe} className="space-y-4 text-primary-gray">
               <input
                 type="email"
                 value={email}
