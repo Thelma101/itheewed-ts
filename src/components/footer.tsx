@@ -182,11 +182,27 @@ const Footer: React.FC = () => {
           </div>
 
           {/* Navigation Links */}
-          <div className="flex flex-col items-center md:items-start mt-8 md:mt-7">
-            <Link to="/" className="text-white text-base hover:text-gray-300 transition-colors mb-2">Home</Link>
-            <Link to="/about" className="text-white text-base hover:text-gray-300 transition-colors mb-2">About</Link>
-            <Link to="/contact" className="text-white text-base hover:text-gray-300 transition-colors mb-2">Contact</Link>
-            <Link to="/faq" className="text-white text-base hover:text-gray-300 transition-colors">FAQ</Link>
+          <div className="flex  items-center md:items-start mt-8 md:mt-7 gap-8">
+            <div className="flex flex-col items-center md:items-start mt-8 md:mt-7">
+              <Link to="/" className="text-white text-base hover:text-gray-300 transition-colors mb-2">Home</Link>
+              <Link to="/about" className="text-white text-base hover:text-gray-300 transition-colors mb-2">About</Link>
+              <Link to="/contact" className="text-white text-base hover:text-gray-300 transition-colors mb-2">Contact</Link>
+              <Link to="/faq" className="text-white text-base hover:text-gray-300 transition-colors">FAQ</Link>
+            </div>
+            <div className="flex flex-col items-center md:items-start mt-8 md:mt-7">
+
+              <Link to="/" className="text-white text-base hover:text-gray-300 transition-colors mb-2">Home</Link>
+              <Link to="/about" className="text-white text-base hover:text-gray-300 transition-colors mb-2">About</Link>
+              <Link to="/contact" className="text-white text-base hover:text-gray-300 transition-colors mb-2">Contact</Link>
+              <Link to="/faq" className="text-white text-base hover:text-gray-300 transition-colors">FAQ</Link>
+            </div>
+                        <div className="flex flex-col items-center md:items-start mt-8 md:mt-7">
+
+              <Link to="/" className="text-white text-base hover:text-gray-300 transition-colors mb-2">Home</Link>
+              <Link to="/about" className="text-white text-base hover:text-gray-300 transition-colors mb-2">About</Link>
+              <Link to="/contact" className="text-white text-base hover:text-gray-300 transition-colors mb-2">Contact</Link>
+              <Link to="/faq" className="text-white text-base hover:text-gray-300 transition-colors">FAQ</Link>
+            </div>
           </div>
         </div>
 
@@ -203,9 +219,8 @@ const Footer: React.FC = () => {
                     type="button"
                     onClick={() => handleVote(option.id)}
                     disabled={!!userVotes[currentPoll.question]}
-                    className={`w-full text-left px-4 py-2 rounded-lg border border-white/20 bg-white/5 hover:bg-white/20 transition-colors ${
-                      userVotes[currentPoll.question] === option.id ? 'bg-[var(--color-primary-red)] text-white' : ''
-                    }`}
+                    className={`w-full text-left px-4 py-2 rounded-lg border border-white/20 bg-white/5 hover:bg-white/20 transition-colors ${userVotes[currentPoll.question] === option.id ? 'bg-[var(--color-primary-red)] text-white' : ''
+                      }`}
                   >
                     {option.text}
                   </button>
@@ -260,9 +275,8 @@ const Footer: React.FC = () => {
                 value={email}
                 onChange={handleEmailChange}
                 placeholder="Enter your email"
-                className={`w-full px-4 py-2 border rounded-lg focus:ring-2 focus:ring-[var(--color-primary-red)] focus:border-transparent ${
-                  email && !isValidEmail ? 'border-red-500' : ''
-                }`}
+                className={`w-full px-4 py-2 border rounded-lg focus:ring-2 focus:ring-[var(--color-primary-red)] focus:border-transparent ${email && !isValidEmail ? 'border-red-500' : ''
+                  }`}
                 required
               />
               {email && !isValidEmail && (
@@ -271,9 +285,8 @@ const Footer: React.FC = () => {
               <button
                 type="submit"
                 disabled={!isValidEmail}
-                className={`w-full py-2 rounded-lg transition-colors ${
-                  isValidEmail ? 'bg-[var(--color-primary-red)] text-white hover:bg-opacity-90' : 'bg-gray-400 text-gray-200 cursor-not-allowed'
-                }`}
+                className={`w-full py-2 rounded-lg transition-colors ${isValidEmail ? 'bg-[var(--color-primary-red)] text-white hover:bg-opacity-90' : 'bg-gray-400 text-gray-200 cursor-not-allowed'
+                  }`}
               >
                 Subscribe
               </button>
