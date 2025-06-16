@@ -150,7 +150,7 @@ const Footer: React.FC = () => {
 
   return (
     <section className="bg-primary w-full">
-      <div className="grid grid-cols-1 md:grid-cols-4 gap-8 px-4 md:px-20 py-10 md:py-20 text-white">
+      <div className="grid grid-cols-1 md:grid-cols-4 gap-8 px-4 md:px-20 py-10  md:pt-20 md:pb-0 text-white">
         {/* Col 1: Logo & About Us */}
         <div className="flex flex-col items-center md:items-start">
           <img src={logo} alt="logo" className="w-16 h-16 md:w-20 md:h-20 mb-4" />
@@ -182,25 +182,25 @@ const Footer: React.FC = () => {
           </div>
 
           {/* Navigation Links */}
-          <div className="flex  items-center md:items-start mt-8 md:mt-7 gap-8">
-            <div className="flex flex-col items-center md:items-start mt-8 md:mt-7">
-              <Link to="/" className="text-white text-base hover:text-gray-300 transition-colors mb-2">Home</Link>
-              <Link to="/about" className="text-white text-base hover:text-gray-300 transition-colors mb-2">About</Link>
-              <Link to="/contact" className="text-white text-base hover:text-gray-300 transition-colors mb-2">Contact</Link>
+          <div className="flex items-center md:items-start mt-8 md:mt-7 gap-8 font-light ">
+            <div className="flex flex-col items-center md:items-start mt-8 md:mt-4">
+              <Link to="/" className="text-white text-base hover:text-gray-300 transition-colors mb-1">Home</Link>
+              <Link to="/about" className="text-white text-base hover:text-gray-300 transition-colors mb-1">About</Link>
+              <Link to="/contact" className="text-white text-base hover:text-gray-300 transition-colors mb-1">Contact</Link>
               <Link to="/faq" className="text-white text-base hover:text-gray-300 transition-colors">FAQ</Link>
             </div>
-            <div className="flex flex-col items-center md:items-start mt-8 md:mt-7">
+            <div className="flex flex-col items-center md:items-start mt-8 md:mt-4">
 
-              <Link to="/" className="text-white text-base hover:text-gray-300 transition-colors mb-2">Home</Link>
-              <Link to="/about" className="text-white text-base hover:text-gray-300 transition-colors mb-2">About</Link>
-              <Link to="/contact" className="text-white text-base hover:text-gray-300 transition-colors mb-2">Contact</Link>
+              <Link to="/" className="text-white text-base hover:text-gray-300 transition-colors mb-1">Home</Link>
+              <Link to="/about" className="text-white text-base hover:text-gray-300 transition-colors mb-1">About</Link>
+              <Link to="/contact" className="text-white text-base hover:text-gray-300 transition-colors mb-1">Contact</Link>
               <Link to="/faq" className="text-white text-base hover:text-gray-300 transition-colors">FAQ</Link>
             </div>
-                        <div className="flex flex-col items-center md:items-start mt-8 md:mt-7">
+                        <div className="flex flex-col items-center md:items-start mt-8 md:mt-4">
 
-              <Link to="/" className="text-white text-base hover:text-gray-300 transition-colors mb-2">Home</Link>
-              <Link to="/about" className="text-white text-base hover:text-gray-300 transition-colors mb-2">About</Link>
-              <Link to="/contact" className="text-white text-base hover:text-gray-300 transition-colors mb-2">Contact</Link>
+              <Link to="/" className="text-white text-base hover:text-gray-300 transition-colors mb-1">Home</Link>
+              <Link to="/about" className="text-white text-base hover:text-gray-300 transition-colors mb-1">About</Link>
+              <Link to="/contact" className="text-white text-base hover:text-gray-300 transition-colors mb-1">Contact</Link>
               <Link to="/faq" className="text-white text-base hover:text-gray-300 transition-colors">FAQ</Link>
             </div>
           </div>
