@@ -36,19 +36,21 @@ const polls = {
   style: {
     question: "What's your dream wedding style?",
     options: [
-      { id: 1, text: "Rustic Barn & Wildflowers", votes: 35 },
+      { id: 1, text: "Fusion (Traditional & Modern)", votes: 35 },
       { id: 2, text: "Modern Minimalist", votes: 25 },
       { id: 3, text: "Vintage Romance", votes: 20 },
-      { id: 4, text: "Bohemian Garden", votes: 20 }
+      { id: 4, text: "Traditional Aso-Ebi", votes: 20 },
+      { id: 5, text: "Contemporary African", votes: 20 }
     ]
   },
   song: {
     question: "What's your ideal first dance song?",
     options: [
-      { id: 1, text: "Can't Help Falling in Love", votes: 30 },
-      { id: 2, text: "Perfect by Ed Sheeran", votes: 25 },
-      { id: 3, text: "All of Me by John Legend", votes: 25 },
-      { id: 4, text: "A Thousand Years", votes: 20 }
+      { id: 1, text: "Can't Help Falling in Love - Elvis Presley", votes: 20 },
+      { id: 2, text: "I Will Always Love You — Whitney Houston", votes: 15 },
+      { id: 2, text: "Perfect - Ed Sheeran", votes: 25 },
+      { id: 3, text: "All of Me - John Legend", votes: 25 },
+      { id: 5, text: "Endless Love — Diana Ross & Lionel Richie", votes: 15 }
     ]
   },
   tradition: {
