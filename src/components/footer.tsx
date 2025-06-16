@@ -155,9 +155,16 @@ const Footer: React.FC = () => {
         <div className="flex flex-col items-center md:items-start">
           <img src={logo} alt="logo" className="w-16 h-16 md:w-20 md:h-20 mb-4" />
           <h2 className="text-lg font-bold mb-2">About Us</h2>
-          <p className="text-sm text-gray-200 max-w-xs text-center md:text-left">
-            I Thee Wed is your modern wedding companion, helping couples plan, celebrate, and cherish every moment. Join our community and make your special day unforgettable!
-          </p>
+<p className="text-sm text-gray-200 max-w-md text-center md:text-left">
+  I Thee Wed is your modern wedding companion — here to help you plan, celebrate, and cherish every moment of your love story.
+</p>
+<p className="text-sm text-gray-200 max-w-md mt-2 text-center md:text-left">
+  We blend smart planning tools, heartfelt inspiration, and a supportive community so your journey from “Yes” to “I do” is as magical as your wedding day itself.
+</p>
+<p className="text-sm text-gray-200 max-w-md mt-2 text-center md:text-left">
+  As a multivendor hub for all things weddings, we connect you with trusted vendors, curated ideas, and a community that celebrates every moment with you.
+</p>
+
         </div>
 
         {/* Col 2: Did You Know & Navigation */}
@@ -196,7 +203,7 @@ const Footer: React.FC = () => {
               <Link to="/contact" className="text-white text-base hover:text-gray-300 transition-colors mb-1">Contact</Link>
               <Link to="/faq" className="text-white text-base hover:text-gray-300 transition-colors">FAQ</Link>
             </div>
-                        <div className="flex flex-col items-center md:items-start mt-8 md:mt-4">
+            <div className="flex flex-col items-center md:items-start mt-8 md:mt-4">
 
               <Link to="/" className="text-white text-base hover:text-gray-300 transition-colors mb-1">Home</Link>
               <Link to="/about" className="text-white text-base hover:text-gray-300 transition-colors mb-1">About</Link>
