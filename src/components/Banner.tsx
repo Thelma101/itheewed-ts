@@ -85,13 +85,13 @@ const Banner: React.FC = () => {
                 </div>
             </section>
 
-            {/* Form Section */}
+           
             <section className="flex flex-col md:flex-row w-full max-w-full absolute z-10 top-60 md:top-80 text-white px-4 sm:px-6 lg:px-8 py-6 sm:py-10 left-1/2 transform -translate-x-1/2">
-
+ {/* Form Section */}
                 <div className="w-full flex flex-col md:flex-row px-4 md:px-12 py-12 relative overflow-hidden">
                     {/* Left Form */}
-                    <div className=" w-full md:w-1/2 flex flex-col items-center justify-start text-xl z-10">
-                        <form className="flex flex-col gap-4 sm:gap-6 w-full max-w-lg py-11 md:pr-20">
+                    <div className=" w-full flex flex-col items-center justify-start text-xl z-10">
+                        <form className="flex flex-col gap-4 sm:gap-6 w-full max-w-lg py-11 md:pr-14">
                             <input
                                 type="text"
                                 placeholder="Phone number or email"
@@ -121,19 +121,19 @@ const Banner: React.FC = () => {
                     <div className="hidden md:flex w-full min-h-[800px] relative items-center justify-center">
                         {/* Top */}
                         <div className="absolute top-[-28px] left-[56%] -translate-x-1/2 w-[520px] h-[414px] bg-white border border-[#00838F] shadow-md z-10">
-                            <img src={bannerImg1} className="w-full h-[calc(100%-30px)] object-cover mt-[24px]" alt="Top" />
+                            <img src={bannerImg1} className="w-full h-[calc(100%-30px)] mx-auto object-cover mt-[27px] px-4" alt="Top" />
                         </div>
                         {/* Left */}
-                        <div className="absolute top-[200px] left-[calc(35%-260px)] w-[327px] h-[292px] bg-white border border-[#00838F] shadow-md z-20">
-                            <img src={bannerImg2} className="w-full h-[calc(100%-20px)] object-cover mt-[10px]" alt="Left" />
+                        <div className="absolute top-[130px] left-[calc(33%-260px)] w-[327px] h-[292px] bg-white border border-[#00838F] shadow-md z-20">
+                            <img src={bannerImg2} className="w-full h-[calc(100%-20px)] object-cover mx-auto pb-[40px] mt-3 px-3" alt="Left" />
                         </div>
                         {/* Right */}
-                        <div className="absolute top-[220px] left-[calc(50%+200px)] w-[263px] h-[234px] bg-white border border-[#00838F] shadow-md z-20">
-                            <img src={bannerImg4} className="w-full h-[calc(100%-20px)] object-cover mt-[10px]" alt="Right" />
+                        <div className="absolute top-[180px] left-[calc(30%+200px)] w-[263px] h-[234px] bg-white border border-[#00838F] shadow-md z-20">
+                            <img src={bannerImg4} className="w-full h-[calc(100%-20px)] object-cover mx-auto pb-[40px] mt-3 px-3" alt="Right" />
                         </div>
                         {/* Bottom */}
-                        <div className="absolute top-[280px] left-[50%] -translate-x-1/2 w-[327px] h-[292px] bg-white border border-[#00838F] shadow-md z-30">
-                            <img src={bannerImg3} className="w-full h-[calc(100%-20px)] object-cover mt-[10px]" alt="Bottom" />
+                        <div className="absolute top-[260px] left-[50%] -translate-x-1/2 w-[327px] h-[292px] bg-white border border-[#00838F] shadow-md z-30">
+                            <img src={bannerImg3} className="w-full h-[calc(100%-20px)] object-cover mx-auto pb-[40px] mt-3 px-3" alt="Bottom" />
                         </div>
                     </div>
 

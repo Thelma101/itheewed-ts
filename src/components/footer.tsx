@@ -85,7 +85,7 @@ const weddingFacts = [
   "Did you know in some parts of Nigeria, the bride price negotiation is a detailed tradition that reflects respect between families?",
   "In South Africa, the Zulu wedding dance is a vibrant ceremony featuring traditional attire and rhythmic dancing celebrating the union.",
   "Some African weddings include the breaking or sharing of kola nuts as a symbol of hospitality and unity within communities.",
-  "In Nigeria, it's common for the bride’s friends to playfully ‘kidnap’ her before the wedding, and the groom must find and ‘rescue’ her.",
+  "In Nigeria, it's common for the bride's friends to playfully 'kidnap' her before the wedding, and the groom must find and 'rescue' her.",
   "Did you know some Nigerian weddings last for several days, combining both traditional rites and modern celebrations?"
 ];
 
@@ -166,18 +166,17 @@ const Footer: React.FC = () => {
 
   return (
     <section className="bg-primary w-full">
-      <div className="grid grid-cols-1 md:grid-cols-4 gap-8 px-4 md:px-20 py-10  md:pt-20 md:pb-0 text-white">
+      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 md:gap-8 px-4 md:px-8 lg:px-20 py-10 md:pt-24 md:pb-40 text-white">
         {/* Col 1: Logo & About Us */}
         <div className="flex flex-col items-center md:items-start">
-          <img src={logo} alt="logo" className="w-16 h-16 md:w-40 md:h-30 mb-4" />
-
-          <div className="w-full  rounded-lg p-3 backdrop-blur-sm h-auto flex flex-col">
-            <h2 className="text-lg font-bold mb-2">About Us</h2>
+          <img src={logo} alt="logo" className="w-16 h-16 md:w-32 md:h-24 lg:w-40 lg:h-30 mb-4" />
+          <div className="w-full rounded-lg p-3 backdrop-blur-sm h-auto flex flex-col">
+            <h2 className="text-lg font-bold mb-2 text-center md:text-left">About Us</h2>
             <p className="text-sm text-gray-200 max-w-md text-center md:text-left">
-              I Thee Wed is your modern wedding companion — here to help you plan, celebrate, and cherish every moment of your love story.
+              I Thee Wed is your modern wedding companion —  we blend smart planning tools, heartfelt inspiration, and a supportive community so your journey from "Yes" to "I do" is as magical as your wedding day itself.
             </p>
             <p className="text-sm text-gray-200 max-w-md mt-2 text-center md:text-left">
-              We blend smart planning tools, heartfelt inspiration, and a supportive community so your journey from “Yes” to “I do” is as magical as your wedding day itself.
+
             </p>
             <p className="text-sm text-gray-200 max-w-md mt-2 text-center md:text-left">
               As a multivendor hub for all things weddings, we connect you with trusted vendors, curated ideas, and a community that celebrates every moment with you.
@@ -186,10 +185,10 @@ const Footer: React.FC = () => {
         </div>
 
         {/* Col 2: Did You Know & Navigation */}
-        <div className="flex flex-col items-center md:items-start mt-8 md:mt-0 md:mb-40">
+        <div className="flex flex-col items-center md:items-start mt-8 md:mt-0">
           {/* Did You Know Section - Fixed Height */}
-          <div className="w-full bg-white/10 rounded-lg p-4 backdrop-blur-sm h-[200px] flex flex-col">
-            <h2 className="text-lg font-bold mb-4">Did You Know?</h2>
+          <div className="w-full bg-white/10 rounded-lg p-4 backdrop-blur-sm min-h-[200px] flex flex-col">
+            <h2 className="text-lg font-bold mb-4 text-center md:text-left">Did You Know?</h2>
             <div className="flex-grow flex items-center justify-center">
               <AnimatePresence mode="wait">
                 <motion.div
@@ -198,7 +197,7 @@ const Footer: React.FC = () => {
                   animate={{ opacity: 1, y: 0 }}
                   exit={{ opacity: 0, y: -20 }}
                   transition={{ duration: 0.5 }}
-                  className="text-center"
+                  className="text-center md:text-left"
                 >
                   <p className="text-base italic">{weddingFacts[currentFactIndex]}</p>
                 </motion.div>
@@ -207,26 +206,24 @@ const Footer: React.FC = () => {
           </div>
 
           {/* Navigation Links */}
-          <div className="flex items-center md:items-start mt-8 md:mt-7 gap-8 font-light ">
-            <div className="flex flex-col items-center md:items-start mt-8 md:mt-4">
-              <Link to="/" className="text-white text-base hover:text-gray-300 transition-colors mb-1">Home</Link>
-              <Link to="/about" className="text-white text-base hover:text-gray-300 transition-colors mb-1">About</Link>
-              <Link to="/contact" className="text-white text-base hover:text-gray-300 transition-colors mb-1">Contact</Link>
-              <Link to="/faq" className="text-white text-base hover:text-gray-300 transition-colors">FAQ</Link>
+          <div className="grid grid-cols-3 gap-4 md:gap-8 mt-8 w-full">
+            <div className="flex flex-col items-center md:items-start">
+              <Link to="/" className="text-white text-sm md:text-base hover:text-gray-300 transition-colors mb-2">Home</Link>
+              <Link to="/about" className="text-white text-sm md:text-base hover:text-gray-300 transition-colors mb-2">About</Link>
+              <Link to="/contact" className="text-white text-sm md:text-base hover:text-gray-300 transition-colors mb-2">Contact</Link>
+              <Link to="/faq" className="text-white text-sm md:text-base hover:text-gray-300 transition-colors">FAQ</Link>
             </div>
-            <div className="flex flex-col items-center md:items-start mt-8 md:mt-4">
-
-              <Link to="/" className="text-white text-base hover:text-gray-300 transition-colors mb-1">Home</Link>
-              <Link to="/about" className="text-white text-base hover:text-gray-300 transition-colors mb-1">About</Link>
-              <Link to="/contact" className="text-white text-base hover:text-gray-300 transition-colors mb-1">Contact</Link>
-              <Link to="/faq" className="text-white text-base hover:text-gray-300 transition-colors">FAQ</Link>
+            <div className="flex flex-col items-center md:items-start">
+              <Link to="/vendors" className="text-white text-sm md:text-base hover:text-gray-300 transition-colors mb-2">Vendors</Link>
+              <Link to="/blog" className="text-white text-sm md:text-base hover:text-gray-300 transition-colors mb-2">Blog</Link>
+              <Link to="/gallery" className="text-white text-sm md:text-base hover:text-gray-300 transition-colors mb-2">Gallery</Link>
+              <Link to="/testimonials" className="text-white text-sm md:text-base hover:text-gray-300 transition-colors">Reviews</Link>
             </div>
-            <div className="flex flex-col items-center md:items-start mt-8 md:mt-4">
-
-              <Link to="/" className="text-white text-base hover:text-gray-300 transition-colors mb-1">Home</Link>
-              <Link to="/about" className="text-white text-base hover:text-gray-300 transition-colors mb-1">About</Link>
-              <Link to="/contact" className="text-white text-base hover:text-gray-300 transition-colors mb-1">Contact</Link>
-              <Link to="/faq" className="text-white text-base hover:text-gray-300 transition-colors">FAQ</Link>
+            <div className="flex flex-col items-center md:items-start">
+              <Link to="/privacy" className="text-white text-sm md:text-base hover:text-gray-300 transition-colors mb-2">Privacy</Link>
+              <Link to="/terms" className="text-white text-sm md:text-base hover:text-gray-300 transition-colors mb-2">Terms</Link>
+              <Link to="/support" className="text-white text-sm md:text-base hover:text-gray-300 transition-colors mb-2">Support</Link>
+              <Link to="/careers" className="text-white text-sm md:text-base hover:text-gray-300 transition-colors">Careers</Link>
             </div>
           </div>
         </div>
@@ -234,7 +231,7 @@ const Footer: React.FC = () => {
         {/* Col 3: Poll Section */}
         <div className="flex flex-col items-center md:items-start mt-8 md:mt-0">
           <div className="w-full bg-white/10 rounded-lg p-4 backdrop-blur-sm">
-            <h2 className="text-lg font-bold mb-4">Wedding Poll</h2>
+            <h2 className="text-lg font-bold mb-4 text-center md:text-left">Wedding Poll</h2>
             <p className="mb-4 text-base font-semibold text-center md:text-left">{currentPoll.question}</p>
             {!showResults ? (
               <form className="space-y-3">
@@ -244,7 +241,7 @@ const Footer: React.FC = () => {
                     type="button"
                     onClick={() => handleVote(option.id)}
                     disabled={!!userVotes[currentPoll.question]}
-                    className={`w-full text-left px-4 py-2 rounded-lg border border-white/20 bg-white/5 hover:bg-white/20 transition-colors ${userVotes[currentPoll.question] === option.id ? 'bg-[var(--color-primary-red)] text-white' : ''
+                    className={`w-full text-left px-4 py-2 rounded-lg border border-white/20 bg-white/5 hover:bg-white/20 transition-colors text-sm md:text-base ${userVotes[currentPoll.question] === option.id ? 'bg-[var(--color-primary-red)] text-white' : ''
                       }`}
                   >
                     {option.text}
@@ -257,7 +254,7 @@ const Footer: React.FC = () => {
                   const percent = totalVotes ? Math.round((option.votes / totalVotes) * 100) : 0;
                   return (
                     <div key={option.id} className="w-full">
-                      <div className="flex justify-between text-sm">
+                      <div className="flex justify-between text-xs md:text-sm">
                         <span>{option.text}</span>
                         <span>{percent}%</span>
                       </div>
@@ -282,35 +279,35 @@ const Footer: React.FC = () => {
         <div className="flex flex-col items-center md:items-start mt-8 md:mt-0 space-y-6">
           {/* QR Code */}
           <div className="w-full bg-white/10 rounded-lg p-4 backdrop-blur-sm">
-            <h2 className="text-lg font-bold mb-4 text-center">Get Our Mobile App</h2>
+            <h2 className="text-lg font-bold mb-4 text-center md:text-left">Get Our Mobile App</h2>
             <div className="flex justify-center">
               <div className="text-center">
-                <img src={iosQRCode} alt="iOS App QR Code" className="w-24 h-24 mb-2" />
+                <img src={iosQRCode} alt="iOS App QR Code" className="w-20 h-20 md:w-24 md:h-24 mb-2" />
                 <p className="text-sm">Android + iOS</p>
               </div>
             </div>
           </div>
 
           {/* Newsletter */}
-          <div className="w-full ">
-            <h2 className="text-lg font-bold mb-4">Stay Updated</h2>
+          <div className="w-full">
+            <h2 className="text-lg font-bold mb-4 text-center md:text-left">Stay Updated</h2>
             <form onSubmit={handleSubscribe} className="space-y-4 text-primary-gray">
               <input
                 type="email"
                 value={email}
                 onChange={handleEmailChange}
                 placeholder="Enter your email"
-                className={`w-full px-4 py-2 border rounded-lg focus:ring-2 focus:ring-[var(--color-primary-red)] focus:border-transparent ${email && !isValidEmail ? 'border-red-500' : ''
+                className={`w-full px-4 py-3 border focus:border-1 focus:border-transparent text-sm md:text-base ${email && !isValidEmail ? 'border-red-500' : ''
                   }`}
                 required
               />
               {email && !isValidEmail && (
-                <p className="text-red-500 text-sm mt-1">Please enter a valid email address</p>
+                <p className="text-red-500 text-xs md:text-sm mt-1">Please enter a valid email address</p>
               )}
               <button
                 type="submit"
                 disabled={!isValidEmail}
-                className={`w-full py-2 rounded-lg transition-colors ${isValidEmail ? 'bg-[var(--color-primary-red)] text-white hover:bg-opacity-90' : 'bg-gray-400 text-gray-200 cursor-not-allowed'
+                className={`w-full py-3 transition-colors text-sm md:text-base ${isValidEmail ? 'bg-[var(--color-primary-red)] text-white hover:bg-opacity-90' : 'bg-gray-400 text-gray-200 cursor-not-allowed'
                   }`}
               >
                 Subscribe
@@ -320,7 +317,7 @@ const Footer: React.FC = () => {
                   initial={{ opacity: 0 }}
                   animate={{ opacity: 1 }}
                   exit={{ opacity: 0 }}
-                  className="text-green-600 text-sm text-center md:text-left"
+                  className="text-green-600 text-xs md:text-sm text-center md:text-left"
                 >
                   Thanks for subscribing! 🎉
                 </motion.p>
@@ -328,6 +325,11 @@ const Footer: React.FC = () => {
             </form>
           </div>
         </div>
+      </div>
+      <div className='flex text-center justify-center item-center md:pb-10 '>
+        <p className='text-white  text-xs font-mono'>
+           <a href="https://www.anchorit.com.ng" target='_blank' >Made with ❤️ by{' '} i thee wed</a>
+        </p>
       </div>
     </section>
   );
