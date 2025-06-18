@@ -1,10 +1,11 @@
-import { Routes, Route } from 'react-router-dom';
+import React from 'react';
+import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import Layout from './layouts/NavLayout'
 import Homepage from './pages/Homepage';
 import './index.css';
 
 
-const App = () => {
+const App: React.FC = () => {
   return (
     <Routes>
       <Route path='/' element={<Layout />} />
