@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import { useState } from 'react';
 import DatePicker from 'react-datepicker';
 import 'react-datepicker/dist/react-datepicker.css';
 
@@ -13,7 +13,7 @@ const SimpleDatePicker = () => {
       <div className="bg-white rounded-xl shadow-lg p-6">
         <DatePicker
           selected={selectedDate}
-          onChange={(date: Date) => setSelectedDate(date)}
+          onChange={(date: Date | null) => setSelectedDate(date)}
           minDate={new Date()}
           maxDate={new Date(2025, 11, 31)}
           placeholderText="Choose your wedding date"
