@@ -326,9 +326,12 @@ const Footer: React.FC = () => {
           </div>
         </div>
       </div>
-      <div className='flex text-center justify-center item-center md:pb-10 '>
-        <p className='text-white  text-xs font-mono'>
-           <a href="https://www.anchorit.com.ng" target='_blank' >Made with ❤️ by{' '} i thee wed</a>
+      <div className='flex flex-col text-center justify-center item-center md:pb-10 '>
+        <p className='text-white  text-xs font-thin'>
+          <a href="https://www.anchorit.com.ng" target='_blank' > Made with ❤️ by{' '} i thee wed</a>
+        </p>
+        <p className='text-white  text-xs font-thin mt-1'>
+          {' '} (c) All rights reserved 2025 
         </p>
       </div>
     </section>

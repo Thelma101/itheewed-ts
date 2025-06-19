@@ -10,7 +10,8 @@ import WeddingWebsite from "@/components/WeddingWebsite";
 import Footer from "@/components/Footer";
 import CalendarSection from "@/components/CalendarSection";
 import TimelineFooter from "@/components/footers/TimelineFooter";
-import WeddingHashtags from "@/components/test2";
+import WeddingHashtags from "@/components/WeddingHashtags";
+import CalendarPage from "./CalendarPage";
 
 const Homepage: React.FC = () => {
     return (
@@ -24,8 +25,9 @@ const Homepage: React.FC = () => {
                 <WeddingWebsite />
                 {/* <Test /> */}
                 <CalendarSection />
+                <CalendarPage />
                 {/* <TimelineFooter /> */}
-                
+                {/* <DynamicFooter /> */}
                 <WeddingHashtags />
                 <Footer />
             </div>
