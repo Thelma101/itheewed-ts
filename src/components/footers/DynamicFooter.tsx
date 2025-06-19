@@ -1,264 +1,158 @@
-import React, { useState, useEffect } from 'react';
+import { useState, useEffect } from 'react';
+import { Link } from 'react-router-dom';
 import { motion, AnimatePresence } from 'framer-motion';
 
-interface Testimonial {
-  id: number;
-  couple: string;
-  text: string;
-  date: string;
-}
-
-interface FAQ {
-  id: number;
-  question: string;
-  answer: string;
-}
-
 const DynamicFooter = () => {
-  const [currentTestimonial, setCurrentTestimonial] = useState(0);
-  const [timeLeft, setTimeLeft] = useState({
-    days: 0,
-    hours: 0,
-    minutes: 0,
-    seconds: 0
-  });
-  const [expandedFaq, setExpandedFaq] = useState<number | null>(null);
-  const [selectedLanguage, setSelectedLanguage] = useState('en');
+  const [currentFactIndex, setCurrentFactIndex] = useState(0);
+  const [email, setEmail] = useState('');
+  const [isValidEmail, setIsValidEmail] = useState(true);
+  const [isSubscribed, setIsSubscribed] = useState(false);
 
-  const testimonials: Testimonial[] = [
-    {
-      id: 1,
-      couple: "Sarah & James",
-      text: "The website made planning our wedding so much easier! Our guests loved the interactive features.",
-      date: "March 2024"
-    },
-    {
-      id: 2,
-      couple: "Emma & Michael",
-      text: "Beautiful design and easy to use. Our guests could RSVP and find all the information they needed.",
-      date: "February 2024"
-    },
-    {
-      id: 3,
-      couple: "Lisa & David",
-      text: "The countdown timer and weather widget were such nice touches. Highly recommend!",
-      date: "January 2024"
-    }
+  const weddingFacts = [
+    "The tradition of wearing a white wedding dress started with Queen Victoria in 1840.",
+    "The average engagement ring costs about 2 months' salary.",
+    "June is the most popular month for weddings, followed by August and September.",
+    "The tradition of the wedding cake comes from ancient Rome.",
+    "The first diamond engagement ring was given in 1477.",
   ];
 
-  const faqs: FAQ[] = [
-    {
-      id: 1,
-      question: "How do I RSVP?",
-      answer: "Simply click the RSVP button in the navigation menu and fill out the form with your details."
-    },
-    {
-      id: 2,
-      question: "Can I bring a plus one?",
-      answer: "Please check your invitation for the number of guests allowed. If you need to request a plus one, contact us directly."
-    },
-    {
-      id: 3,
-      question: "What's the dress code?",
-      answer: "The dress code is formal/black tie optional. We kindly request no white or ivory attire."
-    }
-  ];
-
-  const languages = [
-    { code: 'en', name: 'English' },
-    { code: 'es', name: 'Español' },
-    { code: 'fr', name: 'Français' },
-    { code: 'de', name: 'Deutsch' }
-  ];
-
-  // Countdown timer effect
   useEffect(() => {
-    const weddingDate = new Date('2024-08-20T00:00:00');
-    
-    const calculateTimeLeft = () => {
-      const difference = +weddingDate - +new Date();
-      
-      if (difference > 0) {
-        setTimeLeft({
-          days: Math.floor(difference / (1000 * 60 * 60 * 24)),
-          hours: Math.floor((difference / (1000 * 60 * 60)) % 24),
-          minutes: Math.floor((difference / 1000 / 60) % 60),
-          seconds: Math.floor((difference / 1000) % 60)
-        });
-      }
-    };
-
-    calculateTimeLeft();
-    const timer = setInterval(calculateTimeLeft, 1000);
-
-    return () => clearInterval(timer);
-  }, []);
-
-  // Testimonial rotation effect
-  useEffect(() => {
-    const timer = setInterval(() => {
-      setCurrentTestimonial((prev) => (prev + 1) % testimonials.length);
+    const interval = setInterval(() => {
+      setCurrentFactIndex((prev) => (prev + 1) % weddingFacts.length);
     }, 5000);
 
-    return () => clearInterval(timer);
+    return () => clearInterval(interval);
   }, []);
 
+  const handleEmailChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    const newEmail = e.target.value;
+    setEmail(newEmail);
+    setIsValidEmail(/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(newEmail));
+  };
+
+  const handleSubscribe = (e: React.FormEvent) => {
+    e.preventDefault();
+    if (isValidEmail) {
+      setIsSubscribed(true);
+      setEmail('');
+    }
+  };
+
   return (
-    <footer className="bg-white py-12 px-4">
-      <div className="max-w-6xl mx-auto">
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-          {/* Testimonials Section */}
-          <div className="lg:col-span-2">
-            <h2 className="text-2xl font-bold mb-6 text-[var(--color-primary-red)]">
-              What Couples Say
-            </h2>
-            <div className="relative h-[200px]">
+    <section className="bg-primary w-full">
+      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 md:gap-8 px-4 md:px-8 lg:px-20 py-10 md:pt-24 md:pb-40 text-white">
+        {/* Col 1: Logo & About Us */}
+        <div className="flex flex-col items-center md:items-start">
+          <div className="w-full rounded-lg p-3 backdrop-blur-sm h-auto flex flex-col">
+            <h2 className="text-lg font-bold mb-2 text-center md:text-left">About Us</h2>
+            <p className="text-sm text-gray-200 max-w-md text-center md:text-left">
+              I Thee Wed is your modern wedding companion —  we blend smart planning tools, heartfelt inspiration, and a supportive community so your journey from "Yes" to "I do" is as magical as your wedding day itself.
+            </p>
+            <p className="text-sm text-gray-200 max-w-md mt-2 text-center md:text-left">
+              As a multivendor hub for all things weddings, we connect you with trusted vendors, curated ideas, and a community that celebrates every moment with you.
+            </p>
+          </div>
+        </div>
+
+        {/* Col 2: Did You Know & Navigation */}
+        <div className="flex flex-col items-center md:items-start mt-8 md:mt-0">
+          {/* Did You Know Section - Fixed Height */}
+          <div className="w-full bg-white/10 rounded-lg p-4 backdrop-blur-sm min-h-[200px] flex flex-col">
+            <h2 className="text-lg font-bold mb-4 text-center md:text-left">Did You Know?</h2>
+            <div className="flex-grow flex items-center justify-center">
               <AnimatePresence mode="wait">
                 <motion.div
-                  key={currentTestimonial}
+                  key={currentFactIndex}
                   initial={{ opacity: 0, y: 20 }}
                   animate={{ opacity: 1, y: 0 }}
                   exit={{ opacity: 0, y: -20 }}
                   transition={{ duration: 0.5 }}
-                  className="bg-white rounded-lg shadow-md p-6"
+                  className="text-center md:text-left"
                 >
-                  <p className="text-gray-700 italic mb-4">
-                    "{testimonials[currentTestimonial].text}"
-                  </p>
-                  <div className="flex justify-between items-center">
-                    <span className="font-semibold">{testimonials[currentTestimonial].couple}</span>
-                    <span className="text-sm text-gray-500">{testimonials[currentTestimonial].date}</span>
-                  </div>
+                  <p className="text-base italic">{weddingFacts[currentFactIndex]}</p>
                 </motion.div>
               </AnimatePresence>
-              <div className="absolute bottom-0 left-0 right-0 flex justify-center gap-2">
-                {testimonials.map((_, index) => (
-                  <button
-                    key={index}
-                    onClick={() => setCurrentTestimonial(index)}
-                    className={`w-2 h-2 rounded-full transition-all ${
-                      index === currentTestimonial
-                        ? 'bg-[var(--color-primary-red)] scale-125'
-                        : 'bg-gray-300'
-                    }`}
-                  />
-                ))}
-              </div>
             </div>
           </div>
 
-          {/* Countdown Timer */}
-          <div className="bg-white rounded-lg shadow-md p-6">
-            <h2 className="text-2xl font-bold mb-6 text-[var(--color-primary-red)]">
-              Counting Down
-            </h2>
-            <div className="grid grid-cols-4 gap-4 text-center">
-              <div>
-                <div className="text-3xl font-bold text-[var(--color-primary-red)]">
-                  {timeLeft.days}
-                </div>
-                <div className="text-sm text-gray-600">Days</div>
-              </div>
-              <div>
-                <div className="text-3xl font-bold text-[var(--color-primary-red)]">
-                  {timeLeft.hours}
-                </div>
-                <div className="text-sm text-gray-600">Hours</div>
-              </div>
-              <div>
-                <div className="text-3xl font-bold text-[var(--color-primary-red)]">
-                  {timeLeft.minutes}
-                </div>
-                <div className="text-sm text-gray-600">Minutes</div>
-              </div>
-              <div>
-                <div className="text-3xl font-bold text-[var(--color-primary-red)]">
-                  {timeLeft.seconds}
-                </div>
-                <div className="text-sm text-gray-600">Seconds</div>
-              </div>
+          {/* Navigation Links */}
+          <div className="grid grid-cols-3 gap-4 md:gap-8 mt-8 w-full">
+            <div className="flex flex-col items-center md:items-start">
+              <Link to="/" className="text-white text-sm md:text-base hover:text-gray-300 transition-colors mb-2">Home</Link>
+              <Link to="/about" className="text-white text-sm md:text-base hover:text-gray-300 transition-colors mb-2">About</Link>
+              <Link to="/contact" className="text-white text-sm md:text-base hover:text-gray-300 transition-colors mb-2">Contact</Link>
+              <Link to="/faq" className="text-white text-sm md:text-base hover:text-gray-300 transition-colors">FAQ</Link>
+            </div>
+            <div className="flex flex-col items-center md:items-start">
+              <Link to="/vendors" className="text-white text-sm md:text-base hover:text-gray-300 transition-colors mb-2">Vendors</Link>
+              <Link to="/blog" className="text-white text-sm md:text-base hover:text-gray-300 transition-colors mb-2">Blog</Link>
+              <Link to="/gallery" className="text-white text-sm md:text-base hover:text-gray-300 transition-colors mb-2">Gallery</Link>
+              <Link to="/testimonials" className="text-white text-sm md:text-base hover:text-gray-300 transition-colors">Reviews</Link>
+            </div>
+            <div className="flex flex-col items-center md:items-start">
+              <Link to="/privacy" className="text-white text-sm md:text-base hover:text-gray-300 transition-colors mb-2">Privacy</Link>
+              <Link to="/terms" className="text-white text-sm md:text-base hover:text-gray-300 transition-colors mb-2">Terms</Link>
+              <Link to="/support" className="text-white text-sm md:text-base hover:text-gray-300 transition-colors mb-2">Support</Link>
+              <Link to="/careers" className="text-white text-sm md:text-base hover:text-gray-300 transition-colors">Careers</Link>
             </div>
           </div>
+        </div>
 
-          {/* FAQ Section */}
-          <div className="lg:col-span-2">
-            <h2 className="text-2xl font-bold mb-6 text-[var(--color-primary-red)]">
-              Frequently Asked Questions
-            </h2>
-            <div className="space-y-4">
-              {faqs.map((faq) => (
-                <motion.div
-                  key={faq.id}
-                  className="bg-white rounded-lg shadow-md overflow-hidden"
-                >
-                  <button
-                    className="w-full px-6 py-4 text-left flex justify-between items-center"
-                    onClick={() => setExpandedFaq(expandedFaq === faq.id ? null : faq.id)}
-                  >
-                    <span className="font-semibold">{faq.question}</span>
-                    <span className="text-[var(--color-primary-red)]">
-                      {expandedFaq === faq.id ? '−' : '+'}
-                    </span>
-                  </button>
-                  <AnimatePresence>
-                    {expandedFaq === faq.id && (
-                      <motion.div
-                        initial={{ height: 0, opacity: 0 }}
-                        animate={{ height: 'auto', opacity: 1 }}
-                        exit={{ height: 0, opacity: 0 }}
-                        transition={{ duration: 0.3 }}
-                        className="px-6 pb-4"
-                      >
-                        <p className="text-gray-600">{faq.answer}</p>
-                      </motion.div>
-                    )}
-                  </AnimatePresence>
-                </motion.div>
-              ))}
-            </div>
-          </div>
-
-          {/* Language Selector and Quick Links */}
-          <div className="space-y-6">
-            <div>
-              <h3 className="text-lg font-semibold mb-4">Language</h3>
-              <select
-                value={selectedLanguage}
-                onChange={(e) => setSelectedLanguage(e.target.value)}
-                className="w-full p-2 border rounded-lg focus:ring-2 focus:ring-[var(--color-primary-red)] focus:border-transparent"
+        {/* Col 3: Newsletter */}
+        <div className="flex flex-col items-center md:items-start mt-8 md:mt-0">
+          <div className="w-full">
+            <h2 className="text-lg font-bold mb-4 text-center md:text-left">Stay Updated</h2>
+            <form onSubmit={handleSubscribe} className="space-y-4 text-primary-gray">
+              <input
+                type="email"
+                value={email}
+                onChange={handleEmailChange}
+                placeholder="Enter your email"
+                className={`w-full px-4 py-3 border focus:border-1 focus:border-transparent text-sm md:text-base ${email && !isValidEmail ? 'border-red-500' : ''}`}
+                required
+              />
+              {email && !isValidEmail && (
+                <p className="text-red-500 text-xs md:text-sm mt-1">Please enter a valid email address</p>
+              )}
+              <button
+                type="submit"
+                disabled={!isValidEmail}
+                className={`w-full py-3 transition-colors text-sm md:text-base ${isValidEmail ? 'bg-[var(--color-primary-red)] text-white hover:bg-opacity-90' : 'bg-gray-400 text-gray-200 cursor-not-allowed'}`}
               >
-                {languages.map((lang) => (
-                  <option key={lang.code} value={lang.code}>
-                    {lang.name}
-                  </option>
-                ))}
-              </select>
-            </div>
+                Subscribe
+              </button>
+              {isSubscribed && (
+                <motion.p
+                  initial={{ opacity: 0 }}
+                  animate={{ opacity: 1 }}
+                  exit={{ opacity: 0 }}
+                  className="text-green-600 text-xs md:text-sm text-center md:text-left"
+                >
+                  Thanks for subscribing! 🎉
+                </motion.p>
+              )}
+            </form>
+          </div>
+        </div>
 
-            <div>
-              <h3 className="text-lg font-semibold mb-4">Quick Links</h3>
-              <ul className="space-y-2">
-                <li>
-                  <a href="#" className="text-gray-600 hover:text-[var(--color-primary-red)] transition-colors">
-                    Emergency Contact
-                  </a>
-                </li>
-                <li>
-                  <a href="#" className="text-gray-600 hover:text-[var(--color-primary-red)] transition-colors">
-                    Wedding Registry
-                  </a>
-                </li>
-                <li>
-                  <a href="#" className="text-gray-600 hover:text-[var(--color-primary-red)] transition-colors">
-                    Photo Gallery
-                  </a>
-                </li>
-              </ul>
+        {/* Col 4: QR Code */}
+        <div className="flex flex-col items-center md:items-start mt-8 md:mt-0">
+          <div className="w-full bg-white/10 rounded-lg p-4 backdrop-blur-sm">
+            <h2 className="text-lg font-bold mb-4 text-center md:text-left">Get Our Mobile App</h2>
+            <div className="flex justify-center">
+              <div className="text-center">
+                <p className="text-sm">Coming Soon</p>
+              </div>
             </div>
           </div>
         </div>
       </div>
-    </footer>
+      <div className='flex text-center justify-center item-center md:pb-10'>
+        <p className='text-white text-xs font-mono'>
+          <a href="https://www.anchorit.com.ng" target='_blank'>Made with ❤️ by i thee wed</a>
+        </p>
+      </div>
+    </section>
   );
 };
 

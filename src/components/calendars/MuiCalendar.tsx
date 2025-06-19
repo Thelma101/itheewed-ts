@@ -13,8 +13,7 @@ import {
   DialogContent,
   DialogActions,
   IconButton,
-  Zoom,
-  Chip
+  Zoom
 } from '@mui/material';
 import { styled } from '@mui/material/styles';
 import { format, isSameDay } from 'date-fns';
@@ -60,25 +59,13 @@ const StyledPaper = styled(Paper)(({ theme }) => ({
 const StyledButton = styled(Button)(({ theme }) => ({
   backgroundColor: 'var(--color-primary-red)',
   color: 'white',
-  '&:hover': {
-    backgroundColor: 'var(--color-primary-red)',
-    opacity: 0.9,
-  },
   marginTop: theme.spacing(2),
   transition: 'all 0.3s ease-in-out',
   '&:hover': {
-    transform: 'translateY(-2px)',
-    boxShadow: '0 4px 8px rgba(0, 0, 0, 0.2)',
-  },
-}));
-
-const EventChip = styled(Chip)(({ theme }) => ({
-  margin: theme.spacing(0.5),
-  backgroundColor: 'var(--color-primary-red)',
-  color: 'white',
-  '&:hover': {
     backgroundColor: 'var(--color-primary-red)',
     opacity: 0.9,
+    transform: 'translateY(-2px)',
+    boxShadow: '0 4px 8px rgba(0, 0, 0, 0.2)',
   },
 }));
 

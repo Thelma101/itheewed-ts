@@ -1,0 +1,39 @@
+.wedding-calendar {
+  font-family: 'Open Sans', sans-serif;
+  border: none;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  border-radius: 12px;
+  padding: 1rem;
+}
+
+.wedding-calendar .react-datepicker__header {
+  background-color: white;
+  border-bottom: none;
+  padding-top: 0;
+}
+
+.wedding-calendar .react-datepicker__day--selected {
+  background-color: var(--color-primary-red) !important;
+  border-radius: 50%;
+}
+
+.wedding-calendar .react-datepicker__day:hover {
+  background-color: var(--color-primary-red);
+  opacity: 0.8;
+  border-radius: 50%;
+}
+
+.wedding-calendar .react-datepicker__day-name {
+  color: var(--color-primary-red);
+  font-weight: 600;
+}
+
+.wedding-calendar .react-datepicker__current-month {
+  color: var(--color-primary-red);
+  font-weight: 600;
+  font-size: 1rem;
+}
+
+.wedding-calendar-popper {
+  z-index: 1000;
+} 
