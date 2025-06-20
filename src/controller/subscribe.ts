@@ -5,18 +5,16 @@ export const addSubscriber = async (req: Request, res: Response) => {
   try {
     const { email } = req.body;
     if (!email) {
-      res.status(400).json({ message: "Email is required" });
-      return;
+      return res.status(400).json({ message: "Email is required" });
     }
     const subscriber = await subscriberDB.findOne({ email });
     if (subscriber) {
-      res.status(400).json({ message: "Email already exists" });
-      return;
+      return res.status(400).json({ message: "Email already exists" });
     }
     const newSubscriber = await subscriberDB.create({ email });
-    res.status(201).json({ message: "Subscriber added successfully", newSubscriber });
+    return res.status(201).json({ message: "Subscriber added successfully", newSubscriber });
   } catch (error: any) {
-    res.status(500).json({ message: error.message, stack: error.stack });
+    return res.status(500).json({ message: error.message, stack: error.stack });
   }
 };
 
@@ -24,11 +22,11 @@ export const getSubscribers = async (req: Request, res: Response) => {
   try {
     const subscribers = await subscriberDB.find();
     if (subscribers && subscribers.length > 0) {
-      res.status(200).json({ message: "Subscribers fetched successfully", subscribers });
+      return res.status(200).json({ message: "Subscribers fetched successfully", subscribers });
     } else {
-      res.status(404).json({ message: "No subscribers found" });
+      return res.status(404).json({ message: "No subscribers found" });
     }
   } catch (error: any) {
-    res.status(500).json({ message: error.message, stack: error.stack });
+    return res.status(500).json({ message: error.message, stack: error.stack });
   }
-};
+}; 

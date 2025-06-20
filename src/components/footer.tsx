@@ -273,6 +273,31 @@ const Footer: React.FC = () => {
               </div>
             )}
           </div>
+
+                      {/* Social Media Links */}
+            <div className='mx-auto pt-4 md:pt-10'>
+              <h3 className=" font-semibold mb-4">Connect With Us</h3>
+              <div className="flex gap-4">
+                <a
+                  href="#"
+                  className="w-10 h-10 rounded-full bg-pink-600 text-white flex items-center justify-center hover:bg-opacity-90 transition-colors"
+                >
+                  📸
+                </a>
+                <a
+                  href="#"
+                  className="w-10 h-10 rounded-full bg-blue-400 text-white flex items-center justify-center hover:bg-opacity-90 transition-colors"
+                >
+                  🐦
+                </a>
+                <a
+                  href="#"
+                  className="w-10 h-10 rounded-full bg-red-600 text-white flex items-center justify-center hover:bg-opacity-90 transition-colors"
+                >
+                  📌
+                </a>
+              </div>
+            </div>
         </div>
 
         {/* Col 4: QR Code & Newsletter */}

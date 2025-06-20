@@ -1,6 +1,8 @@
 import express from 'express';
 import mongoose from 'mongoose';
-// import cors from 'cors';
+import cors from '@types/cors';
+import dotenv from 'dotenv';
+dotenv.config();
 
 import subscribeRoute from './route/subscribe.route';
 
@@ -18,9 +20,9 @@ mongoose.connect(process.env.mongoURI || '')
 // Middleware
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
-// app.use(cors());
+app.use(cors());
 
-// Health check route
+
 app.get('/', (_req, res) => {
   res.send('Hello World!');
 });
