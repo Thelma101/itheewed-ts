@@ -7,7 +7,7 @@ import subscribeRoute from './route/subscribe.route';
 const app = express();
 const PORT = process.env.PORT || 3001;
 
-mongoose.connect(process.env.mongoURI || ''  )
+mongoose.connect(process.env.mongoURI || '')
   .then(() => {
     console.log('✅ Connected to MongoDB');
   })
@@ -15,16 +15,15 @@ mongoose.connect(process.env.mongoURI || ''  )
     console.error('❌ MongoDB connection error:', error);
   });
 
-// ✅  Middleware
+// Middleware
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
-// app.use(cors()); 
+// app.use(cors());
 
-// ✅  Health check route
+// Health check route
 app.get('/', (_req, res) => {
   res.send('Hello World!');
 });
-
 
 app.use('/', subscribeRoute);
 
