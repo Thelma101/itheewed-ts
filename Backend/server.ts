@@ -15,4 +15,4 @@ app.post('/subscribe',)
 
 app.listen(PORT, () => {
   console.log(`Server is running on port ${PORT}`);
-})
+});

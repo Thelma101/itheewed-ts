@@ -25,7 +25,7 @@ const Homepage: React.FC = () => {
                 <WeddingWebsite />
                 {/* <Test /> */}
                 <CalendarSection />
-                <CalendarPage />
+                {/* <CalendarPage /> */}
                 {/* <TimelineFooter /> */}
                 {/* <DynamicFooter /> */}
                 <WeddingHashtags />

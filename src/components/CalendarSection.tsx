@@ -90,7 +90,7 @@ const CalendarSection: React.FC = () => {
     const weekDays = ['Mo', 'Tu', 'We', 'Th', 'Fr', 'Sa', 'Su'];
 
     return (
-        <section className="relative flex flex-col md:flex-row bg-[#DBFCFF] text-primary-dark px-4 md:px-24 py-8 md:pt-16 md:pb-6 overflow-visible">
+        <section className="relative flex flex-col md:flex-row bg-[#DBFCFF] text-primary-dark px-4 md:px-24 pt-8 pb-0 md:pt-16 md:pb-0 overflow-visible mb-32 md:mb-48">
             <div className="flex flex-col items-start justify-center gap-4 md:gap-5 flex-1 md:px-9 mb-8 md:mb-0 z-10">
                 <div className="flex flex-col gap-3 md:gap-5">
                     <p className="font-bold text-2xl md:text-3xl">Enjoy the flexibility</p>
@@ -109,10 +109,10 @@ const CalendarSection: React.FC = () => {
                     <p className="text-base md:text-xl font-semibold leading-loose">Set a push Notification across all platform</p>
                 </div>
             </div>
-            <div className="flex-1 flex items-center justify-center relative">
+            <div className="flex-1 flex items-start justify-center relative">
                 <div className="flex flex-col bg-white rounded-xl border-[0.5px] border-primary p-4 md:w-[425px] md:h-[658px] md:border-[0.5px] md:border-primary-gray md:gap-[56px] md:px-[72px] md:py-[72px] md:rounded-[12px] w-full max-w-xs shadow-lg
-                    md:absolute md:right-0 md:mb-[-80px] md:z-20">
-                    <div className="w-full h-full flex flex-col justify-between text-xs md:text-base md:h-[400px]">
+                    md:absolute md:right-0 md:mb-[-80px] md:z-20 h-full justify-between">
+                    <div className="w-full h-full flex flex-col justify-between text-xs md:text-base">
                         <div>
                             <div className="flex items-center justify-between mb-2 md:mb-3">
                                 <div className="flex items-start justify-start font-semibold">
