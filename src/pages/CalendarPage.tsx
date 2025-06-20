@@ -74,20 +74,20 @@ const CalendarPage: React.FC = () => {
   const weekDays = ['Mo', 'Tu', 'We', 'Th', 'Fr', 'Sa', 'Su'];
 
   return (
-    <div className="min-h-screen bg-blue-50 flex items-center justify-center py-12">
+    <div className="min-h-screen bg-blue-50 flex items-center justify-center py-8 px-2 md:px-8">
       <div className="bg-white rounded-xl shadow-lg flex flex-col md:flex-row w-full max-w-4xl overflow-hidden">
-        <div className="flex-1 p-8 bg-blue-50">
-          <h2 className="text-xl font-bold mb-2 text-gray-800">Enjoy the flexibility</h2>
-          <p className="text-gray-600 mb-6 text-sm">of planning a wedding from the comfort of your home within a single App.</p>
-          <div className="space-y-4 text-sm">
+        <div className="flex-1 p-4 md:p-8 bg-blue-50 flex flex-col justify-center">
+          <h2 className="text-lg md:text-xl font-bold mb-2 text-gray-800">Enjoy the flexibility</h2>
+          <p className="text-gray-600 mb-4 md:mb-6 text-xs md:text-sm">of planning a wedding from the comfort of your home within a single App.</p>
+          <div className="space-y-3 md:space-y-4 text-xs md:text-sm">
             <div><hr className="mb-1" /><span className="font-semibold text-gray-800">Set your editable dates</span></div>
             <div><hr className="mb-1" /><span className="font-semibold text-gray-800">Track your events in real time</span></div>
             <div><hr className="mb-1" /><span className="font-semibold text-gray-800">Set a push Notification<br />across all platforms</span><hr className="mt-1" /></div>
           </div>
         </div>
-        <div className="flex-1 p-6 flex flex-col items-center">
-          <div className="w-full max-w-xs bg-white rounded-lg shadow border p-3 text-sm">
-            <div className="flex items-center justify-between mb-3">
+        <div className="flex-1 p-4 md:p-6 flex flex-col items-center">
+          <div className="w-full max-w-xs bg-white rounded-lg shadow border p-2 md:p-3 text-xs md:text-sm">
+            <div className="flex items-center justify-between mb-2 md:mb-3">
               <button onClick={handlePrevMonth} className="text-gray-500 hover:text-gray-700">&lt;</button>
               <span className="font-semibold">{monthNames[currentMonth]} {currentYear}</span>
               <button onClick={handleNextMonth} className="text-gray-500 hover:text-gray-700">&gt;</button>
@@ -95,7 +95,7 @@ const CalendarPage: React.FC = () => {
             <div className="grid grid-cols-7 gap-1 text-center text-gray-500 mb-1">
               {weekDays.map((d) => (<div key={d} className="font-medium">{d}</div>))}
             </div>
-            <div className="grid grid-cols-7 gap-1 mb-3">
+            <div className="grid grid-cols-7 gap-1 mb-2 md:mb-3">
               {Array(firstDayOfWeek === 0 ? 6 : firstDayOfWeek - 1).fill(null).map((_, i) => (<div key={i}></div>))}
               {Array.from({ length: daysInMonth }, (_, i) => i + 1).map((day) => {
                 const isSelected = selectedDate.getDate() === day && selectedDate.getMonth() === currentMonth && selectedDate.getFullYear() === currentYear;
@@ -103,7 +103,7 @@ const CalendarPage: React.FC = () => {
                   <button
                     key={day}
                     onClick={() => handleSelectDate(day)}
-                    className={`w-7 h-7 rounded-full flex items-center justify-center transition-colors text-xs ${isSelected ? 'bg-cyan-600 text-white' : 'hover:bg-cyan-100 text-gray-800'}`}
+                    className={`w-7 h-7 md:w-8 md:h-8 rounded-full flex items-center justify-center transition-colors text-xs md:text-sm ${isSelected ? 'bg-cyan-600 text-white' : 'hover:bg-cyan-100 text-gray-800'}`}
                   >
                     {day}
                   </button>
@@ -121,7 +121,7 @@ const CalendarPage: React.FC = () => {
                         onChange={e => handleEventChange(idx, 'time', e.target.value)}
                         onBlur={e => handleEventChange(idx, 'time', e.target.value)}
                         onKeyDown={handleEventInputKeyDown}
-                        className="w-12 px-1 py-0.5 text-xs text-gray-600 border-b border-gray-200 focus:outline-none focus:border-cyan-600 bg-transparent"
+                        className="w-12 md:w-14 px-1 py-0.5 text-xs md:text-sm text-gray-600 border-b border-gray-200 focus:outline-none focus:border-cyan-600 bg-transparent"
                         aria-label="Event time"
                         placeholder="Time"
                       />
@@ -131,7 +131,7 @@ const CalendarPage: React.FC = () => {
                         onChange={e => handleEventChange(idx, 'title', e.target.value)}
                         onBlur={e => handleEventChange(idx, 'title', e.target.value)}
                         onKeyDown={handleEventInputKeyDown}
-                        className="flex-1 px-1 py-0.5 text-gray-800 font-medium border-b border-gray-200 focus:outline-none focus:border-cyan-600 bg-transparent"
+                        className="flex-1 px-1 py-0.5 text-gray-800 font-medium border-b border-gray-200 focus:outline-none focus:border-cyan-600 bg-transparent text-xs md:text-sm"
                         aria-label="Event title"
                         placeholder="Event"
                       />
@@ -143,7 +143,7 @@ const CalendarPage: React.FC = () => {
               )}
               <button
                 onClick={handleAddEvent}
-                className="mt-1 w-full bg-cyan-50 hover:bg-cyan-100 text-cyan-700 border border-cyan-100 rounded py-1 text-xs font-medium transition-colors"
+                className="mt-1 w-full bg-cyan-50 hover:bg-cyan-100 text-cyan-700 border border-cyan-100 rounded py-1 text-xs md:text-sm font-medium transition-colors"
               >
                 + Add Event
               </button>
