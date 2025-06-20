@@ -11,7 +11,7 @@ const addSubscriber = async (req: Request, res: Response) => {
             const newSubscriber = await subscriberDB.create({email})
             res.status(201).json({ message: "Subscriber added successfully", newSubscriber })
         }
-    } catch (error) {
+    } catch (error: any) {
         res.status(500).json({
             message: error.message,
             stack: error.stack
@@ -19,7 +19,7 @@ const addSubscriber = async (req: Request, res: Response) => {
     }
 }
 
-const getSubscribers = async (req, res) => {
+const getSubscribers = async (req: Request, res: Response) => {
     try {
         const subscribers = await subscriberDB.find()
         if (subscribers && subscribers.length > 0) {
@@ -30,7 +30,7 @@ const getSubscribers = async (req, res) => {
         } else {
             return res.status(404).json({ message: "No subscribers found" });
         }
-    } catch (error) {
+    } catch (error: any) {
         res.status(500).json({
             message: error.message,
             stack: error.stack
@@ -38,4 +38,4 @@ const getSubscribers = async (req, res) => {
     }
 }
 
-export default { addSubscriber, getSubscribers }
+// export default { addSubscriber, getSubscribers }

@@ -1,29 +1,33 @@
 import express from 'express';
-// import cors from 'cors';
 import mongoose from 'mongoose';
-import addSubscriber from './controller/subscribe'
+// import cors from 'cors';
+
+import subscribeRoute from './route/subscribe.route';
 
 const app = express();
 const PORT = process.env.PORT || 3001;
 
-mongoose.connect('mongodb:mongoURI').then(() => {
-  console.log('Hurray! You are connected to MongoDB')
-}).catch((error) => {
-  console.log('Error connecting to MongoDB', error)
+mongoose.connect(process.env.mongoURI || ''  )
+  .then(() => {
+    console.log('✅ Connected to MongoDB');
+  })
+  .catch((error) => {
+    console.error('❌ MongoDB connection error:', error);
+  });
+
+// ✅  Middleware
+app.use(express.urlencoded({ extended: true }));
+app.use(express.json());
+// app.use(cors()); 
+
+// ✅  Health check route
+app.get('/', (_req, res) => {
+  res.send('Hello World!');
 });
 
-app.use(express.urlencoded({ extended: true }));
 
-
-// app.use(cors());
-app.use(express.json());
-
-app.get('/', (req, res) => {
-  res.send('Hello World!');
-})
-
-app.post('/subscribe')
+app.use('/', subscribeRoute);
 
 app.listen(PORT, () => {
-  console.log(`Server is running on port ${PORT}`);
+  console.log(`🚀 Server running on port ${PORT}`);
 });
