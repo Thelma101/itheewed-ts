@@ -111,38 +111,39 @@ const CalendarSection: React.FC = () => {
             </div>
             <div className="flex-1 flex items-center justify-center relative">
                 <div className="flex flex-col bg-white rounded-xl border-[0.5px] border-primary p-4 md:w-[425px] md:h-[658px] md:border-[0.5px] md:border-primary-gray md:gap-[56px] md:px-[72px] md:py-[72px] md:rounded-[12px] w-full max-w-xs shadow-lg
-                    md:absolute md:right-0 md:translate-y-1/4 md:bottom-[-80px] md:z-20
-                    ">
-                    <div className="w-full text-xs md:text-base md:h-[400px]">
-                        <div className="flex items-center justify-between mb-2 md:mb-3">
-                            <div className="flex items-start justify-start font-semibold">
-                                <span className="font-semibold">{monthNames[currentMonth]} {currentYear}</span>
+                    md:absolute md:right-0 md:mb-[-80px] md:z-20">
+                    <div className="w-full h-full flex flex-col justify-between text-xs md:text-base md:h-[400px]">
+                        <div>
+                            <div className="flex items-center justify-between mb-2 md:mb-3">
+                                <div className="flex items-start justify-start font-semibold">
+                                    <span className="font-semibold">{monthNames[currentMonth]} {currentYear}</span>
+                                </div>
+                                <div className="flex items-end justify-end mb-2 md:mb-3 gap-3 font-semibold">
+                                    <button onClick={handlePrevMonth} className="text-gray-500 hover:text-gray-700">&lt;</button>
+                                    <button onClick={handleNextMonth} className="text-gray-500 hover:text-gray-700">&gt;</button>
+                                </div>
                             </div>
-                            <div className="flex items-end justify-end mb-2 md:mb-3 gap-3 font-semibold">
-                                <button onClick={handlePrevMonth} className="text-gray-500 hover:text-gray-700">&lt;</button>
-                                <button onClick={handleNextMonth} className="text-gray-500 hover:text-gray-700">&gt;</button>
+                            <div className="grid grid-cols-7 gap-1 text-center text-gray-500 mb-1">
+                                {weekDays.map((d) => (<div key={d} className="font-medium">{d}</div>))}
+                            </div>
+                            <div className="grid grid-cols-7 gap-1 mb-2 md:mb-3">
+                                {Array(firstDay === 0 ? 6 : firstDay - 1).fill(null).map((_, i) => (<div key={i}></div>))}
+                                {Array.from({ length: days }, (_, i) => {
+                                    const dayNum = i + 1;
+                                    const isSelected = selectedDate.getDate() === dayNum && selectedDate.getMonth() === currentMonth && selectedDate.getFullYear() === currentYear;
+                                    return (
+                                        <button
+                                            key={dayNum}
+                                            onClick={() => handleSelectedDate(dayNum)}
+                                            className={`flex items-center justify-center w-full h-full text-center text-gray-500 hover:text-gray-700 rounded-full transition-colors text-xs md:text-base ${isSelected ? 'bg-primary text-white' : ''}`}
+                                        >
+                                            {dayNum}
+                                        </button>
+                                    );
+                                })}
                             </div>
                         </div>
-                        <div className="grid grid-cols-7 gap-1 text-center text-gray-500 mb-1">
-                            {weekDays.map((d) => (<div key={d} className="font-medium">{d}</div>))}
-                        </div>
-                        <div className="grid grid-cols-7 gap-1 mb-2 md:mb-3">
-                            {Array(firstDay === 0 ? 6 : firstDay - 1).fill(null).map((_, i) => (<div key={i}></div>))}
-                            {Array.from({ length: days }, (_, i) => {
-                                const dayNum = i + 1;
-                                const isSelected = selectedDate.getDate() === dayNum && selectedDate.getMonth() === currentMonth && selectedDate.getFullYear() === currentYear;
-                                return (
-                                    <button
-                                        key={dayNum}
-                                        onClick={() => handleSelectedDate(dayNum)}
-                                        className={`flex items-center justify-center w-full h-full text-center text-gray-500 hover:text-gray-700 rounded-full transition-colors text-xs md:text-base ${isSelected ? 'bg-primary text-white' : ''}`}
-                                    >
-                                        {dayNum}
-                                    </button>
-                                );
-                            })}
-                        </div>
-                        <div className="mt-4">
+                        <div className="mt-4 flex-1 flex flex-col justify-between">
                             {events.length > 0 ? (
                                 <ul>
                                     {events.map((event, idx) => (
