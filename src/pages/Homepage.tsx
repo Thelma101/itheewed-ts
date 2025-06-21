@@ -6,7 +6,7 @@ import Category from "@/components/Category";
 import VendorGallery from "@/components/VendorGallery";
 import FeaturesCard from "@/components/FeaturesCard";
 import WeddingWebsite from "@/components/WeddingWebsite";
-import Footer from "../components/Footer";
+import Footer from "@/components/Footer";
 import CalendarSection from "@/components/CalendarSection";
 import WeddingHashtags from "@/components/WeddingHashtags";
 import BannerMobileLayout3 from "@/components/BannerMobileLayout3";
