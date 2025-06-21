@@ -4,7 +4,7 @@ import { Link } from 'react-router-dom';
 import { motion, AnimatePresence } from 'framer-motion';
 import SubscribeForm from './SubscribeForm';
 
-// Sample QR code images - replace with your actual QR codes
+
 const iosQRCode = 'https://api.qrserver.com/v1/create-qr-code/?size=150x150&data=your-ios-app-link';
 
 // Simplified poll data structure
