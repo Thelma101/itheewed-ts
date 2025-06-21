@@ -80,7 +80,7 @@ const Banner = () => {
                     </div>
 
                     {/* Mobile Carousel */}
-                    <div className="md:hidden max-w-md mx-auto relative w-full">
+                    {/* <div className="md:hidden max-w-md mx-auto relative w-full -mt-7 ">
                         <div className="max-w-full overflow-hidden">
                             <img
                                 src={bannerImages[index]}
@@ -92,7 +92,7 @@ const Banner = () => {
                             <button onClick={prev} className="px-4 py-2 bg-[#00838F] text-white rounded">Prev</button>
                             <button onClick={next} className="px-4 py-2 bg-[#00838F] text-white rounded">Next</button>
                         </div>
-                    </div>
+                    </div> */}
                 </div>
             </section>
         </>

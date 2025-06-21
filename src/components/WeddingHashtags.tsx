@@ -11,10 +11,12 @@ interface SocialPost {
 }
 
 const WeddingHashtags = () => {
-  // const [email, setEmail] = useState('');
-  // const [isSubscribed, setIsSubscribed] = useState(false);
+  const [email, setEmail] = useState('');
+  const [isSubscribed, setIsSubscribed] = useState(false);
+  const [names, setNames] = useState('');
+  const [generatedHashtags, setGeneratedHashtags] = useState<string[]>([]);
 
-  // // Sample social media posts
+  // Sample social media posts
   // const socialPosts: SocialPost[] = [
   //   {
   //     id: 1,
@@ -49,6 +51,37 @@ const WeddingHashtags = () => {
   //     // Here you would typically make an API call to subscribe the user
   //   }
   // };
+
+  const generateHashtags = () => {
+    if (!names.trim()) return;
+    
+    const nameArray = names.trim().split(/\s+/);
+    const firstName = nameArray[0] || '';
+    const lastName = nameArray[nameArray.length - 1] || '';
+    
+    // Create truly creative and warm hashtags for 2025
+    const creativeHashtags = [
+      `#${firstName}${lastName}Forever`,
+      `#The${lastName}sSayIDo`,
+      `#${firstName}${lastName}WeddingDay`,
+      `#${firstName}${lastName}LoveStory`,
+      `#${firstName}${lastName}BigDay`
+    ];
+    
+    // If we have both first and last names, create more creative variations
+    if (firstName && lastName && firstName !== lastName) {
+      const shortFirstName = firstName.slice(0, 3);
+      const shortLastName = lastName.slice(0, 3);
+      
+      creativeHashtags[0] = `#${firstName}${lastName}Forever`;
+      creativeHashtags[1] = `#The${lastName}sSayIDo`;
+      creativeHashtags[2] = `#${firstName}${lastName}WeddingDay`;
+      creativeHashtags[3] = `#${firstName}${lastName}LoveStory`;
+      creativeHashtags[4] = `#${firstName}${lastName}BigDay`;
+    }
+    
+    setGeneratedHashtags(creativeHashtags);
+  };
 
   return (
 <footer className="bg-gradient-to-r from-rose-100 to-pink-100 py-12 px-6">
@@ -97,20 +130,36 @@ const WeddingHashtags = () => {
         <input 
           type="text" 
           placeholder="Your names" 
+          value={names}
+          onChange={(e) => setNames(e.target.value)}
           className="flex-1 px-4 py-2 text-primary-800/70 rounded-l-md focus:outline-none focus:ring-2 focus:ring-rose-100"
         />
-        <button className="bg-primary text-white px-4 py-2 rounded-r-md hover:bg-primary transition-colors font-thin">
+        <button 
+          onClick={generateHashtags}
+          disabled={!names.trim()}
+          className="bg-primary text-white px-4 py-2 rounded-r-md hover:bg-primary transition-colors font-thin disabled:opacity-50 disabled:cursor-not-allowed"
+        >
           Generate
         </button>
       </div>
       
       <div className="space-y-2">
-        <div className="p-3 bg-primary rounded-md text-white font-thin ">
-          #SmithAndJonesForever
-        </div>
-        <div className="p-3 bg-primary rounded-md text-white font-thin ">
-          #TheSmithsTieTheKnot
-        </div>
+        {generatedHashtags.length > 0 ? (
+          generatedHashtags.map((hashtag, index) => (
+            <div key={index} className="p-3 bg-primary rounded-md text-white font-thin">
+              {hashtag}
+            </div>
+          ))
+        ) : (
+          <>
+            <div className="p-3 bg-primary rounded-md text-white font-thin ">
+              #SmithAndJonesForever
+            </div>
+            <div className="p-3 bg-primary rounded-md text-white font-thin ">
+              #TheSmithsTieTheKnot
+            </div>
+          </>
+        )}
       </div>
     </div>
 

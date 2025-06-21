@@ -1,5 +1,8 @@
 import messagePic from '@/features/ChatwithVendor/assets/MessagesPic.png'
 import React from 'react';
+import HowItWorksWeb1 from './HowItWorksWeb1';
+
+
 
 const Category: React.FC = () => {
     return (
@@ -48,6 +51,8 @@ const Category: React.FC = () => {
                     </div>
                 </div>
             </section>
+            
+            <HowItWorksWeb1 />
 
             {/* chat with vendor - sign in */}
             <section className="container w-full mx-auto flex flex-col md:flex-row justify-center items-center gap-10 text-center px-4 sm:px-6 lg:px-8 py-6 md:py-1 font-primary">
@@ -76,61 +81,9 @@ const Category: React.FC = () => {
 
             </section >
 
+            
+
         </>
-
-        // <section className="container w-full mx-auto flex justify-center items-center text-center my-24 px-4 sm:px-6 lg:px-8 py-16 md:py-36 ">
-        //     <div className=" ">
-        //         <div className="w-full max-w-4xl flex flex-col justify-center items-center">
-        //             <h1 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-extrabold font-primary leading-tight">
-        //                 Everything Marriage, in one App!
-        //             </h1>
-        //         </div>
-
-        //         <div className="w-full max-w-4xl mx-auto flex md:mt-14 sm:flex-row justify-center items-center gap-6 md:gap-6 text-black">
-        //             <div className="flex flex-col justify-center items-center border border-primary px-8 py-3">
-        //                 <p className="text-wrap font-mono">
-        //                     Venues
-        //                 </p>
-        //             </div>
-        //             <div className="flex flex-col justify-center items-center border border-primary px-8 py-3">
-        //                 <p className="text-wrap font-mono">
-        //                     Florists
-        //                 </p>
-        //             </div>
-        //             <div className="flex flex-col justify-center items-center border border-primary px-8 py-3">
-        //                 <p className=" font-mono">
-        //                     Cakes & Desserts
-        //                 </p>
-        //             </div>
-        //             <div className="flex flex-col justify-center items-center border border-primary px-8 py-3">
-        //                 <p className="text-wrap font-mono">
-        //                     Photography
-        //                 </p>
-        //             </div>
-        //             <div className="flex flex-col justify-center items-center border border-primary px-8 py-3">
-        //                 <p className="text-wrap font-mono">
-        //                     Dresses & Apparels
-        //                 </p>
-        //             </div>
-        //             <div className="flex flex-col justify-center items-center border border-primary px-8 py-3">
-        //                 <p className="text-wrap font-mono">
-        //                     Catering
-        //                 </p>
-        //             </div>
-        //             <div className="flex flex-col justify-center items-center border border-primary px-8 py-3">
-        //                 <p className="text-wrap font-mono">
-        //                     Venue
-        //                 </p>
-        //             </div>
-        //             <div className="flex flex-col justify-center items-center border border-primary px-8 py-3">
-        //                 <p className="text-wrap font-mono">
-        //                     Jewelry
-        //                 </p>
-        //             </div>
-
-        //         </div>
-        //     </div>
-        // </section>
     );
 };
 

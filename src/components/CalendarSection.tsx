@@ -112,7 +112,8 @@ const CalendarSection: React.FC = () => {
                 </div>
             </div>
             <div className="flex items-start justify-center relative w-full md:w-[500px] mx-auto">
-                <div className="flex flex-col bg-white rounded-xl border-[0.5px] border-primary md:h-auto md:min-h-[608px] md:max-h-[800px] md:border-[0.5px] md:border-primary-gray md:gap-5 p-8 md:px-10 md:py-[72px] md:rounded-5 w-full md:w-[400px] shadow-lg
+                <div className="flex flex-col bg-white rounded-xl border-[0.5px] border-primary md:h-auto md:min-h-[608px] md:max-h-[800px] md:border-[0.5px] 
+                md:border-primary-gray md:gap-5 p-8 md:px-10 md:py-[72px] md:rounded-5 w-full md:w-[400px] shadow-lg
                     md:absolute md:right-0 md:mb-[-80px] md:z-20 h-full justify-between">
                     <div className="w-full h-full flex flex-col justify-between text-xs md:text-base">
                         <div>

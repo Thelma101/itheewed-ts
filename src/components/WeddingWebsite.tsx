@@ -58,7 +58,7 @@ const WeddingWebsite: React.FC = () => {
 
     return (
         <section className="container w-full mx-auto flex justify-center items-center text-center md:mt-4 py-2 md:py-20">
-            <div className="flex-col w-full md:px-4 mx-auto justify-center align-middle text-center items-center" >
+            <div className="flex-col w-full px-4 mx-auto justify-center align-middle text-center items-center" >
                 <div className="font-primary w-full max-w-4xl flex flex-col justify-center items-center mx-auto py-7 md:py-14 px-11 md:px-32">
                     {/* <h1 className="font-bold text-4xl text-center leading-normal md:text-5xl lg:text-6xl xl:text-7xl "> */}
                     <h1 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold leading-tight text-center text-primary-dark">
