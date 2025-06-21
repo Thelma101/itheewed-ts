@@ -47,7 +47,7 @@ const BannerMobileLayout3 = () => {
     };
 
     return (
-        <section className="md:hidden relative w-full min-h-screen max-w-full mx-auto overflow-hidden">
+        <section className="md:hidden relative w-full max-w-full mx-auto overflow-hidden">
             {/* Animated Background */}
             <div className="absolute inset-0 bg-gradient-to-br from-cyan-50 via-cyan-50 to-cyan-0">
                 <motion.div 
@@ -68,24 +68,14 @@ const BannerMobileLayout3 = () => {
             </div>
 
             {/* Header Section */}
-            <div className="relative z-10 pt-8 px-4 text-center">
-                <motion.div
-                    initial={{ opacity: 0, y: -30 }}
-                    animate={{ opacity: 1, y: 0 }}
-                    transition={{ duration: 0.8, type: "spring" }}
-                    className="mb-6"
-                >
-                    <h1 className="text-3xl font-serif text-gray-800 leading-tight mb-3">
-                        Wedding planning at your fingertips
-                    </h1>
-                    <p className="text-base text-gray-600 max-w-sm mx-auto">
-                        Discover vendors. Book effortlessly. Cherish forever.
-                    </p>
-                </motion.div>
+            <div className="relative z-10 pt-14 px-4 text-center">
+                <h2 className=' text-xl font-bold font-primary3'>
+                    Ready to Start Planning?
+                </h2>
             </div>
 
             {/* Horizontal Scroll Gallery with How It Works Cards */}
-            <div className="relative z-10 px-2 mt-4 mb-6">
+            <div className="relative z-10 px-2 mt-10 mb-6">
                 <div 
                     ref={scrollRef}
                     onScroll={handleScroll}
@@ -197,67 +187,9 @@ const BannerMobileLayout3 = () => {
                 </div>
             </div>
 
-            {/* Scroll Progress Bar */}
-            <div className="relative z-10 px-4 mb-8">
-                <div className="w-full bg-white/30 rounded-full h-1 overflow-hidden">
-                    <motion.div
-                        style={{ scaleX }}
-                        className="h-full bg-gradient-to-r from-rose-500 to-pink-500 rounded-full origin-left"
-                    />
-                </div>
-            </div>
-
-            {/* Form Section */}
-            <div className="relative z-10 px-4 pb-8">
-                <motion.div 
-                    initial={{ opacity: 0, y: 30 }}
-                    animate={{ opacity: 1, y: 0 }}
-                    transition={{ duration: 0.8, delay: 0.5 }}
-                    className="bg-white/95 backdrop-blur-md rounded-2xl p-6 shadow-xl border border-white/20"
-                >
-                    <div className="text-center mb-6">
-                        <h3 className="text-xl font-semibold text-gray-800 mb-2">
-                            Ready to Start Planning?
-                        </h3>
-                        <p className="text-gray-600 text-sm">
-                            Join our community of happy couples
-                        </p>
-                    </div>
-                    
-                    <form className="space-y-4">
-                        <div className="relative">
-                            <input
-                                type="text"
-                                placeholder="Phone number or email"
-                                className="w-full h-12 px-4 border border-gray-200 rounded-lg focus:outline-none focus:ring-2 focus:ring-rose-300 focus:border-transparent bg-white/80 backdrop-blur-sm"
-                            />
-                        </div>
-                        <div className="relative">
-                            <input
-                                type="password"
-                                placeholder="Password"
-                                className="w-full h-12 px-4 border border-gray-200 rounded-lg focus:outline-none focus:ring-2 focus:ring-rose-300 focus:border-transparent bg-white/80 backdrop-blur-sm"
-                            />
-                        </div>
-                        <motion.button 
-                            whileHover={{ scale: 1.02 }}
-                            whileTap={{ scale: 0.98 }}
-                            className="w-full h-12 bg-gradient-to-r from-rose-500 to-pink-500 text-white font-semibold rounded-lg hover:from-rose-600 hover:to-pink-600 transition-all duration-300 shadow-lg"
-                        >
-                            Begin Your Journey
-                        </motion.button>
-                        <p className="text-center text-gray-600 text-sm">
-                            Already have an account?{' '}
-                            <span className="text-rose-500 font-semibold cursor-pointer hover:underline">
-                                Sign in
-                            </span>
-                        </p>
-                    </form>
-                </motion.div>
-            </div>
 
             {/* Floating Action Button */}
-            <motion.div
+            {/* <motion.div
                 initial={{ opacity: 0, scale: 0 }}
                 animate={{ opacity: 1, scale: 1 }}
                 transition={{ duration: 0.8, delay: 0.6 }}
@@ -272,7 +204,7 @@ const BannerMobileLayout3 = () => {
                         <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 6v6m0 0v6m0-6h6m-6 0H6" />
                     </svg>
                 </motion.button>
-            </motion.div>
+            </motion.div> */}
         </section>
     );
 };
