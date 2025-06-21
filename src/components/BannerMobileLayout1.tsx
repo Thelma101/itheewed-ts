@@ -90,8 +90,8 @@ const BannerMobileLayout1 = () => {
                             drag="x"
                             dragConstraints={{ left: 0, right: 0 }}
                             dragElastic={1}
-                            onDragEnd={(e, { offset, velocity }) => {
-                                const swipe = swipePower(offset.x, velocity.x);
+                            onDragEnd={(_, info) => {
+                                const swipe = swipePower(info.offset.x, info.velocity.x);
                                 if (swipe < -swipeConfidenceThreshold) {
                                     paginate(1);
                                 } else if (swipe > swipeConfidenceThreshold) {

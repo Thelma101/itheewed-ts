@@ -1,11 +1,4 @@
-import messagePic from '@/features/ChatwithVendor/assets/MessagesPic.png'
 import React from 'react';
-import HowItWorksWeb1 from './HowItWorksWeb1';
-import HowItWorksWeb2 from './HowItWorksWeb2';
-import HowItWorksWeb3 from './HowItWorksWeb3';
-import FAQSection from './FAQSection';
-
-
 
 const Category: React.FC = () => {
     return (
@@ -41,7 +34,7 @@ const Category: React.FC = () => {
                             { name: 'Interior Decor', icon: <i className="fa-solid fa-tree text-2xl"></i> },
 
                         ].map((category, index) => (
-                            <div key={index} className="flex flex-col justify-center items-center border-[0.5px] border-primary px-3 py-3 md:px-8 md:py:3">
+                            <div key={index} className="flex flex-col justify-center items-center border-[0.5px] border-primary px-3 py-3 md:px-8 md:py-3">
                                 {category.icon}
                                 <p className="text-wrap font-primary font-medium">
                                     {category.name}
@@ -58,7 +51,9 @@ const Category: React.FC = () => {
             <section className="container w-full mx-auto flex flex-col md:flex-row justify-center items-center gap-10 text-center px-4 sm:px-6 lg:px-8 py-6 md:py-1 font-primary">
                 {/* Image section */}
                 <div className="w-full md:w-1/2 flex flex-col justify-center items-center bg-primary px-4 pt-4 pb-8">
-                    <img src={messagePic} alt="Chat with Vendor" className="w-full max-w-sm md:max-w-full" />
+                    <div className="w-full max-w-sm md:max-w-full h-64 bg-gray-200 flex items-center justify-center">
+                        <span className="text-gray-500">Chat with Vendor Image</span>
+                    </div>
                 </div>
 
                 {/* Text section */}
@@ -71,7 +66,7 @@ const Category: React.FC = () => {
                     <p className="font-medium leading-tight mt-1">It takes just a few clicks with the I Thee Wed App.</p> */}
 
                     <p className="font-normal leading-8 mt-4">
-                        It’s fast, it's easy — start a conversation with trusted vendors, all in one place.
+                        It's fast, it's easy — start a conversation with trusted vendors, all in one place.
                     </p>
 
                     <div className='flex flex-col pt-10'>
@@ -88,7 +83,6 @@ const Category: React.FC = () => {
 };
 
 export default Category;
-
 
 
 
@@ -204,3 +198,4 @@ export default Category;
 
 
 // export default Category;
+

@@ -1,57 +1,12 @@
 import React, { useState } from 'react';
-import { motion } from 'framer-motion';
 
-interface SocialPost {
-  id: number;
-  platform: 'instagram' | 'twitter' | 'pinterest';
-  content: string;
-  image?: string;
-  likes: number;
-  date: string;
-}
 
-const WeddingHashtags = () => {
-  const [email, setEmail] = useState('');
-  const [isSubscribed, setIsSubscribed] = useState(false);
+const WeddingHashtags: React.FC = () => {
+
   const [names, setNames] = useState('');
   const [generatedHashtags, setGeneratedHashtags] = useState<string[]>([]);
 
-  // Sample social media posts
-  // const socialPosts: SocialPost[] = [
-  //   {
-  //     id: 1,
-  //     platform: 'instagram',
-  //     content: 'Just picked up our wedding rings! 💍✨',
-  //     image: 'https://images.unsplash.com/photo-1606216794074-735e5aa47686?w=500',
-  //     likes: 234,
-  //     date: '2h ago'
-  //   },
-  //   {
-  //     id: 2,
-  //     platform: 'twitter',
-  //     content: 'Finalizing the guest list today! Who else is excited? 🎉',
-  //     likes: 89,
-  //     date: '4h ago'
-  //   },
-  //   {
-  //     id: 3,
-  //     platform: 'pinterest',
-  //     content: 'Found the perfect centerpiece inspiration!',
-  //     image: 'https://images.unsplash.com/photo-1519741497674-611481863552?w=500',
-  //     likes: 156,
-  //     date: '1d ago'
-  //   }
-  // ];
-
-  // const handleSubscribe = (e: React.FormEvent) => {
-  //   e.preventDefault();
-  //   if (email) {
-  //     setIsSubscribed(true);
-  //     setEmail('');
-  //     // Here you would typically make an API call to subscribe the user
-  //   }
-  // };
-
+  
   const generateHashtags = () => {
     if (!names.trim()) return;
     
@@ -70,8 +25,8 @@ const WeddingHashtags = () => {
     
     // If we have both first and last names, create more creative variations
     if (firstName && lastName && firstName !== lastName) {
-      const shortFirstName = firstName.slice(0, 3);
-      const shortLastName = lastName.slice(0, 3);
+      // const shortFirstName = firstName.slice(0, 3);
+      // const shortLastName = lastName.slice(0, 3);
       
       creativeHashtags[0] = `#${firstName}${lastName}Forever`;
       creativeHashtags[1] = `#The${lastName}sSayIDo`;
@@ -85,10 +40,6 @@ const WeddingHashtags = () => {
 
   return (
 <footer className="bg-gradient-to-r from-rose-100 to-pink-100 py-12 px-6">
-  {/* <div className="max-w-6xl mx-auto grid grid-cols-2 md:grid-cols-4 gap-8"> */}
-    
-
-
 
 <div className="bg-[#fff9f9] py-16 px-6 border-t border-rose-100">
   <div className="max-w-6xl mx-auto">
@@ -167,17 +118,8 @@ const WeddingHashtags = () => {
       Share your special moments with a personalized hashtag!
     </p>
   </div>
-
-
   </div>
 </div>
-
-
-{/* <div className="bg-gradient-to-br from-indigo-50 to-purple-50 py-16 px-6"> */}
-
-{/* </div> */}
-
-
 </footer>
 
   );

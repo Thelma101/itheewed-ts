@@ -2,10 +2,10 @@ import React, { useState, useEffect } from 'react';
 import logo from '@/features/Footer/assets/logo.svg';
 import { Link } from 'react-router-dom';
 import { motion, AnimatePresence } from 'framer-motion';
+import SubscribeForm from './SubscribeForm';
 
 // Sample QR code images - replace with your actual QR codes
 const iosQRCode = 'https://api.qrserver.com/v1/create-qr-code/?size=150x150&data=your-ios-app-link';
-const androidQRCode = 'https://api.qrserver.com/v1/create-qr-code/?size=150x150&data=your-android-app-link';
 
 // Simplified poll data structure
 const polls = {
@@ -90,37 +90,15 @@ const weddingFacts = [
 ];
 
 
+
 const Footer: React.FC = () => {
   // State management
-  const [email, setEmail] = useState('');
-  const [isSubscribed, setIsSubscribed] = useState(false);
-  const [isValidEmail, setIsValidEmail] = useState(false);
+
   const [currentPoll, setCurrentPoll] = useState(polls.initial);
   const [userVotes, setUserVotes] = useState<Record<string, number>>({});
   const [showResults, setShowResults] = useState(false);
   const [currentFactIndex, setCurrentFactIndex] = useState(0);
 
-  // Email validation
-  const validateEmail = (email: string): boolean => {
-    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-    return emailRegex.test(email);
-  };
-
-  // Handle email input
-  const handleEmailChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    const newEmail = e.target.value;
-    setEmail(newEmail);
-    setIsValidEmail(validateEmail(newEmail));
-  };
-
-  // Handle subscription
-  const handleSubscribe = (e: React.FormEvent) => {
-    e.preventDefault();
-    if (!isValidEmail) return;
-    setIsSubscribed(true);
-    setEmail('');
-    setTimeout(() => setIsSubscribed(false), 3000);
-  };
 
   // Handle poll voting
   const handleVote = (optionId: number) => {
@@ -314,42 +292,10 @@ const Footer: React.FC = () => {
           </div>
 
           {/* Newsletter */}
-          <div className="w-full">
-            <h2 className="text-lg font-bold mb-4 text-center md:text-left">Stay Updated</h2>
-            <form onSubmit={handleSubscribe} className="space-y-4 text-primary-gray">
-              <input
-                type="email"
-                value={email}
-                onChange={handleEmailChange}
-                placeholder="Enter your email"
-                className={`w-full px-4 py-3 border focus:border-1 focus:border-transparent text-sm md:text-base ${email && !isValidEmail ? 'border-red-500' : ''
-                  }`}
-                required
-              />
-              {email && !isValidEmail && (
-                <p className="text-red-500 text-xs md:text-sm mt-1">Please enter a valid email address</p>
-              )}
-              <button
-                type="submit"
-                disabled={!isValidEmail}
-                className={`w-full py-3 transition-colors text-sm md:text-base ${isValidEmail ? 'bg-[var(--color-primary-red)] text-white hover:bg-opacity-90' : 'bg-gray-400 text-gray-200 cursor-not-allowed'
-                  }`}
-              >
-                Subscribe
-              </button>
-              {isSubscribed && (
-                <motion.p
-                  initial={{ opacity: 0 }}
-                  animate={{ opacity: 1 }}
-                  exit={{ opacity: 0 }}
-                  className="text-green-600 text-xs md:text-sm text-center md:text-left"
-                >
-                  Thanks for subscribing! 🎉
-                </motion.p>
-              )}
-            </form>
-          </div>
+
+           <SubscribeForm />
         </div>
+
       </div>
       <div className='flex flex-col text-center justify-center item-center md:pb-10 '>
         <p className='text-white  text-xs font-thin'>
