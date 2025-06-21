@@ -1,6 +1,7 @@
 import messagePic from '@/features/ChatwithVendor/assets/MessagesPic.png'
 import React from 'react';
 import HowItWorksWeb1 from './HowItWorksWeb1';
+import HowItWorksWeb2 from './HowItWorksWeb2';
 
 
 
@@ -53,6 +54,7 @@ const Category: React.FC = () => {
             </section>
             
             <HowItWorksWeb1 />
+            <HowItWorksWeb2 />
 
             {/* chat with vendor - sign in */}
             <section className="container w-full mx-auto flex flex-col md:flex-row justify-center items-center gap-10 text-center px-4 sm:px-6 lg:px-8 py-6 md:py-1 font-primary">

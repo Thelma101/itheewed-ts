@@ -16,6 +16,7 @@ import BannerMobileLayout1 from "@/components/BannerMobileLayout1";
 import BannerMobileLayout2 from "@/components/BannerMobileLayout2";
 import BannerMobileLayout3 from "@/components/BannerMobileLayout3";
 
+
 const Homepage: React.FC = () => {
     return (
         <>
@@ -24,7 +25,9 @@ const Homepage: React.FC = () => {
                 <Banner />
                 
                 <BannerMobileLayout3 />
+                
                 <Category />
+                
                 <VendorGallery />
                 <FeaturesCard />
                 <WeddingWebsite />
