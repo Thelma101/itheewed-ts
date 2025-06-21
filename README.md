@@ -66,14 +66,10 @@ itheewed-ts/
 
    Create `.env` in the Backend directory:
    ```env
-   MONGODB_URI=your_mongodb_connection_string
-   PORT=3001
-   NODE_ENV=development
    ```
 
    Create `.env` in the root directory:
    ```env
-   VITE_API_URL=http://localhost:3001
    ```
 
 5. **Start development servers:**
@@ -88,10 +84,6 @@ itheewed-ts/
    ```bash
    npm run dev
    ```
-
-6. **Open your browser:**
-   - Frontend: http://localhost:5173
-   - Backend API: http://localhost:3001
 
 ## 🛠️ Development
 
@@ -127,86 +119,3 @@ itheewed-ts/
 - CORS
 - dotenv
 
-## 📱 Components
-
-### UI Components
-- **Carousels**: Image carousels with text overlays
-- **Calendar**: Interactive calendar with time slot management
-- **FAQ**: Accordion-style frequently asked questions
-- **Footer**: Modern footer with multiple layout options
-- **Mobile Banners**: Responsive mobile banner layouts
-- **Subscription Forms**: Email subscription with validation
-
-### Features
-- **Responsive Design**: Mobile-first approach
-- **Dark/Light Mode**: Theme switching capability
-- **Animations**: Smooth transitions and micro-interactions
-- **Form Validation**: Client and server-side validation
-- **Local Storage**: Persistent data storage
-- **API Integration**: RESTful API communication
-
-## 🚀 Deployment
-
-See [DEPLOYMENT.md](./DEPLOYMENT.md) for detailed deployment instructions.
-
-### Quick Deploy Options
-
-**Frontend:**
-- Vercel (Recommended)
-- Netlify
-- GitHub Pages
-
-**Backend:**
-- Railway (Recommended)
-- Render
-- Heroku
-
-## 🔧 Configuration
-
-### Environment Variables
-
-**Backend (.env):**
-```env
-MONGODB_URI=mongodb://your-connection-string
-PORT=3001
-NODE_ENV=production
-FRONTEND_URL=https://your-frontend-domain.com
-```
-
-**Frontend (.env):**
-```env
-VITE_API_URL=https://your-backend-domain.com
-```
-
-### Build Configuration
-
-The project uses Vite for frontend bundling and TypeScript for both frontend and backend type safety.
-
-## 🤝 Contributing
-
-1. Fork the repository
-2. Create a feature branch
-3. Make your changes
-4. Add tests if applicable
-5. Submit a pull request
-
-## 📄 License
-
-This project is licensed under the MIT License.
-
-## 🆘 Support
-
-For support and questions:
-- Check the [DEPLOYMENT.md](./DEPLOYMENT.md) for deployment issues
-- Review the troubleshooting section in the deployment guide
-- Open an issue on GitHub
-
-## 🎯 Roadmap
-
-- [ ] Add authentication system
-- [ ] Implement real-time chat
-- [ ] Add photo gallery management
-- [ ] Create admin dashboard
-- [ ] Add RSVP functionality
-- [ ] Implement email notifications
-- [ ] Add analytics tracking
