@@ -1,6 +1,6 @@
 import express from 'express';
 import mongoose from 'mongoose';
-import cors from '@types/cors';
+// import cors from '@types/cors';
 import dotenv from 'dotenv';
 dotenv.config();
 
@@ -20,7 +20,7 @@ mongoose.connect(process.env.mongoURI || '')
 // Middleware
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
-app.use(cors());
+// app.use(cors());
 
 
 app.get('/', (_req, res) => {
