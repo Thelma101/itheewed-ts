@@ -11,7 +11,7 @@ const BannerMobileLayout3 = () => {
     const [currentIndex, setCurrentIndex] = useState(0);
     const [isScrolling, setIsScrolling] = useState(false);
     const scrollRef = useRef<HTMLDivElement>(null);
-    const { scrollYProgress } = useScroll();
+    // const { scrollYProgress } = useScroll();
     
     // const scaleX = useSpring(scrollYProgress, {
     //     stiffness: 100,
