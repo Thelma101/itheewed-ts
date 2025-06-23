@@ -1,5 +1,5 @@
 import { useState, useEffect, useRef } from 'react';
-import { motion, useScroll, useSpring } from 'framer-motion';
+import { motion } from 'framer-motion';
 import bannerImg1 from "@/features/Banner/assets/banner-img-1.png";
 import bannerImg2 from "@/features/Banner/assets/banner-img-2.png";
 import bannerImg3 from "@/features/Banner/assets/banner-img-3.png";
