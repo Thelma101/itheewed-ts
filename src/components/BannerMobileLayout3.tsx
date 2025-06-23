@@ -71,7 +71,7 @@ const BannerMobileLayout3 = () => {
             <div className="relative z-10 pt-14 px-4 text-center">
                 <p>Plan Your Dream Wedding, Effortlessly.</p>
                 <h3 className=' text-xl font-bold font-primary3'>
-                    Ready to Start Planning?
+                      Get Started — It’s Free!
                 </h3>
             </div>
 

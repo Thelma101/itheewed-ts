@@ -35,6 +35,7 @@ const Banner: React.FC = () => {
             <section className="flex flex-col md:flex-row w-full max-w-full absolute z-10 top-60 md:top-80 text-white px-4 sm:px-6 lg:px-8 py-6 sm:py-10 left-1/2 transform -translate-x-1/2">
                 {/* Form Section */}
                 <div className="w-full flex flex-col md:flex-row px-4 md:px-12 py-12 relative overflow-hidden">
+
                     {/* Left Form */}
                     <div className="w-full flex flex-col items-center justify-start text-xl z-10">
                         <form className="flex flex-col gap-4 sm:gap-6 w-full max-w-lg py-11 md:pr-14">

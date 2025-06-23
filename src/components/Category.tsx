@@ -66,9 +66,8 @@ const Category: React.FC = () => {
                     <p className="font-medium leading-tight mt-1">It takes just a few clicks with the I Thee Wed App.</p> */}
 
                     <p className="font-normal leading-8 mt-4">
-                        It’s fast, it's easy — start a conversation with trusted vendors, all in one place.
+                        It’s fast, it's easy, it’s free — start a conversation with trusted vendors, all in one place.
                     </p>
-
                     <div className='flex flex-col pt-10'>
                         <button type="button" className=" px-12 md:px-24 py-2  text-primary font-bold border border-primary">Sign In</button>
                     </div>
