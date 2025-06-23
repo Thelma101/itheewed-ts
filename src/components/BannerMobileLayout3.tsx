@@ -108,7 +108,7 @@ const BannerMobileLayout3 = () => {
                         },
                         {
                             image: bannerImg4,
-                            step: 5,
+                            step: 4,
                             title: "Celebrate Together",
                             description: "Share your special moments with family and friends",
                             icon: "💒"
