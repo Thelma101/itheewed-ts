@@ -13,11 +13,11 @@ const BannerMobileLayout3 = () => {
     const scrollRef = useRef<HTMLDivElement>(null);
     const { scrollYProgress } = useScroll();
     
-    const scaleX = useSpring(scrollYProgress, {
-        stiffness: 100,
-        damping: 30,
-        restDelta: 0.001
-    });
+    // const scaleX = useSpring(scrollYProgress, {
+    //     stiffness: 100,
+    //     damping: 30,
+    //     restDelta: 0.001
+    // });
 
     useEffect(() => {
         const timer = setInterval(() => {
@@ -69,9 +69,10 @@ const BannerMobileLayout3 = () => {
 
             {/* Header Section */}
             <div className="relative z-10 pt-14 px-4 text-center">
-                <h2 className=' text-xl font-bold font-primary3'>
+                <p>Plan Your Dream Wedding, Effortlessly.</p>
+                <h3 className=' text-xl font-bold font-primary3'>
                     Ready to Start Planning?
-                </h2>
+                </h3>
             </div>
 
             {/* Horizontal Scroll Gallery with How It Works Cards */}
@@ -101,12 +102,13 @@ const BannerMobileLayout3 = () => {
                             image: bannerImg3,
                             step: 3,
                             title: "Book & Plan",
-                            description: "Secure your dream vendors and plan your perfect day",
+                            // description: "Secure your dream vendors and plan your perfect day"
+                            description: "Add guests, track invitations, handle meal choices et cetera",
                             icon: "📅"
                         },
                         {
                             image: bannerImg4,
-                            step: 4,
+                            step: 5,
                             title: "Celebrate Together",
                             description: "Share your special moments with family and friends",
                             icon: "💒"

@@ -83,7 +83,7 @@ const WeddingHashtags: React.FC = () => {
           placeholder="Your names" 
           value={names}
           onChange={(e) => setNames(e.target.value)}
-          className="flex-1 px-4 py-2 text-primary-800/70 rounded-l-md focus:outline-none focus:ring-2 focus:ring-rose-100"
+          className="flex-1 w-3 md:px-4 py-2 text-primary-800/70 rounded-l-md focus:outline-none focus:ring-2 focus:ring-rose-100"
         />
         <button 
           onClick={generateHashtags}
@@ -104,7 +104,7 @@ const WeddingHashtags: React.FC = () => {
         ) : (
           <>
             <div className="p-3 bg-primary rounded-md text-white font-thin ">
-              #SmithAndJonesForever
+              #JaneAndJonesForever
             </div>
             <div className="p-3 bg-primary rounded-md text-white font-thin ">
               #TheSmithsTieTheKnot
