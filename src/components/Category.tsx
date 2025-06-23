@@ -4,7 +4,7 @@ import React from 'react';
 const Category: React.FC = () => {
     return (
         <>
-            <section className="container w-full mx-auto flex justify-center items-center text-center mt-[350px] md:mt-56 px-4 md:py-20">
+            <section className="container w-full mx-auto flex justify-center items-center text-center mt-10 md:mt-56 px-4 md:py-20">
                 <div className="w-full flex flex-col justify-center items-center mx-auto">
                     <div className="flex ax-w-4xl ">
                         <h1 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-black leading-tight">
