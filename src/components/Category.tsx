@@ -1,4 +1,4 @@
-import messagePic from '@/features/ChatwithVendor/assets/MessagesPic.png'
+import messageChat from '@/features/ChatwithVendor/assets/MessageChat.svg';
 import React from 'react';
 
 const Category: React.FC = () => {
@@ -53,7 +53,7 @@ const Category: React.FC = () => {
             <section className="container w-full mx-auto flex flex-col md:flex-row justify-center items-center gap-10 text-center px-4 sm:px-6 lg:px-8 py-6 md:py-1 font-open-sans">
                 {/* Image section */}
                 <div className="w-full md:w-1/2 flex flex-col justify-center items-center bg-primary px-4 pt-4 pb-8">
-                    <img src={messagePic} alt="Chat with Vendor" className="w-full max-w-sm md:max-w-full" />
+                    <img src={messageChat} alt="Chat with Vendor" className="w-full max-w-sm md:max-w-full" />
                 </div>
 
                 {/* Text section */}
