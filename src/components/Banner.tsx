@@ -23,12 +23,12 @@ const Banner: React.FC = () => {
                 ></div>
                 <div className="absolute inset-0 bg-[#0E292B] opacity-80"></div>
                 <div className="relative z-10 w-full flex flex-col items-center justify-center text-center mt-12 px-10 pt-6">
-                    <h1 className="text-2xl sm:text-3xl font-primary3 leading-tight text-white">
+                    <p className="text-2xl sm:text-3xl font-primary3 leading-tight text-white">
                         Wedding planning at your fingertips.
-                    </h1>
-                    <h3 className="text-lg sm:text-xl font-normal mb-6 max-w-[90%] mx-auto text-white">
+                    </p>
+                    <p className="text-lg sm:text-xl font-normal mb-6 max-w-[90%] mx-auto text-white">
                         Discover vendors. Book effortlessly. Cherish forever.
-                    </h3>
+                    </p>
                     <form className="flex flex-col gap-4 w-full max-w-lg mx-auto">
                         <input
                             type="text"
@@ -43,7 +43,7 @@ const Banner: React.FC = () => {
                         <button className="w-full h-10 bg-primary text-white font-bold">
                             Sign Up
                         </button>
-                        <p className="text-gray-700 text-sm text-center">
+                        <p className="text-white text-sm text-center">
                             Already have an account?{' '}
                             <span className="text-primary cursor-pointer hover:underline font-bold">Sign in</span>
                         </p>
@@ -55,15 +55,15 @@ const Banner: React.FC = () => {
             <section className="hidden md:block relative w-full h-[713px] max-w-full mx-auto mt-[2px] px-4 sm:px-6 lg:px-8">
                 <div className="banner-bg"></div>
                 <div className="absolute inset-0 bg-[#0E292B] opacity-80"></div>
-                <div className="relative z-10 flex items-start justify-center pt-20 h-full text-white text-center px-2 pb-40">
-                    <h1 className="text-2xl sm:text-3xl md:text-2xl lg:text-7xl leading-tight font-primary3 max-w-[90vw]">
+                <div className="relative z-10 flex items-start justify-center pt-20 h-full text-white text-center px-2 lg:pb-40">
+                    <p className="text-2xl xs:text:3xl sm:text-3xl md:text-5xl lg:text-7xl font-primary3 max-w-[90vw]">
                         Wedding planning at your fingertips.
-                    </h1>
+                    </p>
                 </div>
                 <div className="absolute bottom-0 inset-x-0 flex items-start justify-center pt-48 w-full h-full text-white text-center">
-                    <h3 className="sm:text-xl md:text-2xl lg:text-4xl font-normal leading-[1.3] md:leading-[50px] max-w-[90%] md:max-w-[80%]">
+                    <p className="sm:text-xl md:text-2xl lg:text-4xl font-normal leading-[1.3] md:leading-[50px] max-w-[90%] md:max-w-[80%]">
                         Discover vendors. Book effortlessly. Cherish forever.
-                    </h3>
+                    </p>
                 </div>
             </section>
 
