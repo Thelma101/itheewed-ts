@@ -51,7 +51,6 @@ const Navbar: React.FC = () => {
       </nav>
 
 
-
       {/* Mobile menu */}
       {showMenu && (
         <div className="md:hidden px-4 pb-4 flex flex-col gap-4 text-[#00838F] text-sm font-medium color-text-primary">

@@ -45,19 +45,19 @@ const navItems = [
 ];
 
 export function Test() {
-  const [index, setIndex] = useState(0);
-
-  useEffect(() => {
-    const interval = setInterval(() => {
-      setIndex((prev) => (prev + 1) % images.length);
+        const [index, setIndex] = useState(0);
+      
+        useEffect(() => {
+          const interval = setInterval(() => {
+            setIndex((prev) => (prev + 1) % images.length);
     }, 7000);
-    return () => clearInterval(interval);
-  }, []);
-
-  const prevIndex = (index - 1 + images.length) % images.length;
-  const nextIndex = (index + 1) % images.length;
-
-  return (
+          return () => clearInterval(interval);
+        }, []);
+      
+        const prevIndex = (index - 1 + images.length) % images.length;
+        const nextIndex = (index + 1) % images.length;
+      
+        return (
     <div className="relative w-full min-h-[403px] bg-white">
       {/* Section Header */}
       <h2 className="text-3xl font-bold text-center mb-8 text-[var(--color-primary-red)]">
@@ -70,8 +70,8 @@ export function Test() {
         <motion.div
           key={`left-${prevIndex}`}
           className="absolute w-[500px] h-[400px] rounded-xl z-10 overflow-hidden"
-          initial={{ scale: 0.9, x: "-120%", opacity: 0.4 }}
-          animate={{ scale: 0.9, x: "-70%", opacity: 1 }}
+              initial={{ scale: 0.9, x: "-120%", opacity: 0.4 }}
+              animate={{ scale: 0.9, x: "-70%", opacity: 1 }}
           transition={{ duration: 1 }}
           style={{
             boxShadow: '0px 1px 1px rgba(0, 0, 0, 0.1)'
@@ -101,15 +101,15 @@ export function Test() {
             <p className="text-sm mt-1">June 15, 2024</p>
           </div>
         </motion.div>
-
-        {/* Center Image */}
-        <AnimatePresence initial={false}>
+      
+            {/* Center Image */}
+            <AnimatePresence initial={false}>
           <motion.div
             key={`center-${index}`}
             className="absolute w-[550px] h-[450px] rounded-xl z-20 overflow-hidden"
-            initial={{ scale: 0.8, opacity: 0, x: 300 }}
-            animate={{ scale: 1, opacity: 1, x: 0 }}
-            exit={{ scale: 0.8, opacity: 0, x: -300 }}
+                initial={{ scale: 0.8, opacity: 0, x: 300 }}
+                animate={{ scale: 1, opacity: 1, x: 0 }}
+                exit={{ scale: 0.8, opacity: 0, x: -300 }}
             transition={{ duration: 1 }}
             style={{
               boxShadow: '0px 1px 1px rgba(0, 0, 0, 0.1)'
@@ -140,14 +140,14 @@ export function Test() {
               <p className="text-xs mt-1 opacity-80">The Grand Ballroom</p>
             </div>
           </motion.div>
-        </AnimatePresence>
-
+            </AnimatePresence>
+      
         {/* Right Image */}
         <motion.div
           key={`right-${nextIndex}`}
           className="absolute w-[500px] h-[400px] rounded-xl z-10 overflow-hidden"
-          initial={{ scale: 0.9, x: "120%", opacity: 0.4 }}
-          animate={{ scale: 0.9, x: "70%", opacity: 1 }}
+              initial={{ scale: 0.9, x: "120%", opacity: 0.4 }}
+              animate={{ scale: 0.9, x: "70%", opacity: 1 }}
           transition={{ duration: 1 }}
           style={{
             boxShadow: '0px 1px 1px rgba(0, 0, 0, 0.1)'
@@ -199,8 +199,8 @@ export function Test() {
           Check More
         </button>
       </div>
-    </div>
-  );
-}
+          </div>
+        );
+      }
 
 export default Test;

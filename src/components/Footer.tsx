@@ -274,8 +274,8 @@ const Footer: React.FC = () => {
                 >
                   📌
                 </a>
-              </div>
-            </div>
+        </div>
+      </div>
         </div>
 
         {/* Col 4: QR Code & Newsletter */}

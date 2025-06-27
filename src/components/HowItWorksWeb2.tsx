@@ -95,3 +95,4 @@ const HowItWorksWeb2: React.FC = () => {
 };
 
 export default HowItWorksWeb2;
+ 

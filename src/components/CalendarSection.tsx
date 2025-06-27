@@ -97,17 +97,17 @@ const CalendarSection: React.FC = () => {
                 <div className="flex flex-col gap-3 md:gap-5">
                     <p className="font-bold text-2xl md:text-3xl">Enjoy the flexibility</p>
                     <p className="text-sm md:text-base">of planning a wedding from the comfort of your home within a single App.</p>
-                </div>
-                <div className="flex w-full border-[0.5px] border-primary-gray"></div>
-                <div>
+                    </div>
+                    <div className="flex w-full border-[0.5px] border-primary-gray"></div>
+                    <div>
                     <p className="text-base md:text-xl font-semibold leading-loose">Set your editable dates</p>
-                </div>
-                <div className="flex w-full border-[0.5px] border-primary-gray"></div>
-                <div>
+                    </div>
+                    <div className="flex w-full border-[0.5px] border-primary-gray"></div>
+                    <div>
                     <p className="text-base md:text-xl font-semibold leading-loose">Track your events in real time</p>
-                </div>
-                <div className="flex w-full border-[0.5px] border-primary-gray"></div>
-                <div>
+                    </div>
+                    <div className="flex w-full border-[0.5px] border-primary-gray"></div>
+                    <div>
                     <p className="text-base md:text-xl font-semibold leading-loose">Set a push Notification across all platform</p>
                 </div>
             </div>
@@ -193,4 +193,4 @@ const CalendarSection: React.FC = () => {
     );
 };
 
-export default CalendarSection; 
+export default CalendarSection;

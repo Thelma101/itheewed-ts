@@ -103,12 +103,12 @@ const WeddingHashtags: React.FC = () => {
           ))
         ) : (
           <>
-            <div className="p-3 bg-primary rounded-md text-white font-thin ">
+        <div className="p-3 bg-primary rounded-md text-white font-thin ">
               #JaneAndJonesForever
-            </div>
-            <div className="p-3 bg-primary rounded-md text-white font-thin ">
-              #TheSmithsTieTheKnot
-            </div>
+        </div>
+        <div className="p-3 bg-primary rounded-md text-white font-thin ">
+          #TheSmithsTieTheKnot
+        </div>
           </>
         )}
       </div>
