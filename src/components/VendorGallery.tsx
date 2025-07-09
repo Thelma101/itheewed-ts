@@ -116,10 +116,12 @@ const VendorGallery: React.FC = () => {
                                     </div>
 
                                 </div>
+
                             ))
                         }
 
                     </div>
+                    <button type="button" className="px-14 py-4 justify-center items-center  text-white font-bold leading-7 border border-primary bg-primary">Check More</button>
                 </div>
             </div>
 

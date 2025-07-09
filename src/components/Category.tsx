@@ -8,7 +8,6 @@ const Category: React.FC = () => {
                 <div className="w-full flex flex-col justify-center items-center mx-auto">
                     <div className="flex ax-w-4xl ">
                         <h1 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-black leading-tight">
-                            {/* Everything Marriage, in one App! */}
                             All your vendors, ideas, and inspiration — in one <span className='text-red-600'>magical place ❤</span>
                         </h1>
 

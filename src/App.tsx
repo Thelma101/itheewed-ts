@@ -2,6 +2,7 @@ import React from 'react';
 import { Routes, Route } from 'react-router-dom';
 import Layout from './layouts/NavLayout'
 import Homepage from './pages/Homepage';
+import FAQSection from './components/FAQSection';
 import './index.css';
 
 const App: React.FC = () => {
@@ -9,6 +10,7 @@ const App: React.FC = () => {
     <Routes>
       <Route path='/' element={<Layout />} />
       <Route index element={<Homepage />} />
+      <Route faq element={<FAQSection />} />
     </Routes>
   )
 }

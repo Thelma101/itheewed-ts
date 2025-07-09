@@ -29,23 +29,39 @@ const Banner: React.FC = () => {
                     <p className="text-lg sm:text-xl font-normal mb-6 max-w-[90%] mx-auto text-white">
                         Discover vendors. Book effortlessly. Cherish forever.
                     </p>
-                    <form className="flex flex-col gap-4 w-full max-w-lg mx-auto">
+                    <form className="flex flex-col gap-4 w-full max-w-lg mx-auto" aria-label="Sign in form">
+                        <label htmlFor="signin-identifier" className="sr-only">Phone number or email</label>
                         <input
+                            id="signin-identifier"
+                            name="identifier"
                             type="text"
+                            autoComplete="username"
                             placeholder="Phone number or email"
-                            className="w-full h-10 border border-[#E0E0E0] px-4 text-black"
+                            className="w-full h-12 border border-[#E0E0E0] px-4 text-black rounded focus:outline-none focus:ring-2 focus:ring-primary"
+                            required
+                            aria-label="Phone number or email"
                         />
+                        <label htmlFor="signin-password" className="sr-only">Password</label>
                         <input
+                            id="signin-password"
+                            name="password"
                             type="password"
+                            autoComplete="current-password"
                             placeholder="Password"
-                            className="w-full h-10 border border-[#E0E0E0] px-4 text-black"
+                            className="w-full h-12 border border-[#E0E0E0] px-4 text-black rounded focus:outline-none focus:ring-2 focus:ring-primary"
+                            required
+                            aria-label="Password"
                         />
-                        <button className="w-full h-10 bg-primary text-white font-bold">
-                            Sign Up
+                        <button
+                            type="submit"
+                            className="w-full h-12 bg-[#FF4081] text-white font-bold rounded shadow transition-transform duration-150 ease-in-out transform hover:scale-105 hover:bg-[#e73370] focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-[#FF4081] mt-2 mb-2"
+                            aria-label="Sign in"
+                        >
+                            Sign In
                         </button>
-                        <p className="text-white text-sm text-center">
-                            Already have an account?{' '}
-                            <span className="text-primary cursor-pointer hover:underline font-bold">Sign in</span>
+                        <p className="text-white text-sm text-center mt-2">
+                            Don&apos;t have an account?{' '}
+                            <a href="#" className="text-[#FF4081] cursor-pointer hover:underline font-bold focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-[#FF4081]">Register</a>
                         </p>
                     </form>
                 </div>
@@ -72,23 +88,39 @@ const Banner: React.FC = () => {
                 <div className="w-full flex flex-col md:flex-row px-4 md:px-12 py-12 relative overflow-hidden">
                     {/* Left Form */}
                     <div className="w-full flex flex-col items-center justify-start text-xl z-10">
-                        <form className="flex flex-col gap-4 sm:gap-6 w-full max-w-lg py-11 md:pr-14">
+                        <form className="flex flex-col gap-4 sm:gap-6 w-full max-w-lg py-11 md:pr-14" aria-label="Sign in form">
+                            <label htmlFor="signin-identifier-desktop" className="sr-only">Phone number or email</label>
                             <input
+                                id="signin-identifier-desktop"
+                                name="identifier"
                                 type="text"
+                                autoComplete="username"
                                 placeholder="Phone number or email"
-                                className="w-full h-10 md:h-[50px] border border-[#E0E0E0] px-4 text-black"
+                                className="w-full h-12 md:h-[50px] border border-[#E0E0E0] px-4 text-black rounded focus:outline-none focus:ring-2 focus:ring-primary"
+                                required
+                                aria-label="Phone number or email"
                             />
+                            <label htmlFor="signin-password-desktop" className="sr-only">Password</label>
                             <input
+                                id="signin-password-desktop"
+                                name="password"
                                 type="password"
+                                autoComplete="current-password"
                                 placeholder="Password"
-                                className="w-full h-10 md:h-[50px] border border-[#E0E0E0] px-4 text-black"
+                                className="w-full h-12 md:h-[50px] border border-[#E0E0E0] px-4 text-black rounded focus:outline-none focus:ring-2 focus:ring-primary"
+                                required
+                                aria-label="Password"
                             />
-                            <button className="w-full h-10 md:h-[50px] bg-primary text-white font-bold">
-                                Sign Up
+                            <button
+                                type="submit"
+                                className="w-full h-12 md:h-[50px] bg-[#FF4081] text-white font-bold rounded shadow transition-transform duration-150 ease-in-out transform hover:scale-105 hover:bg-[#e73370] focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-[#FF4081] mt-2 mb-2"
+                                aria-label="Sign in"
+                            >
+                                Sign In
                             </button>
-                            <p className="text-white text-sm md:text-lg text-center md:text-left">
-                                Already have an account?{' '}
-                                <span className="text-primary cursor-pointer hover:underline font-bold">Sign in</span>
+                            <p className="text-white text-sm md:text-lg text-center md:text-left mt-2">
+                                Don&apos;t have an account?{' '}
+                                <a href="#" className="text-[#FF4081] cursor-pointer hover:underline font-bold focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-[#FF4081]">Register</a>
                             </p>
                         </form>
                     </div>
