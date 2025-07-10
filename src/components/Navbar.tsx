@@ -24,7 +24,8 @@ const Navbar: React.FC = () => {
             {/* <div className="hidden gap-6 text-[#00838F] text-sm font-medium"> */}
             <Link to="/vendors" className="hover:underline">Hire a Vendor</Link>
             <a href="#" className="hover:underline">Plan Wedding</a>
-            <a href="#" className="hover:underline">Messages</a>
+            {/* <a href="#" className="hover:underline">Messages</a> */}
+            <Link to="/faq">FAQ</Link>
             <a href="#" className="hover:transform hover:scale-05 hover:underline">Notifications</a>
           </div>
           {/* </div> */}
@@ -57,7 +58,7 @@ const Navbar: React.FC = () => {
             <Link to="/vendors">Hire a Vendor</Link>
             <a href="#">Plan Wedding</a>
             <a href="#">Notifications</a>
-            <a href="#">FAQ</a>
+            <Link to="/faq">FAQ</Link>
             <Link to="/" className="text-[#00838F]">Sign in</Link>
             <Link to="/" className="text-[#00838F]">Sign up</Link>
           </div>

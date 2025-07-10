@@ -2,7 +2,8 @@ import React from 'react';
 import { Routes, Route } from 'react-router-dom';
 import Layout from './layouts/NavLayout'
 import Homepage from './pages/Homepage';
-import FAQSection from './components/FAQSection';
+// import FAQSection from './components/FAQSection';
+import FaqPage from './pages/FaqPage';
 import './index.css';
 
 const App: React.FC = () => {
@@ -10,7 +11,9 @@ const App: React.FC = () => {
     <Routes>
       <Route path='/' element={<Layout />} />
       <Route index element={<Homepage />} />
-      <Route faq element={<FAQSection />} />
+
+      <Route path="faq" element={<FaqPage />} />
+      <Route path="*" element={<div>404 Not Found</div>} />
     </Routes>
   )
 }

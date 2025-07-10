@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import bannerImg1 from "@/features/Banner/assets/banner-img-1.png";
 import bannerImg2 from "@/features/Banner/assets/banner-img-2.png";
 import bannerImg3 from "@/features/Banner/assets/banner-img-3.png";
@@ -8,10 +8,21 @@ import bannerBg from '@/features/Banner/assets/banner.png';
 // const bannerImages = [bannerImg1, bannerImg2, bannerImg3, bannerImg4];
 
 const Banner: React.FC = () => {
-    // const [index, setIndex] = useState(0);
+    const [role, setRole] = useState<'couple' | 'vendor'>('couple');
+
 
     // const next = () => setIndex((index) => (index + 1) % bannerImages.length);
     // const prev = () => setIndex((index) => (index - 1) % bannerImages.length);
+
+    const handleSignin = (e) => {
+        e.preventDefault();
+        // if ( vendorSignin ) {
+        //     const response = async axios { 'https://localhost:3000/api/v1/vendors/signin'}
+        // }
+
+
+
+    }
 
     return (
         <>
@@ -29,40 +40,63 @@ const Banner: React.FC = () => {
                     <p className="text-lg sm:text-xl font-normal mb-6 max-w-[90%] mx-auto text-white">
                         Discover vendors. Book effortlessly. Cherish forever.
                     </p>
-                    <form className="flex flex-col gap-4 w-full max-w-lg mx-auto" aria-label="Sign in form">
-                        <label htmlFor="signin-identifier" className="sr-only">Phone number or email</label>
-                        <input
-                            id="signin-identifier"
-                            name="identifier"
-                            type="text"
-                            autoComplete="username"
-                            placeholder="Phone number or email"
-                            className="w-full h-12 border border-[#E0E0E0] px-4 text-black rounded focus:outline-none focus:ring-2 focus:ring-primary"
-                            required
-                            aria-label="Phone number or email"
-                        />
-                        <label htmlFor="signin-password" className="sr-only">Password</label>
-                        <input
-                            id="signin-password"
-                            name="password"
-                            type="password"
-                            autoComplete="current-password"
-                            placeholder="Password"
-                            className="w-full h-12 border border-[#E0E0E0] px-4 text-black rounded focus:outline-none focus:ring-2 focus:ring-primary"
-                            required
-                            aria-label="Password"
-                        />
-                        <button
-                            type="submit"
-                            className="w-full h-12 bg-[#FF4081] text-white font-bold rounded shadow transition-transform duration-150 ease-in-out transform hover:scale-105 hover:bg-[#e73370] focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-[#FF4081] mt-2 mb-2"
-                            aria-label="Sign in"
-                        >
-                            Sign In
-                        </button>
-                        <p className="text-white text-sm text-center mt-2">
-                            Don&apos;t have an account?{' '}
-                            <a href="#" className="text-[#FF4081] cursor-pointer hover:underline font-bold focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-[#FF4081]">Register</a>
-                        </p>
+                    <form
+                        onSubmit={handleSignin}
+                        className="flex flex-col gap-4 w-full max-w-lg mx-auto" aria-label="Sign in form">
+                        <fieldset className="flex flex-row justify-center gap-6 mb-2" aria-label="Select user type">
+                            <legend className="sr-only">User Type</legend>
+                            <label className="flex items-center gap-1 text-white font-medium">
+                                <input
+                                    type="radio"
+                                    name="userType"
+                                    value="couple"
+                                    checked={role === 'couple'}
+                                    onChange={() => setRole('couple')}
+                                    className="accent-primary"
+                                />
+                                Couple
+                            </label>
+                            <label className="flex items-center gap-1 text-white font-medium">
+                                <input
+                                    type="radio"
+                                    name="userType"
+                                    value="vendor"
+                                    checked={role === 'vendor'}
+                                    onChange={() => setRole('vendor')}
+                                    className="accent-primary"
+                                />
+                                Vendor
+                            </label>
+                            <label htmlFor="signin-identifier" className="sr-only">Phone number or email</label>
+                            <input
+                                id="signin-identifier"
+                                name="identifier"
+                                type="text"
+                                autoComplete="username"
+                                placeholder="Phone number or email"
+                                className="w-full h-12 border border-[#E0E0E0] px-4 text-black rounded focus:outline-none focus:ring-2 focus:ring-primary"
+                                required
+                                aria-label="Phone number or email"
+                            />
+                            <label htmlFor="signin-password" className="sr-only">Password</label>
+                            <input
+                                id="signin-password"
+                                name="password"
+                                type="password"
+                                autoComplete="current-password"
+                                placeholder="Password"
+                                className="w-full h-12 border border-[#E0E0E0] px-4 text-black rounded focus:outline-none focus:ring-2 focus:ring-primary"
+                                required
+                                aria-label="Password"
+                            />
+                            <button className="w-full h-10 bg-primary text-white font-bold">
+                                Log In
+                            </button>
+                            <p className="text-white text-sm text-center">
+                                Do not have an account?{' '}
+                                <span className="text-primary cursor-pointer hover:underline font-bold">Register</span>
+                            </p>
+                        </fieldset>
                     </form>
                 </div>
             </section>
@@ -113,14 +147,14 @@ const Banner: React.FC = () => {
                             />
                             <button
                                 type="submit"
-                                className="w-full h-12 md:h-[50px] bg-[#FF4081] text-white font-bold rounded shadow transition-transform duration-150 ease-in-out transform hover:scale-105 hover:bg-[#e73370] focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-[#FF4081] mt-2 mb-2"
+                                className="w-full h-12 md:h-[50px] bg-primary text-white font-bold rounded shadow transition-transform duration-150 ease-in-out transform hover:scale-105 hover:bg-primary focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-[#FF4081] mt-2 mb-2"
                                 aria-label="Sign in"
                             >
                                 Sign In
                             </button>
                             <p className="text-white text-sm md:text-lg text-center md:text-left mt-2">
                                 Don&apos;t have an account?{' '}
-                                <a href="#" className="text-[#FF4081] cursor-pointer hover:underline font-bold focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-[#FF4081]">Register</a>
+                                <a href="#" className="text-primary cursor-pointer hover:underline font-bold focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-primary">Register</a>
                             </p>
                         </form>
                     </div>
