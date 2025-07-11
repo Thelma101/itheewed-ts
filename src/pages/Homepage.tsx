@@ -10,7 +10,6 @@ import Footer from "@/components/Footer";
 import CalendarSection from "@/components/CalendarSection";
 import WeddingHashtags from "@/components/WeddingHashtags";
 import BannerMobileLayout3 from "@/components/BannerMobileLayout3";
-import FAQSection from "@/components/FAQSection";
 
 const Homepage: React.FC = () => {
     return (
@@ -24,7 +23,6 @@ const Homepage: React.FC = () => {
                 <FeaturesCard />
                 <WeddingWebsite />
                 <CalendarSection />
-                <FAQSection />
                 <WeddingHashtags />
                 <Footer />
             </div>

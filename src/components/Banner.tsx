@@ -118,7 +118,7 @@ const Banner: React.FC = () => {
                 <div className="w-full flex flex-col md:flex-row px-4 md:px-12 py-12 relative overflow-hidden">
                     {/* Left Form */}
                     <div className="w-full flex flex-col items-center justify-start text-xl z-10">
-                        <form className="flex flex-col gap-4 sm:gap-6 w-full max-w-lg py-11 md:pr-14 bg-white/10 rounded-lg p-8 shadow-md" aria-label="Sign in form">
+                        <form className="flex flex-col gap-4 sm:gap-6 w-full max-w-lg py-11 md:pr-14 p-8 shadow-md" aria-label="Sign in form">
                             <label htmlFor="signin-identifier-desktop" className="sr-only">Phone number or email</label>
                             <input
                                 id="signin-identifier-desktop"
