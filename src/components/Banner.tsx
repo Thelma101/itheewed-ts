@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React from 'react';
 import bannerImg1 from "@/features/Banner/assets/banner-img-1.png";
 import bannerImg2 from "@/features/Banner/assets/banner-img-2.png";
 import bannerImg3 from "@/features/Banner/assets/banner-img-3.png";
@@ -8,20 +8,41 @@ import bannerBg from '@/features/Banner/assets/banner.png';
 // const bannerImages = [bannerImg1, bannerImg2, bannerImg3, bannerImg4];
 
 const Banner: React.FC = () => {
-    const [role, setRole] = useState<'couple' | 'vendor'>('couple');
-
+    // const [index, setIndex] = useState(0);
 
     // const next = () => setIndex((index) => (index + 1) % bannerImages.length);
     // const prev = () => setIndex((index) => (index - 1) % bannerImages.length);
 
-    const handleSignin = (e) => {
+    const handleSignin = async (e: React.FormEvent<HTMLFormElement>) => {
         e.preventDefault();
-        // if ( vendorSignin ) {
-        //     const response = async axios { 'https://localhost:3000/api/v1/vendors/signin'}
-        // }
-
-
-
+        
+        const formData = new FormData(e.currentTarget);
+        const identifier = formData.get('identifier') as string;
+        const password = formData.get('password') as string;
+        
+        try {
+            const response = await fetch('http://localhost:3000/api/v1/auth/signin', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify({
+                    identifier,
+                    password,
+                }),
+            });
+            
+            const data = await response.json();
+            
+            if (response.ok) {
+                // Backend will redirect based on user role
+                console.log('Sign-in successful:', data);
+            } else {
+                console.error('Sign-in failed:', data.message);
+            }
+        } catch (error) {
+            console.error('Sign-in error:', error);
+        }
     }
 
     return (
@@ -43,60 +64,35 @@ const Banner: React.FC = () => {
                     <form
                         onSubmit={handleSignin}
                         className="flex flex-col gap-4 w-full max-w-lg mx-auto" aria-label="Sign in form">
-                        <fieldset className="flex flex-row justify-center gap-6 mb-2" aria-label="Select user type">
-                            <legend className="sr-only">User Type</legend>
-                            <label className="flex items-center gap-1 text-white font-medium">
-                                <input
-                                    type="radio"
-                                    name="userType"
-                                    value="couple"
-                                    checked={role === 'couple'}
-                                    onChange={() => setRole('couple')}
-                                    className="accent-primary"
-                                />
-                                Couple
-                            </label>
-                            <label className="flex items-center gap-1 text-white font-medium">
-                                <input
-                                    type="radio"
-                                    name="userType"
-                                    value="vendor"
-                                    checked={role === 'vendor'}
-                                    onChange={() => setRole('vendor')}
-                                    className="accent-primary"
-                                />
-                                Vendor
-                            </label>
-                            <label htmlFor="signin-identifier" className="sr-only">Phone number or email</label>
-                            <input
-                                id="signin-identifier"
-                                name="identifier"
-                                type="text"
-                                autoComplete="username"
-                                placeholder="Phone number or email"
-                                className="w-full h-12 border border-[#E0E0E0] px-4 text-black rounded focus:outline-none focus:ring-2 focus:ring-primary"
-                                required
-                                aria-label="Phone number or email"
-                            />
-                            <label htmlFor="signin-password" className="sr-only">Password</label>
-                            <input
-                                id="signin-password"
-                                name="password"
-                                type="password"
-                                autoComplete="current-password"
-                                placeholder="Password"
-                                className="w-full h-12 border border-[#E0E0E0] px-4 text-black rounded focus:outline-none focus:ring-2 focus:ring-primary"
-                                required
-                                aria-label="Password"
-                            />
-                            <button className="w-full h-10 bg-primary text-white font-bold">
-                                Log In
-                            </button>
-                            <p className="text-white text-sm text-center">
-                                Do not have an account?{' '}
-                                <span className="text-primary cursor-pointer hover:underline font-bold">Register</span>
-                            </p>
-                        </fieldset>
+                        <label htmlFor="signin-identifier" className="sr-only">Phone number or email</label>
+                        <input
+                            id="signin-identifier"
+                            name="identifier"
+                            type="text"
+                            autoComplete="username"
+                            placeholder="Phone number or email"
+                            className="w-full h-12 border border-[#E0E0E0] px-4 text-black rounded focus:outline-none focus:ring-2 focus:ring-primary"
+                            required
+                            aria-label="Phone number or email"
+                        />
+                        <label htmlFor="signin-password" className="sr-only">Password</label>
+                        <input
+                            id="signin-password"
+                            name="password"
+                            type="password"
+                            autoComplete="current-password"
+                            placeholder="Password"
+                            className="w-full h-12 border border-[#E0E0E0] px-4 text-black rounded focus:outline-none focus:ring-2 focus:ring-primary"
+                            required
+                            aria-label="Password"
+                        />
+                        <button className="w-full h-10 bg-primary text-white font-bold rounded mt-2">
+                            Log In
+                        </button>
+                        <p className="text-white text-sm text-center mt-2">
+                            Do not have an account?{' '}
+                            <span className="text-primary cursor-pointer hover:underline font-bold">Register</span>
+                        </p>
                     </form>
                 </div>
             </section>
@@ -122,7 +118,7 @@ const Banner: React.FC = () => {
                 <div className="w-full flex flex-col md:flex-row px-4 md:px-12 py-12 relative overflow-hidden">
                     {/* Left Form */}
                     <div className="w-full flex flex-col items-center justify-start text-xl z-10">
-                        <form className="flex flex-col gap-4 sm:gap-6 w-full max-w-lg py-11 md:pr-14" aria-label="Sign in form">
+                        <form className="flex flex-col gap-4 sm:gap-6 w-full max-w-lg py-11 md:pr-14 bg-white/10 rounded-lg p-8 shadow-md" aria-label="Sign in form">
                             <label htmlFor="signin-identifier-desktop" className="sr-only">Phone number or email</label>
                             <input
                                 id="signin-identifier-desktop"
