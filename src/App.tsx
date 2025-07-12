@@ -5,6 +5,7 @@ import Homepage from './pages/Homepage';
 // import FAQSection from './components/FAQSection';
 import FaqPage from './pages/FaqPage';
 import ToastTestPage from './pages/ToastTestPage';
+import ComingSoonPage from './pages/ComingSoonPage';
 import './index.css';
 
 const App: React.FC = () => {
@@ -15,6 +16,7 @@ const App: React.FC = () => {
 
       <Route path="faq" element={<FaqPage />} />
       <Route path="toast-test" element={<ToastTestPage />} />
+      <Route path="coming-soon" element={<ComingSoonPage />} />
       <Route path="*" element={<div>404 Not Found</div>} />
     </Routes>
   )

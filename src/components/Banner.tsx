@@ -4,12 +4,15 @@ import bannerImg2 from "@/features/Banner/assets/banner-img-2.png";
 import bannerImg3 from "@/features/Banner/assets/banner-img-3.png";
 import bannerImg4 from '@/features/Banner/assets/banner-img-4.png';
 import bannerBg from '@/features/Banner/assets/banner.png';
+import { Link, useNavigate } from 'react-router-dom';
+// import { registerPath } from '@/features/Routes/routes'; 
 import axios from "axios";
 import { showToast } from './SimpleToast';
 
 // const bannerImages = [bannerImg1, bannerImg2, bannerImg3, bannerImg4];
 
 const Banner: React.FC = () => {
+    const navigate = useNavigate();
     const [loading, setLoading] = useState(false);
     const [inputMethod, setInputMethod] = useState<'email' | 'phone'>('email');
     const [contact, setContact] = useState('');
@@ -18,7 +21,7 @@ const Banner: React.FC = () => {
     const [password, setPassword] = useState('');
     const [passwordError, setPasswordError] = useState('');
 
-    const isEmail = (value: string) => /^[^@\s]+@[^@\s]+\.[^@\s]+$/.test(value);
+    const isEmail = (value: string) => /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/.test(value);
     const isPhone = (value: string) => /^[0-9]{10,15}$/.test(value);
 
     // Update handleInputMethod to set email or phone based on input
@@ -88,7 +91,11 @@ const Banner: React.FC = () => {
             
             console.log('Sign-in successful:', response.data);
             showToast('Welcome back!', 'success');
-            // Handle successful login (store token, redirect to dashboard, etc.)
+            
+            // Redirect to coming soon page after successful login
+            setTimeout(() => {
+                navigate('/coming-soon');
+            }, 1500);
             
         } catch (error: any) {
             if (error.response && error.response.data && error.response.data.message) {
@@ -259,6 +266,9 @@ const Banner: React.FC = () => {
                             
                             <p className="text-white text-sm md:text-base text-center md:text-left ml-2 mt-2">
                                 Don&apos;t have an account?{' '}
+                                {/* <Link to={registerPath} className="text-primary cursor-pointer hover:underline font-bold focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-primary">
+                                    Register
+                                </Link> */}
                                 <a href="#" className="text-primary cursor-pointer hover:underline font-bold focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-primary">Register</a>
                             </p>
                         </form>
