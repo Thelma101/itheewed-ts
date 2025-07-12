@@ -43,7 +43,7 @@ const scenarios = [
   },
 ];
 
-const WeddingSimulatorPage: React.FC = () => {
+const WeddingDaySimulator: React.FC = () => {
   const [step, setStep] = useState(0);
   const [choices, setChoices] = useState<number[]>([]);
   const [showSummary, setShowSummary] = useState(false);
@@ -114,4 +114,4 @@ const WeddingSimulatorPage: React.FC = () => {
   );
 };
 
-export default WeddingSimulatorPage; 
+export default WeddingDaySimulator; 

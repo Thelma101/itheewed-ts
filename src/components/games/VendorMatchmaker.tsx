@@ -3,15 +3,15 @@ import React, { useState } from 'react';
 const vendors = [
   { name: 'Elegant Events by Aisha', type: 'Wedding Planner', style: 'Luxury & Traditional', location: 'Lagos' },
   { name: 'DJ Groove Master Tunde', type: 'Music & Entertainment', style: 'Afrobeats & International', location: 'Abuja' },
-  { name: 'Floral Magic by Chioma', type: 'Florist', style: 'Tropical & Romantic', location: 'Port Harcourt' },
+  { name: 'Floral Magic by Emma', type: 'Florist', style: 'Tropical & Romantic', location: 'Port Harcourt' },
   { name: 'SnapShots by Femi', type: 'Photography', style: 'Candid & Documentary', location: 'Lagos' },
   { name: 'Catering Delights by Mama Joy', type: 'Catering', style: 'Nigerian & International', location: 'Ibadan' },
-  { name: 'Transport Luxury by Emeka', type: 'Transportation', style: 'Premium & Classic', location: 'Enugu' },
+  { name: 'Transport Luxury by David', type: 'Transportation', style: 'Premium & Classic', location: 'Enugu' },
   { name: 'Beauty Glow by Kemi', type: 'Makeup & Hair', style: 'Natural & Glamorous', location: 'Calabar' },
-  { name: 'Decor Dreams by Folake', type: 'Decorations', style: 'Modern & Cultural', location: 'Kano' },
+  { name: 'Decor Dreams by Charlotte', type: 'Decorations', style: 'Modern & Cultural', location: 'Kano' },
 ];
 
-const VendorMatchmakerPage: React.FC = () => {
+const VendorMatchmaker: React.FC = () => {
   const [index, setIndex] = useState(0);
   const [matches, setMatches] = useState<any[]>([]);
   const [showSummary, setShowSummary] = useState(false);
@@ -93,4 +93,4 @@ const VendorMatchmakerPage: React.FC = () => {
   );
 };
 
-export default VendorMatchmakerPage; 
+export default VendorMatchmaker; 

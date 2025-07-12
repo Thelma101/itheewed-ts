@@ -9,12 +9,12 @@ const categories = [
   { id: 'flowers', label: 'Flowers & Decor' },
   { id: 'photography', label: 'Photography & Video' },
   { id: 'transport', label: 'Transportation' },
-  { id: 'traditional', label: 'Traditional Ceremony' },
+  { id: 'afterparty', label: 'After Party' },
   { id: 'misc', label: 'Miscellaneous' },
 ];
 const TOTAL_BUDGET = 5000000; // 5 million Naira
 
-const BudgetBattlePage: React.FC = () => {
+const BudgetBattleRoyale: React.FC = () => {
   const [allocations, setAllocations] = useState<{ [key: string]: number }>(Object.fromEntries(categories.map(c => [c.id, 0])));
   const total = Object.values(allocations).reduce((a, b) => a + b, 0);
 
@@ -90,4 +90,4 @@ const BudgetBattlePage: React.FC = () => {
   );
 };
 
-export default BudgetBattlePage; 
+export default BudgetBattleRoyale; 

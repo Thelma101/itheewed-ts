@@ -29,8 +29,8 @@ const polls = {
     question: "How big will your guest list be?",
     options: [
       { id: 1, text: "Small & Intimate (<50)", votes: 30 },
-      { id: 2, text: "Medium (50-150)", votes: 45 },
-      { id: 3, text: "Large Celebration (150+)", votes: 25 }
+      { id: 2, text: "Medium (50-300)", votes: 45 },
+      { id: 3, text: "Large Celebration (301+)", votes: 25 }
     ]
   },
   style: {
@@ -126,6 +126,11 @@ const Footer: React.FC = () => {
         setCurrentPoll(polls.song);
       } else if (currentPoll === polls.song) {
         setCurrentPoll(polls.tradition);
+      } else if (currentPoll === polls.tradition) {
+        // Cycle back to the beginning
+        setCurrentPoll(polls.initial);
+        // Reset user votes for the new cycle
+        setUserVotes({});
       }
       setShowResults(false);
     }, 2000);

@@ -4,7 +4,7 @@ const correctOrder = [
   'Set wedding date',
   'Book venue',
   'Hire vendors',
-  'Traditional engagement',
+  'After party planning',
   'Send invitations',
   'Buy wedding attire',
   'Plan menu & catering',
@@ -17,7 +17,7 @@ function shuffle(array: string[]) {
   return array.slice().sort(() => Math.random() - 0.5);
 }
 
-const TimelineRacePage: React.FC = () => {
+const TimelineRace: React.FC = () => {
   const [tasks, setTasks] = useState<string[]>(shuffle(correctOrder));
   const [feedback, setFeedback] = useState<string | null>(null);
   const [showCorrect, setShowCorrect] = useState(false);
@@ -102,4 +102,4 @@ const TimelineRacePage: React.FC = () => {
   );
 };
 
-export default TimelineRacePage; 
+export default TimelineRace; 

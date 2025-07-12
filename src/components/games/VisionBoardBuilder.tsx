@@ -12,10 +12,10 @@ const elements = [
   { id: 'decor', label: 'Decorations', icon: '✨' },
   { id: 'transport', label: 'Transportation', icon: '🚗' },
   { id: 'photography', label: 'Photography', icon: '📸' },
-  { id: 'traditional', label: 'Traditional Elements', icon: '🏺' },
+  { id: 'afterparty', label: 'After Party', icon: '🎉' },
 ];
 
-const VisionBoardPage: React.FC = () => {
+const VisionBoardBuilder: React.FC = () => {
   const [board, setBoard] = useState<any[]>([]);
 
   const handleDrop = (el: any) => {
@@ -55,4 +55,4 @@ const VisionBoardPage: React.FC = () => {
   );
 };
 
-export default VisionBoardPage; 
+export default VisionBoardBuilder; 
