@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { showToast } from '../components/SimpleToast';
 import axios from 'axios';
@@ -13,53 +13,162 @@ const ComingSoonPage: React.FC = () => {
   const [showGame, setShowGame] = useState(false);
   const [currentQuestion, setCurrentQuestion] = useState(0);
   const [showResult, setShowResult] = useState(false);
+  const [selectedAnswer, setSelectedAnswer] = useState<number | null>(null);
+  const [isAnswering, setIsAnswering] = useState(false);
+  const [streak, setStreak] = useState(0);
+  const [maxStreak, setMaxStreak] = useState(0);
+  const [showExplanation, setShowExplanation] = useState(false);
+  const [timeLeft, setTimeLeft] = useState(30);
+  const [isTimerActive, setIsTimerActive] = useState(false);
 
   const weddingQuestions = [
     {
-      question: "What's the most important aspect of wedding planning?",
-      options: ["Budget", "Venue", "Guest List", "All of the above"],
+      question: "🎭 What's the most important aspect of wedding planning?",
+      options: ["💰 Budget", "🏰 Venue", "👥 Guest List", "✨ All of the above"],
       correct: 3,
-      explanation: "All aspects are important, but they work together!"
+      explanation: "All aspects are important, but they work together!",
+      category: "Planning Basics",
+      difficulty: "Easy"
     },
     {
-      question: "When should you start planning your wedding?",
-      options: ["1 month before", "6 months before", "12-18 months before", "On the day"],
+      question: "⏰ When should you start planning your wedding?",
+      options: ["📅 1 month before", "📅 6 months before", "📅 12-18 months before", "📅 On the day"],
       correct: 2,
-      explanation: "12-18 months gives you time to secure vendors and venues!"
+      explanation: "12-18 months gives you time to secure vendors and venues!",
+      category: "Timeline",
+      difficulty: "Easy"
     },
     {
-      question: "What percentage of your budget should go to venue and catering?",
+      question: "💸 What percentage of your budget should go to venue and catering?",
       options: ["30-40%", "50-60%", "70-80%", "90%"],
       correct: 1,
-      explanation: "Venue and catering typically take up 50-60% of your budget."
+      explanation: "Venue and catering typically take up 50-60% of your budget.",
+      category: "Budget",
+      difficulty: "Medium"
     },
     {
-      question: "How many guests should you invite if your venue holds 100?",
+      question: "🎪 How many guests should you invite if your venue holds 100?",
       options: ["80", "100", "120", "150"],
       correct: 0,
-      explanation: "Always invite fewer than capacity to account for RSVPs!"
+      explanation: "Always invite fewer than capacity to account for RSVPs!",
+      category: "Guest Management",
+      difficulty: "Medium"
+    },
+    {
+      question: "💍 What's the traditional order of wedding events?",
+      options: ["Ceremony → Reception → Dinner", "Reception → Ceremony → Dinner", "Dinner → Ceremony → Reception", "Ceremony → Dinner → Reception"],
+      correct: 0,
+      explanation: "Traditional order: Ceremony, then Reception with dinner!",
+      category: "Traditions",
+      difficulty: "Easy"
+    },
+    {
+      question: "🌺 What's the best time to book a florist?",
+      options: ["1 month before", "3-6 months before", "9-12 months before", "2 weeks before"],
+      correct: 2,
+      explanation: "Book florists 9-12 months in advance, especially for peak season!",
+      category: "Vendor Booking",
+      difficulty: "Hard"
+    },
+    {
+      question: "📸 How many hours of photography coverage do most couples need?",
+      options: ["4-6 hours", "6-8 hours", "8-10 hours", "12+ hours"],
+      correct: 2,
+      explanation: "8-10 hours covers getting ready through the reception!",
+      category: "Photography",
+      difficulty: "Medium"
+    },
+    {
+      question: "🎵 What's the most popular first dance song of all time?",
+      options: ["Perfect - Ed Sheeran", "All of Me - John Legend", "At Last - Etta James", "Can't Help Falling in Love - Elvis"],
+      correct: 2,
+      explanation: "At Last by Etta James is the most popular first dance song!",
+      category: "Music",
+      difficulty: "Hard"
     }
   ];
+
+  // Timer effect
+  useEffect(() => {
+    let interval: NodeJS.Timeout;
+    if (isTimerActive && timeLeft > 0) {
+      interval = setInterval(() => {
+        setTimeLeft(prev => prev - 1);
+      }, 1000);
+    } else if (timeLeft === 0 && isTimerActive) {
+      handleTimeUp();
+    }
+    return () => clearInterval(interval);
+  }, [isTimerActive, timeLeft]);
+
+  const handleTimeUp = () => {
+    setIsTimerActive(false);
+    setSelectedAnswer(null);
+    showToast('Time\'s up! ⏰', 'error');
+    setTimeout(() => {
+      nextQuestion();
+    }, 1500);
+  };
 
   const startGame = () => {
     setShowGame(true);
     setGameScore(0);
     setCurrentQuestion(0);
     setShowResult(false);
+    setStreak(0);
+    setMaxStreak(0);
+    setTimeLeft(30);
+    setIsTimerActive(true);
+    setSelectedAnswer(null);
+    setShowExplanation(false);
+    setIsAnswering(false);
   };
 
   const answerQuestion = (selectedAnswer: number) => {
-    if (selectedAnswer === weddingQuestions[currentQuestion].correct) {
+    if (isAnswering) return;
+    
+    setIsAnswering(true);
+    setSelectedAnswer(selectedAnswer);
+    setIsTimerActive(false);
+    setShowExplanation(true);
+
+    const isCorrect = selectedAnswer === weddingQuestions[currentQuestion].correct;
+    
+    if (isCorrect) {
       setGameScore(gameScore + 1);
-      showToast('Correct! 🎉', 'success');
+      setStreak(streak + 1);
+      setMaxStreak(Math.max(maxStreak, streak + 1));
+      
+      // Different messages based on streak
+      if (streak >= 3) {
+        showToast(`🔥 ${streak + 1} in a row! You're on fire!`, 'success');
+      } else if (streak >= 1) {
+        showToast(`🎉 ${streak + 1} in a row! Keep it up!`, 'success');
+      } else {
+        showToast('Correct! 🎉', 'success');
+      }
     } else {
+      setStreak(0);
       showToast('Good try! 💡', 'info');
     }
 
+    setTimeout(() => {
+      nextQuestion();
+    }, 2500);
+  };
+
+  const nextQuestion = () => {
+    setShowExplanation(false);
+    setSelectedAnswer(null);
+    setIsAnswering(false);
+    
     if (currentQuestion < weddingQuestions.length - 1) {
       setCurrentQuestion(currentQuestion + 1);
+      setTimeLeft(30);
+      setIsTimerActive(true);
     } else {
       setShowResult(true);
+      setIsTimerActive(false);
     }
   };
 
@@ -68,15 +177,39 @@ const ComingSoonPage: React.FC = () => {
     setGameScore(0);
     setCurrentQuestion(0);
     setShowResult(false);
+    setStreak(0);
+    setMaxStreak(0);
+    setTimeLeft(30);
+    setIsTimerActive(false);
+    setSelectedAnswer(null);
+    setShowExplanation(false);
+    setIsAnswering(false);
   };
 
-  // Animate progress bar on mount
-  // useEffect(() => {
-  //   const timer = setTimeout(() => {
-  //     setProgress(75);
-  //   }, 500);
-  //   return () => clearTimeout(timer);
-  // }, []);
+  const getDifficultyColor = (difficulty: string) => {
+    switch (difficulty) {
+      case 'Easy': return 'text-green-600 bg-green-100';
+      case 'Medium': return 'text-yellow-600 bg-yellow-100';
+      case 'Hard': return 'text-red-600 bg-red-100';
+      default: return 'text-gray-600 bg-gray-100';
+    }
+  };
+
+  const getCategoryIcon = (category: string) => {
+    switch (category) {
+      case 'Planning Basics': return '📋';
+      case 'Timeline': return '⏰';
+      case 'Budget': return '💰';
+      case 'Guest Management': return '👥';
+      case 'Traditions': return '💍';
+      case 'Vendor Booking': return '🤝';
+      case 'Photography': return '📸';
+      case 'Music': return '🎵';
+      default: return '❓';
+    }
+  };
+
+
 
   const handleLogout = async () => {
     setIsLoggingOut(true);
@@ -213,6 +346,18 @@ const ComingSoonPage: React.FC = () => {
 
               {showGame && !showResult && (
                 <div>
+                  <div className="mb-4 flex flex-col md:flex-row md:items-center md:justify-between gap-2">
+                    <div className="flex items-center gap-2">
+                      <span className="text-2xl">{getCategoryIcon(weddingQuestions[currentQuestion].category)}</span>
+                      <span className="text-sm font-semibold text-gray-700">{weddingQuestions[currentQuestion].category}</span>
+                      <span className={`ml-2 px-2 py-1 rounded text-xs font-bold ${getDifficultyColor(weddingQuestions[currentQuestion].difficulty)}`}>{weddingQuestions[currentQuestion].difficulty}</span>
+                    </div>
+                    <div className="flex items-center gap-4">
+                      <span className="text-sm text-gray-600">Streak: <span className="font-bold text-pink-600">{streak}</span></span>
+                      <span className="text-sm text-gray-600">Max Streak: <span className="font-bold text-purple-600">{maxStreak}</span></span>
+                      <span className="text-sm text-gray-600">⏰ <span className={`font-bold ${timeLeft <= 5 ? 'text-red-500 animate-pulse' : 'text-gray-900'}`}>{timeLeft}s</span></span>
+                    </div>
+                  </div>
                   <div className="mb-4">
                     <div className="flex justify-between items-center mb-2">
                       <span className="text-sm text-gray-600">
@@ -239,12 +384,35 @@ const ComingSoonPage: React.FC = () => {
                       <button
                         key={index}
                         onClick={() => answerQuestion(index)}
-                        className="w-full p-4 text-left bg-gray-50 hover:bg-purple-50 border border-gray-200 hover:border-purple-300 rounded-lg transition-all duration-200 hover:shadow-md"
+                        disabled={isAnswering || selectedAnswer !== null}
+                        className={`w-full p-4 text-left border rounded-lg transition-all duration-200 font-medium text-gray-900
+                          ${selectedAnswer === index
+                            ? (index === weddingQuestions[currentQuestion].correct
+                                ? 'bg-green-100 border-green-400 animate-pulse'
+                                : 'bg-red-100 border-red-400 animate-shake')
+                            : 'bg-gray-50 hover:bg-purple-50 border-gray-200 hover:border-purple-300 hover:shadow-md'}
+                        `}
                       >
-                        <span className="font-medium text-gray-900">{option}</span>
+                        {option}
+                        {selectedAnswer !== null && index === weddingQuestions[currentQuestion].correct && (
+                          <span className="ml-2 text-green-600 font-bold">✔</span>
+                        )}
+                        {selectedAnswer !== null && selectedAnswer === index && index !== weddingQuestions[currentQuestion].correct && (
+                          <span className="ml-2 text-red-600 font-bold">✖</span>
+                        )}
                       </button>
                     ))}
                   </div>
+
+                  {showExplanation && (
+                    <div className="mt-6 p-4 rounded-lg bg-blue-50 border-l-4 border-blue-400 animate-fade-in">
+                      <div className="flex items-center gap-2 mb-2">
+                        <span className="text-lg">💡</span>
+                        <span className="font-semibold text-blue-700">Explanation</span>
+                      </div>
+                      <div className="text-blue-800">{weddingQuestions[currentQuestion].explanation}</div>
+                    </div>
+                  )}
                 </div>
               )}
 
