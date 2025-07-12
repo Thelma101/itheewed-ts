@@ -1,19 +1,105 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 import { showToast } from '../components/SimpleToast';
+import axios from 'axios';
 import logo from '@/features/Nav/assets/Itheewed_Logo.png';
 
 const ComingSoonPage: React.FC = () => {
+  const navigate = useNavigate();
   const [email, setEmail] = useState('');
   const [isSubscribed, setIsSubscribed] = useState(false);
-  const [progress, setProgress] = useState(0);
+  const [isLoggingOut, setIsLoggingOut] = useState(false);
+  const [gameScore, setGameScore] = useState(0);
+  const [showGame, setShowGame] = useState(false);
+  const [currentQuestion, setCurrentQuestion] = useState(0);
+  const [showResult, setShowResult] = useState(false);
+
+  const weddingQuestions = [
+    {
+      question: "What's the most important aspect of wedding planning?",
+      options: ["Budget", "Venue", "Guest List", "All of the above"],
+      correct: 3,
+      explanation: "All aspects are important, but they work together!"
+    },
+    {
+      question: "When should you start planning your wedding?",
+      options: ["1 month before", "6 months before", "12-18 months before", "On the day"],
+      correct: 2,
+      explanation: "12-18 months gives you time to secure vendors and venues!"
+    },
+    {
+      question: "What percentage of your budget should go to venue and catering?",
+      options: ["30-40%", "50-60%", "70-80%", "90%"],
+      correct: 1,
+      explanation: "Venue and catering typically take up 50-60% of your budget."
+    },
+    {
+      question: "How many guests should you invite if your venue holds 100?",
+      options: ["80", "100", "120", "150"],
+      correct: 0,
+      explanation: "Always invite fewer than capacity to account for RSVPs!"
+    }
+  ];
+
+  const startGame = () => {
+    setShowGame(true);
+    setGameScore(0);
+    setCurrentQuestion(0);
+    setShowResult(false);
+  };
+
+  const answerQuestion = (selectedAnswer: number) => {
+    if (selectedAnswer === weddingQuestions[currentQuestion].correct) {
+      setGameScore(gameScore + 1);
+      showToast('Correct! 🎉', 'success');
+    } else {
+      showToast('Good try! 💡', 'info');
+    }
+
+    if (currentQuestion < weddingQuestions.length - 1) {
+      setCurrentQuestion(currentQuestion + 1);
+    } else {
+      setShowResult(true);
+    }
+  };
+
+  const resetGame = () => {
+    setShowGame(false);
+    setGameScore(0);
+    setCurrentQuestion(0);
+    setShowResult(false);
+  };
 
   // Animate progress bar on mount
-  useEffect(() => {
-    const timer = setTimeout(() => {
-      setProgress(75);
-    }, 500);
-    return () => clearTimeout(timer);
-  }, []);
+  // useEffect(() => {
+  //   const timer = setTimeout(() => {
+  //     setProgress(75);
+  //   }, 500);
+  //   return () => clearTimeout(timer);
+  // }, []);
+
+  const handleLogout = async () => {
+    setIsLoggingOut(true);
+    try {
+      // Call logout API endpoint
+      await axios.post('https://i-thee-wed-api.onrender.com/api/v1/auth/logout');
+      showToast('Logged out successfully!', 'success');
+      
+      // Redirect to homepage after a short delay
+      setTimeout(() => {
+        navigate('/');
+      }, 1000);
+    } catch (error) {
+      console.error('Logout error:', error);
+      showToast('Logged out successfully!', 'success');
+      // Still redirect even if API call fails
+      setTimeout(() => {
+        navigate('/');
+      }, 1000);
+    } finally {
+      setIsLoggingOut(false);
+    }
+  };
 
   const handleEmailSignup = (e: React.FormEvent) => {
     e.preventDefault();
@@ -53,10 +139,11 @@ const ComingSoonPage: React.FC = () => {
               </h1>
             </div>
             <button 
-              onClick={() => showToast('Logged out successfully', 'info')}
+              onClick={handleLogout}
               className="px-6 py-2 bg-gradient-to-r from-purple-500 to-pink-500 text-white rounded-full hover:from-purple-600 hover:to-pink-600 transition-all duration-300 shadow-lg hover:shadow-xl transform hover:scale-105"
+              disabled={isLoggingOut}
             >
-              Logout
+              {isLoggingOut ? 'Logging Out...' : 'Logout'}
             </button>
           </div>
         </div>
@@ -89,26 +176,102 @@ const ComingSoonPage: React.FC = () => {
             </p>
           </div>
 
-          {/* Enhanced Progress Section */}
-          <div className="mb-12">
-            <div className="flex items-center justify-center mb-6">
-              <span className="text-lg font-semibold text-gray-700 mr-6">Development Progress</span>
-              <span className="text-lg font-bold bg-gradient-to-r from-purple-600 to-pink-600 bg-clip-text text-transparent">
-                {progress}% Complete
-              </span>
+          {/* Progress Bar */}
+          <div className="mb-8">
+            <div className="flex items-center justify-center mb-4">
+              <span className="text-sm font-medium text-gray-700 mr-4">Progress</span>
+              <span className="text-sm text-gray-500">75% Complete</span>
             </div>
-            
-            <div className="w-full max-w-2xl mx-auto">
-              <div className="bg-white/50 backdrop-blur-sm rounded-full h-4 shadow-inner border border-white/20">
-                <div 
-                  className="bg-gradient-to-r from-purple-500 via-pink-500 to-cyan-500 h-4 rounded-full transition-all duration-2000 ease-out shadow-lg"
-                  style={{ width: `${progress}%` }}
-                ></div>
-              </div>
+            <div className="w-full max-w-md mx-auto bg-gray-200 rounded-full h-3">
+              <div 
+                className="bg-gradient-to-r from-pink-500 to-purple-600 h-3 rounded-full transition-all duration-1000 ease-out"
+                style={{ width: '75%' }}
+              ></div>
             </div>
-            
-            <div className="mt-6 text-sm text-gray-500">
-              Estimated Launch: <span className="font-semibold text-purple-600">December 2024</span>
+          </div>
+
+          {/* Interactive Game Section */}
+          <div className="mb-8">
+            <div className="bg-white rounded-2xl shadow-xl p-8 max-w-2xl mx-auto">
+              <h3 className="text-2xl font-bold text-center text-gray-900 mb-6">
+                🎮 Wedding Planning Quiz
+              </h3>
+              
+              {!showGame && !showResult && (
+                <div className="text-center">
+                  <p className="text-gray-600 mb-6">
+                    Test your wedding planning knowledge while you wait!
+                  </p>
+                  <button
+                    onClick={startGame}
+                    className="px-8 py-3 bg-gradient-to-r from-purple-500 to-pink-500 text-white rounded-full hover:from-purple-600 hover:to-pink-600 transition-all duration-300 shadow-lg hover:shadow-xl transform hover:scale-105"
+                  >
+                    Start Quiz
+                  </button>
+                </div>
+              )}
+
+              {showGame && !showResult && (
+                <div>
+                  <div className="mb-4">
+                    <div className="flex justify-between items-center mb-2">
+                      <span className="text-sm text-gray-600">
+                        Question {currentQuestion + 1} of {weddingQuestions.length}
+                      </span>
+                      <span className="text-sm font-semibold text-purple-600">
+                        Score: {gameScore}
+                      </span>
+                    </div>
+                    <div className="w-full bg-gray-200 rounded-full h-2">
+                      <div 
+                        className="bg-gradient-to-r from-purple-500 to-pink-500 h-2 rounded-full transition-all duration-300"
+                        style={{ width: `${((currentQuestion + 1) / weddingQuestions.length) * 100}%` }}
+                      ></div>
+                    </div>
+                  </div>
+
+                  <h4 className="text-xl font-semibold text-gray-900 mb-6">
+                    {weddingQuestions[currentQuestion].question}
+                  </h4>
+
+                  <div className="space-y-3">
+                    {weddingQuestions[currentQuestion].options.map((option, index) => (
+                      <button
+                        key={index}
+                        onClick={() => answerQuestion(index)}
+                        className="w-full p-4 text-left bg-gray-50 hover:bg-purple-50 border border-gray-200 hover:border-purple-300 rounded-lg transition-all duration-200 hover:shadow-md"
+                      >
+                        <span className="font-medium text-gray-900">{option}</span>
+                      </button>
+                    ))}
+                  </div>
+                </div>
+              )}
+
+              {showResult && (
+                <div className="text-center">
+                  <div className="text-6xl mb-4">
+                    {gameScore === weddingQuestions.length ? '🏆' : gameScore >= 2 ? '🎉' : '💪'}
+                  </div>
+                  <h4 className="text-2xl font-bold text-gray-900 mb-2">
+                    Quiz Complete!
+                  </h4>
+                  <p className="text-lg text-gray-600 mb-4">
+                    You got {gameScore} out of {weddingQuestions.length} correct!
+                  </p>
+                  {gameScore === weddingQuestions.length && (
+                    <p className="text-purple-600 font-semibold mb-4">
+                      Perfect! You're a wedding planning expert! 🌟
+                    </p>
+                  )}
+                  <button
+                    onClick={resetGame}
+                    className="px-6 py-2 bg-gradient-to-r from-purple-500 to-pink-500 text-white rounded-full hover:from-purple-600 hover:to-pink-600 transition-all duration-300"
+                  >
+                    Play Again
+                  </button>
+                </div>
+              )}
             </div>
           </div>
         </div>
@@ -225,34 +388,6 @@ const ComingSoonPage: React.FC = () => {
           </div>
         </div>
       </div>
-
-      {/* Custom CSS for animations */}
-      <style jsx>{`
-        @keyframes blob {
-          0% { transform: translate(0px, 0px) scale(1); }
-          33% { transform: translate(30px, -50px) scale(1.1); }
-          66% { transform: translate(-20px, 20px) scale(0.9); }
-          100% { transform: translate(0px, 0px) scale(1); }
-        }
-        .animate-blob {
-          animation: blob 7s infinite;
-        }
-        .animation-delay-2000 {
-          animation-delay: 2s;
-        }
-        .animation-delay-4000 {
-          animation-delay: 4s;
-        }
-        .animation-delay-200 {
-          animation-delay: 0.2s;
-        }
-        .animation-delay-400 {
-          animation-delay: 0.4s;
-        }
-        .animation-delay-600 {
-          animation-delay: 0.6s;
-        }
-      `}</style>
     </div>
   );
 };

@@ -4,8 +4,7 @@ import bannerImg2 from "@/features/Banner/assets/banner-img-2.png";
 import bannerImg3 from "@/features/Banner/assets/banner-img-3.png";
 import bannerImg4 from '@/features/Banner/assets/banner-img-4.png';
 import bannerBg from '@/features/Banner/assets/banner.png';
-import { Link, useNavigate } from 'react-router-dom';
-// import { registerPath } from '@/features/Routes/routes'; 
+import { useNavigate } from 'react-router-dom';
 import axios from "axios";
 import { showToast } from './SimpleToast';
 
@@ -14,14 +13,17 @@ import { showToast } from './SimpleToast';
 const Banner: React.FC = () => {
     const navigate = useNavigate();
     const [loading, setLoading] = useState(false);
-    const [inputMethod, setInputMethod] = useState<'email' | 'phone'>('email');
     const [contact, setContact] = useState('');
     const [email, setEmail] = useState('');
     const [phone, setPhone] = useState('');
     const [password, setPassword] = useState('');
     const [passwordError, setPasswordError] = useState('');
 
-    const isEmail = (value: string) => /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/.test(value);
+    const isEmail = (value: string) => {
+        const result = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/.test(value);
+        console.log(`Email validation for "${value}": ${result}`);
+        return result;
+    };
     const isPhone = (value: string) => /^[0-9]{10,15}$/.test(value);
 
     // Update handleInputMethod to set email or phone based on input
@@ -30,15 +32,12 @@ const Banner: React.FC = () => {
         setContact(value);
         
         if (isEmail(value)) {
-            setInputMethod('email');
             setEmail(value);
             setPhone('');
         } else if (isPhone(value)) {
-            setInputMethod('phone');
             setPhone(value);
             setEmail('');
         } else {
-            setInputMethod('email');
             setEmail(value);
             setPhone('');
         }
