@@ -5,8 +5,7 @@ import bannerImg3 from "@/features/Banner/assets/banner-img-3.png";
 import bannerImg4 from '@/features/Banner/assets/banner-img-4.png';
 import bannerBg from '@/features/Banner/assets/banner.png';
 import axios from "axios";
-import { toast } from 'react-toastify';
-import 'react-toastify/dist/ReactToastify.css';
+import { showToast } from './SimpleToast';
 
 // const bannerImages = [bannerImg1, bannerImg2, bannerImg3, bannerImg4];
 
@@ -36,7 +35,7 @@ const Banner: React.FC = () => {
             setPhone(value);
             setEmail('');
         } else {
-            setInputMethod('email'); // default to email
+            setInputMethod('email');
             setEmail(value);
             setPhone('');
         }
@@ -49,7 +48,7 @@ const Banner: React.FC = () => {
         
         if (value.length > 0 && value.length < 6) {
             setPasswordError('Password must be at least 6 characters');
-            toast.error('Password must be at least 6 characters');
+            // showToast('Password must be at least 6 characters', 'error');
         } else {
             setPasswordError('');
         }
@@ -68,7 +67,7 @@ const Banner: React.FC = () => {
         
         // Validate password length
         if (password.length < 6) {
-            toast.error('Password must be at least 6 characters');
+            showToast('Password must be at least 6 characters', 'error');
             return;
         }
         
@@ -88,16 +87,16 @@ const Banner: React.FC = () => {
             const response = await axios.post('https://i-thee-wed-api.onrender.com/api/v1/auth/signin', payload);
             
             console.log('Sign-in successful:', response.data);
-            toast.success('Welcome back!');
+            showToast('Welcome back!', 'success');
             // Handle successful login (store token, redirect to dashboard, etc.)
             
         } catch (error: any) {
             if (error.response && error.response.data && error.response.data.message) {
                 console.error('Sign-in failed:', error.response.data.message);
-                toast.error(error.response.data.message);
+                showToast(error.response.data.message, 'error');
             } else {
                 console.error('Sign-in failed. Please check your credentials.');
-                toast.error('Invalid login credentials. Please try again.');
+                showToast('Invalid login credentials. Please try again.', 'error');
             }
             console.error('Sign-in error:', error);
         } finally {
@@ -138,7 +137,8 @@ const Banner: React.FC = () => {
                                 value={contact}
                                 onChange={handleInputMethod}
                                 required
-                                className="w-full h-12 border border-[#E0E0E0] px-4 text-black rounded focus:outline-none focus:ring-2 focus:ring-primary"
+                                // className="w-full h-12 border border-[#E0E0E0] px-4 text-black rounded focus:outline-none focus:ring-2 focus:ring-primary"
+                                className="mt-1 w-full md:h-12 h-12 px-3 sm:px-4 rounded-3xl border border-color-focus focus:ring-2 focus:ring-color-focus focus:outline-none transition text-primary-dark text-sm md:text-base"
                                 aria-label="Email or Phone Number"
                             />
                         </div>
@@ -155,8 +155,8 @@ const Banner: React.FC = () => {
                                 value={password}
                                 onChange={handlePasswordChange}
                                 required
-                                className={`w-full h-12 border px-4 text-black rounded focus:outline-none focus:ring-2 focus:ring-primary ${
-                                    passwordError ? 'border-red-500' : 'border-[#E0E0E0]'
+                                className={`className="mt-1 w-full md:h-12 h-12 px-3 sm:px-4 pr-12 rounded-3xl border border-color-focus focus:ring-2 focus:ring-color-focus focus:outline-none transition text-primary-dark text-sm md:text-base ${
+                                    passwordError ? 'border-primary' : 'border-[#E0E0E0]'
                                 }`}
                                 aria-label="Password"
                             />
@@ -168,28 +168,12 @@ const Banner: React.FC = () => {
                         <button 
                             type="submit"
                             disabled={loading}
-                            className="w-full h-10 bg-primary text-white font-bold rounded mt-2 disabled:bg-gray-400 disabled:cursor-not-allowed"
+                            className="w-full md:h-12 h-12 rounded-3xl bg-primary hover:bg-primary disabled:bg-gray-300 disabled:cursor-not-allowed transition text-white font-semibold text-center text-base sm:text-md shadow"
                         >
                             {loading ? 'Signing In...' : 'Log In'}
                         </button>
                         
-                        {/* Test toast button */}
-                        <button 
-                            type="button"
-                            onClick={() => {
-                                console.log('Toast button clicked!');
-                                toast.success('Test success toast!');
-                                console.log('Success toast called');
-                                setTimeout(() => {
-                                    console.log('Error toast called');
-                                    toast.error('Test error toast!');
-                                }, 1000);
-                            }}
-                            className="w-full h-10 bg-blue-500 text-white font-bold rounded mt-2"
-                        >
-                            Test Toast
-                        </button>
-                        <p className="text-white text-sm text-center mt-2">
+                        <p className=" text-sm text-center">
                             Do not have an account?{' '}
                             <span className="text-primary cursor-pointer hover:underline font-bold">Register</span>
                         </p>
@@ -235,7 +219,8 @@ const Banner: React.FC = () => {
                                     value={contact}
                                     onChange={handleInputMethod}
                                     required
-                                    className="w-full h-12 md:h-[50px] border border-[#E0E0E0] px-4 text-black rounded focus:outline-none focus:ring-2 focus:ring-primary"
+                                    // className="w-full h-12 md:h-[50px] border border-[#E0E0E0] px-4 text-black rounded focus:outline-none focus:ring-2 focus:ring-primary"
+                                     className="mt-1 w-full md:h-14 h-12 px-3 sm:px-4 rounded-3xl border border-color-focus focus:ring-2 focus:ring-color-focus focus:outline-none transition text-primary-dark text-sm md:text-base"
                                     aria-label="Email or Phone Number"
                                 />
                             </div>
@@ -252,7 +237,7 @@ const Banner: React.FC = () => {
                                     value={password}
                                     onChange={handlePasswordChange}
                                     required
-                                    className={`w-full h-12 md:h-[50px] border px-4 text-black rounded focus:outline-none focus:ring-2 focus:ring-primary ${
+                                    className={`mt-1 w-full md:h-14 h-12 px-3 sm:px-4 rounded-3xl border border-color-focus focus:ring-2 focus:ring-color-focus focus:outline-none transition text-primary-dark text-sm md:text-base ${
                                         passwordError ? 'border-red-500' : 'border-[#E0E0E0]'
                                     }`}
                                     aria-label="Password"
@@ -265,12 +250,14 @@ const Banner: React.FC = () => {
                             <button
                                 type="submit"
                                 disabled={loading}
-                                className="w-full h-12 md:h-[50px] bg-primary text-white font-bold rounded shadow transition-transform duration-150 ease-in-out transform hover:scale-105 hover:bg-primary focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-[#FF4081] mt-2 mb-2 disabled:bg-gray-400 disabled:cursor-not-allowed"
+                                // className="w-full h-12 md:h-[50px] bg-primary text-white font-bold rounded shadow transition-transform duration-150 ease-in-out transform hover:scale-105 hover:bg-primary focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-[#FF4081] mt-2 mb-2 disabled:bg-gray-400 disabled:cursor-not-allowed"
+                                className="w-full md:h-14 h-12 rounded-3xl bg-primary hover:bg-primary disabled:bg-gray-300 disabled:cursor-not-allowed transition text-white font-semibold text-center text-base sm:text-md shadow mt-1"
                                 aria-label="Sign in"
                             >
                                 {loading ? 'Signing In...' : 'Sign In'}
                             </button>
-                            <p className="text-white text-sm md:text-lg text-center md:text-left mt-2">
+                            
+                            <p className="text-white text-sm md:text-base text-center md:text-left ml-2 mt-2">
                                 Don&apos;t have an account?{' '}
                                 <a href="#" className="text-primary cursor-pointer hover:underline font-bold focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-primary">Register</a>
                             </p>
