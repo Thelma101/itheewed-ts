@@ -1,47 +1,107 @@
-import React from 'react';
+import React, { useState } from 'react';
 import bannerImg1 from "@/features/Banner/assets/banner-img-1.png";
 import bannerImg2 from "@/features/Banner/assets/banner-img-2.png";
 import bannerImg3 from "@/features/Banner/assets/banner-img-3.png";
 import bannerImg4 from '@/features/Banner/assets/banner-img-4.png';
 import bannerBg from '@/features/Banner/assets/banner.png';
+import axios from "axios";
+import { toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 // const bannerImages = [bannerImg1, bannerImg2, bannerImg3, bannerImg4];
 
 const Banner: React.FC = () => {
-    // const [index, setIndex] = useState(0);
+    const [loading, setLoading] = useState(false);
+    const [inputMethod, setInputMethod] = useState<'email' | 'phone'>('email');
+    const [contact, setContact] = useState('');
+    const [email, setEmail] = useState('');
+    const [phone, setPhone] = useState('');
+    const [password, setPassword] = useState('');
+    const [passwordError, setPasswordError] = useState('');
 
-    // const next = () => setIndex((index) => (index + 1) % bannerImages.length);
-    // const prev = () => setIndex((index) => (index - 1) % bannerImages.length);
+    const isEmail = (value: string) => /^[^@\s]+@[^@\s]+\.[^@\s]+$/.test(value);
+    const isPhone = (value: string) => /^[0-9]{10,15}$/.test(value);
+
+    // Update handleInputMethod to set email or phone based on input
+    const handleInputMethod = (e: React.ChangeEvent<HTMLInputElement>) => {
+        const value = e.target.value;
+        setContact(value);
+        
+        if (isEmail(value)) {
+            setInputMethod('email');
+            setEmail(value);
+            setPhone('');
+        } else if (isPhone(value)) {
+            setInputMethod('phone');
+            setPhone(value);
+            setEmail('');
+        } else {
+            setInputMethod('email'); // default to email
+            setEmail(value);
+            setPhone('');
+        }
+    };
+
+    // Password validation
+    const handlePasswordChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+        const value = e.target.value;
+        setPassword(value);
+        
+        if (value.length > 0 && value.length < 6) {
+            setPasswordError('Password must be at least 6 characters');
+            toast.error('Password must be at least 6 characters');
+        } else {
+            setPasswordError('');
+        }
+    };
+
+    // Helper variable for the detected contact type
+    const contactType = (() => {
+        if (!contact) return null;
+        if (isEmail(contact)) return 'email';
+        if (isPhone(contact)) return 'phone';
+        return 'invalid';
+    })();
 
     const handleSignin = async (e: React.FormEvent<HTMLFormElement>) => {
         e.preventDefault();
         
-        const formData = new FormData(e.currentTarget);
-        const identifier = formData.get('identifier') as string;
-        const password = formData.get('password') as string;
+        // Validate password length
+        if (password.length < 6) {
+            toast.error('Password must be at least 6 characters');
+            return;
+        }
         
+        setLoading(true);
+
         try {
-            const response = await fetch('https://i-thee-wed-api.onrender.com/api/v1/auth/signin', {
-                method: 'POST',
-                headers: {
-                    'Content-Type': 'application/json',
-                },
-                body: JSON.stringify({
-                    identifier,
-                    password,
-                }),
-            });
-            
-            const data = await response.json();
-            
-            if (response.ok) {
-                // Backend will redirect based on user role
-                console.log('Sign-in successful:', data);
-            } else {
-                console.error('Sign-in failed:', data.message);
+            // Build payload: only include the used field
+            const payload: { password: string; email?: string; phone?: string } = {
+                password,
+            };
+            if (contactType === 'email' && email) {
+                payload.email = email;
+            } else if (contactType === 'phone' && phone) {
+                payload.phone = phone;
             }
-        } catch (error) {
+
+            const response = await axios.post('https://i-thee-wed-api.onrender.com/api/v1/auth/signin', payload);
+            
+            console.log('Sign-in successful:', response.data);
+            toast.success('Welcome back!');
+            // Handle successful login (store token, redirect to dashboard, etc.)
+            
+        } catch (error: any) {
+            if (error.response && error.response.data && error.response.data.message) {
+                console.error('Sign-in failed:', error.response.data.message);
+                toast.error(error.response.data.message);
+            } else {
+                console.error('Sign-in failed. Please check your credentials.');
+                toast.error('Invalid login credentials. Please try again.');
+            }
             console.error('Sign-in error:', error);
+        } finally {
+            setLoading(false);
         }
     }
 
@@ -63,31 +123,71 @@ const Banner: React.FC = () => {
                     </p>
                     <form
                         onSubmit={handleSignin}
-                        className="flex flex-col gap-4 w-full max-w-lg mx-auto" aria-label="Sign in form">
-                        <label htmlFor="signin-identifier" className="sr-only">Phone number or email</label>
-                        <input
-                            id="signin-identifier"
-                            name="identifier"
-                            type="text"
-                            autoComplete="username"
-                            placeholder="Phone number or email"
-                            className="w-full h-12 border border-[#E0E0E0] px-4 text-black rounded focus:outline-none focus:ring-2 focus:ring-primary"
-                            required
-                            aria-label="Phone number or email"
-                        />
-                        <label htmlFor="signin-password" className="sr-only">Password</label>
-                        <input
-                            id="signin-password"
-                            name="password"
-                            type="password"
-                            autoComplete="current-password"
-                            placeholder="Password"
-                            className="w-full h-12 border border-[#E0E0E0] px-4 text-black rounded focus:outline-none focus:ring-2 focus:ring-primary"
-                            required
-                            aria-label="Password"
-                        />
-                        <button className="w-full h-10 bg-primary text-white font-bold rounded mt-2">
-                            Log In
+                        method="POST"
+                        className="flex flex-col gap-4 w-full max-w-lg mx-auto"
+                        aria-label="Sign in form"
+                    >
+                        {/* Contact Input */}
+                        <div className="flex flex-col gap-1">
+                            <label htmlFor="signin-contact" className="sr-only">Email or Phone Number</label>
+                            <input
+                                id="signin-contact"
+                                type="text"
+                                placeholder="Email or Phone Number"
+                                name="contact"
+                                value={contact}
+                                onChange={handleInputMethod}
+                                required
+                                className="w-full h-12 border border-[#E0E0E0] px-4 text-black rounded focus:outline-none focus:ring-2 focus:ring-primary"
+                                aria-label="Email or Phone Number"
+                            />
+                        </div>
+
+                        {/* Password Input */}
+                        <div className="flex flex-col gap-1">
+                            <label htmlFor="signin-password" className="sr-only">Password</label>
+                            <input
+                                id="signin-password"
+                                name="password"
+                                type="password"
+                                autoComplete="current-password"
+                                placeholder="Password"
+                                value={password}
+                                onChange={handlePasswordChange}
+                                required
+                                className={`w-full h-12 border px-4 text-black rounded focus:outline-none focus:ring-2 focus:ring-primary ${
+                                    passwordError ? 'border-red-500' : 'border-[#E0E0E0]'
+                                }`}
+                                aria-label="Password"
+                            />
+                            {passwordError && (
+                                <span className="text-red-400 text-xs">{passwordError}</span>
+                            )}
+                        </div>
+
+                        <button 
+                            type="submit"
+                            disabled={loading}
+                            className="w-full h-10 bg-primary text-white font-bold rounded mt-2 disabled:bg-gray-400 disabled:cursor-not-allowed"
+                        >
+                            {loading ? 'Signing In...' : 'Log In'}
+                        </button>
+                        
+                        {/* Test toast button */}
+                        <button 
+                            type="button"
+                            onClick={() => {
+                                console.log('Toast button clicked!');
+                                toast.success('Test success toast!');
+                                console.log('Success toast called');
+                                setTimeout(() => {
+                                    console.log('Error toast called');
+                                    toast.error('Test error toast!');
+                                }, 1000);
+                            }}
+                            className="w-full h-10 bg-blue-500 text-white font-bold rounded mt-2"
+                        >
+                            Test Toast
                         </button>
                         <p className="text-white text-sm text-center mt-2">
                             Do not have an account?{' '}
@@ -118,35 +218,57 @@ const Banner: React.FC = () => {
                 <div className="w-full flex flex-col md:flex-row px-4 md:px-12 py-12 relative overflow-hidden">
                     {/* Left Form */}
                     <div className="w-full flex flex-col items-center justify-start text-xl z-10">
-                        <form className="flex flex-col gap-4 sm:gap-6 w-full max-w-lg py-11 md:pr-14 p-8 shadow-md" aria-label="Sign in form">
-                            <label htmlFor="signin-identifier-desktop" className="sr-only">Phone number or email</label>
-                            <input
-                                id="signin-identifier-desktop"
-                                name="identifier"
-                                type="text"
-                                autoComplete="username"
-                                placeholder="Phone number or email"
-                                className="w-full h-12 md:h-[50px] border border-[#E0E0E0] px-4 text-black rounded focus:outline-none focus:ring-2 focus:ring-primary"
-                                required
-                                aria-label="Phone number or email"
-                            />
-                            <label htmlFor="signin-password-desktop" className="sr-only">Password</label>
-                            <input
-                                id="signin-password-desktop"
-                                name="password"
-                                type="password"
-                                autoComplete="current-password"
-                                placeholder="Password"
-                                className="w-full h-12 md:h-[50px] border border-[#E0E0E0] px-4 text-black rounded focus:outline-none focus:ring-2 focus:ring-primary"
-                                required
-                                aria-label="Password"
-                            />
+                        <form 
+                            onSubmit={handleSignin}
+                            method="POST"
+                            className="flex flex-col gap-4 sm:gap-6 w-full max-w-lg py-11 md:pr-14"
+                            aria-label="Sign in form"
+                        >
+                            {/* Contact Input */}
+                            <div className="flex flex-col gap-1">
+                                <label htmlFor="signin-contact-desktop" className="sr-only">Email or Phone Number</label>
+                                <input
+                                    id="signin-contact-desktop"
+                                    type="text"
+                                    placeholder="Email or Phone Number"
+                                    name="contact"
+                                    value={contact}
+                                    onChange={handleInputMethod}
+                                    required
+                                    className="w-full h-12 md:h-[50px] border border-[#E0E0E0] px-4 text-black rounded focus:outline-none focus:ring-2 focus:ring-primary"
+                                    aria-label="Email or Phone Number"
+                                />
+                            </div>
+
+                            {/* Password Input */}
+                            <div className="flex flex-col gap-1">
+                                <label htmlFor="signin-password-desktop" className="sr-only">Password</label>
+                                <input
+                                    id="signin-password-desktop"
+                                    name="password"
+                                    type="password"
+                                    autoComplete="current-password"
+                                    placeholder="Password"
+                                    value={password}
+                                    onChange={handlePasswordChange}
+                                    required
+                                    className={`w-full h-12 md:h-[50px] border px-4 text-black rounded focus:outline-none focus:ring-2 focus:ring-primary ${
+                                        passwordError ? 'border-red-500' : 'border-[#E0E0E0]'
+                                    }`}
+                                    aria-label="Password"
+                                />
+                                {passwordError && (
+                                    <span className="text-red-400 text-xs">{passwordError}</span>
+                                )}
+                            </div>
+
                             <button
                                 type="submit"
-                                className="w-full h-12 md:h-[50px] bg-primary text-white font-bold rounded shadow transition-transform duration-150 ease-in-out transform hover:scale-105 hover:bg-primary focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-[#FF4081] mt-2 mb-2"
+                                disabled={loading}
+                                className="w-full h-12 md:h-[50px] bg-primary text-white font-bold rounded shadow transition-transform duration-150 ease-in-out transform hover:scale-105 hover:bg-primary focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-[#FF4081] mt-2 mb-2 disabled:bg-gray-400 disabled:cursor-not-allowed"
                                 aria-label="Sign in"
                             >
-                                Sign In
+                                {loading ? 'Signing In...' : 'Sign In'}
                             </button>
                             <p className="text-white text-sm md:text-lg text-center md:text-left mt-2">
                                 Don&apos;t have an account?{' '}
