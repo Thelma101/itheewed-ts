@@ -14,9 +14,9 @@ const VendorOnboardingPage: React.FC = () => {
     address: '',
     website: '',
     socialMedia: '',
-    services: [],
+    services: [] as string[],
     experience: '',
-    portfolio: []
+    portfolio: [] as string[]
   });
   const [isSubmitting, setIsSubmitting] = useState(false);
 
